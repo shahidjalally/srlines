@@ -1513,7 +1513,7 @@
 
                 // Send to Cloud Function
                 const response = await fetch(
-                    CONFIG.meta.capiEndpoint,
+                    'https://us-central1-onex-time-plus-static-website.cloudfunctions.net/sendMetaEvent',
                     {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -1558,7 +1558,7 @@
 
                 // Send to Cloud Function
                 const response = await fetch(
-                    CONFIG.meta.capiEndpoint,
+                    'https://us-central1-onex-time-plus-static-website.cloudfunctions.net/sendMetaEvent',
                     {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
