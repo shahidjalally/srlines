@@ -1614,7 +1614,7 @@
             
             // Call Meta event handlers
             const metaResponsePageViewEvent = handleMetaPageViewEvent({
-                title: CONFIG.product.name,
+                title: '',
                 type: 'product_page'
             }).then(response => {
 				console.log('PageView event successful:', response);
@@ -1623,9 +1623,9 @@
 			});
             
             const metaResponseViewContentEvent = handleMetaViewContentEvent({
-                productId: CONFIG.product.id,
-                price: CONFIG.product.currentPrice,
-                name: CONFIG.product.name
+                productId: '',
+                price: '',
+                name: ''
             }).then(response => {
 				console.log('ViewContent event successful:', response);
 			}).catch(error => {
