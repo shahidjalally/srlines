@@ -305,6 +305,163 @@
             display: block;
         }
         
+        /* New Meta Pixel Section */
+        .pixel-section {
+            background-color: #f0f7ff;
+        }
+        
+        .pixel-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .pixel-feature {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .pixel-feature h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pixel-feature h3 i {
+            color: var(--secondary);
+        }
+        
+        /* New Auto-fill Address Section */
+        .auto-fill-steps {
+            margin-top: 40px;
+            counter-reset: step-counter;
+        }
+        
+        .auto-fill-step {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .auto-fill-step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .step-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .step-content {
+            flex: 2;
+        }
+        
+        /* New Ultimate Package Section */
+        .ultimate-package {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            text-align: center;
+        }
+        
+        .package-card {
+            background: white;
+            color: var(--dark);
+            border-radius: 10px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 40px auto 0;
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+        }
+        
+        .package-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        .package-price span {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--gray);
+        }
+        
+        .package-features {
+            text-align: left;
+            margin: 30px 0;
+        }
+        
+        .package-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .package-features li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--success);
+            margin-right: 10px;
+        }
+        
+        .whatsapp-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #25D366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-cta:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(37, 211, 102, 0.3);
+        }
+        
         /* Services Section */
         .services {
             background-color: #f1f5f9;
@@ -720,11 +877,11 @@
         
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .about-content, .portfolio-item, .portfolio-item:nth-child(even), .contact-container {
+            .about-content, .portfolio-item, .portfolio-item:nth-child(even), .contact-container, .auto-fill-step {
                 flex-direction: column;
             }
             
-            .about-image, .portfolio-image {
+            .about-image, .portfolio-image, .step-image {
                 width: 100%;
                 max-width: 600px;
                 margin: 0 auto;
@@ -769,10 +926,14 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+            
+            .package-price {
+                font-size: 2.5rem;
+            }
         }
         
         @media (max-width: 576px) {
-            .services-grid, .cert-grid {
+            .services-grid, .cert-grid, .pixel-features {
                 grid-template-columns: 1fr;
             }
             
@@ -797,12 +958,13 @@
             <div class="logo">
                 <div class="logo-text">
                     <h1>SRLINES ECOMMERCE AGENCY</h1>
-                    <p>Powered by SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED</p>
+                    <p>SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED</p>
                 </div>
             </div>
             <nav>
                 <ul>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#pixel">Meta Pixel</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#certifications">Certifications</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -819,6 +981,7 @@
     <div class="mobile-menu">
         <ul>
             <li><a href="#services">Services</a></li>
+            <li><a href="#pixel">Meta Pixel</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#certifications">Certifications</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -831,7 +994,7 @@
             <h1>Transform Your Single-Product Business with Advanced Ecommerce Solutions</h1>
             <p>Custom online stores packed with conversion-boosting features and managed by certified Meta Ads professionals to maximize your ROI.</p>
             <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Get Started Today</a>
+                <a href="https://wa.me/923339776136" class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Consultation</a>
                 <a href="#services" class="btn btn-secondary">Explore Services</a>
             </div>
         </div>
@@ -855,6 +1018,135 @@
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Ecommerce team working">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meta Pixel & Conversion API Section -->
+    <section class="section pixel-section" id="pixel">
+        <div class="container">
+            <div class="section-title">
+                <h2>Advanced Meta Pixel & Conversion API</h2>
+                <p>Maximize your ad performance with our expert implementation of Meta's tracking technologies</p>
+            </div>
+            
+            <div class="pixel-features">
+                <div class="pixel-feature">
+                    <h3><i class="fas fa-bullseye"></i> Enhanced Event Match Quality</h3>
+                    <p>Our implementation achieves 90-100% Event Match Quality by using multiple data points including IP addresses, browser data, and hashed customer information. This ensures Facebook gets the most accurate conversion data for optimal ad delivery.</p>
+                    <p>Higher match quality means better optimization and lower costs per acquisition for your campaigns.</p>
+                </div>
+                
+                <div class="pixel-feature">
+                    <h3><i class="fas fa-server"></i> Conversion API Integration</h3>
+                    <p>Server-side tracking that works even when browsers block cookies. Maintains data accuracy during iOS privacy changes and ad blockers. We implement both browser and server events for complete tracking coverage.</p>
+                    <p>This dual implementation provides redundancy and ensures no conversions are missed in your reporting.</p>
+                </div>
+                
+                <div class="pixel-feature">
+                    <h3><i class="fas fa-chart-line"></i> Performance Benefits</h3>
+                    <ul>
+                        <li>30-50% lower cost per acquisition</li>
+                        <li>Improved ad relevance scores</li>
+                        <li>Better audience building for retargeting</li>
+                        <li>Accurate attribution across devices</li>
+                        <li>More efficient ad spend allocation</li>
+                        <li>Better optimization for conversions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auto-Fill Address Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Auto-Fill Address Fields</h2>
+                <p>Our innovative address auto-fill system reduces checkout friction and improves delivery success rates</p>
+            </div>
+            
+            <div class="auto-fill-steps">
+                <div class="auto-fill-step">
+                    <div class="step-image">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Step 1: Location Permission">
+                    </div>
+                    <div class="step-content">
+                        <h3>1. Customer Grants Location Access</h3>
+                        <p>When customers reach checkout, our system requests one-time location permission. This is clearly explained to build trust and ensure high permission rates.</p>
+                        <p>The permission prompt appears only after the customer has shown purchase intent by reaching the checkout page.</p>
+                    </div>
+                </div>
+                
+                <div class="auto-fill-step">
+                    <div class="step-image">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Step 2: Address Auto-Fill">
+                    </div>
+                    <div class="step-content">
+                        <h3>2. Address Fields Automatically Populate</h3>
+                        <p>Using the GPS coordinates, our system automatically fills:</p>
+                        <ul>
+                            <li>Complete street address</li>
+                            <li>City/District</li>
+                            <li>Postal code (when available)</li>
+                            <li>Nearest landmark for delivery reference</li>
+                        </ul>
+                        <p>Customers can manually edit any field if needed, but 85% of users accept the auto-filled address as-is.</p>
+                    </div>
+                </div>
+                
+                <div class="auto-fill-step">
+                    <div class="step-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Step 3: Delivery Verification">
+                    </div>
+                    <div class="step-content">
+                        <h3>3. Delivery Success Verification</h3>
+                        <p>The system cross-references the GPS location with our delivery database to:</p>
+                        <ul>
+                            <li>Verify deliverability before order confirmation</li>
+                            <li>Suggest alternative pickup points if needed</li>
+                            <li>Provide accurate delivery time estimates</li>
+                        </ul>
+                        <p>This reduces failed deliveries by 60% compared to manual address entry.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ultimate Ecommerce Suite Section -->
+    <section class="section ultimate-package">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ultimate Ecommerce Suite</h2>
+                <p>Everything you need to launch and grow your single-product business</p>
+            </div>
+            
+            <div class="package-card">
+                <h3>All-Inclusive Package</h3>
+                <div class="package-price">1999 <span>PKR/month</span></div>
+                <p>Start selling immediately with our complete solution - no technical skills required</p>
+                
+                <ul class="package-features">
+                    <li>Custom 1-product online store with all premium features</li>
+                    <li>Meta Pixel & Conversion API implementation</li>
+                    <li>WhatsApp order notifications system</li>
+                    <li>AI-powered customer support chatbot</li>
+                    <li>Auto-fill address technology</li>
+                    <li>Google Sheets order management</li>
+                    <li>Basic Facebook Ads setup (ad creatives extra)</li>
+                    <li>Monthly performance reports</li>
+                    <li>24/7 technical support</li>
+                    <li>Hosting and domain setup included</li>
+                    <li>SSL security certificate</li>
+                    <li>Mobile-optimized checkout</li>
+                </ul>
+                
+                <a href="https://wa.me/923339776136" class="whatsapp-cta" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Book Demo on WhatsApp
+                </a>
+                
+                <p style="margin-top: 20px; font-size: 0.9rem;">No hidden fees - Cancel anytime</p>
             </div>
         </div>
     </section>
@@ -1006,7 +1298,7 @@
         <div class="container">
             <h2>Ready to Boost Your Ecommerce Business?</h2>
             <p>Our custom solutions are designed to increase conversions, reduce operational headaches, and maximize your advertising ROI. Let's discuss how we can help your business grow.</p>
-            <a href="#contact" class="btn btn-primary">Get Your Free Consultation</a>
+            <a href="https://wa.me/923339776136" class="btn btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us Now</a>
         </div>
     </section>
 
@@ -1035,7 +1327,7 @@
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/923339776136" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="contact-form">
@@ -1075,7 +1367,7 @@
                     <h4>Services</h4>
                     <ul>
                         <li><a href="#services">Custom Ecommerce Stores</a></li>
-                        <li><a href="#services">Meta Ads Management</a></li>
+                        <li><a href="#pixel">Meta Pixel Integration</a></li>
                         <li><a href="#services">WhatsApp Integrations</a></li>
                         <li><a href="#services">Conversion Optimization</a></li>
                     </ul>
@@ -1174,5 +1466,172 @@
             }
         });
     </script>
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1426121475492328');
+        fbq('track', 'PageView');
+        fbq('track', 'ViewContent');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1426121475492328&ev=PageView&noscript=1"
+		src="https://www.facebook.com/tr?id=1426121475492328&ev=ViewContent&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+	
+    <script>	
+        // Meta Conversion API - PageView Event Handler
+        const handleMetaPageViewEvent = async (pageData) => {
+            try {
+                // Construct payload
+                const payload = {
+                    pixelId: '1426121475492328',
+                    accessToken: 'EAALwBZBVJSZAgBO42LMioKD7dZB17ENvRFPONEflZCpNBVoZB6kdtaLkeWLLtjqd3vNsHS68CqCcd2KZBuglaoNGZA8Pi0Wdp1fqDOE60NFbN1dnSsb68vsZCfLf4AcWjevSHnOmstgtrcGb5HpjJ4DSrz3mh6OY748XniJ9rrODCZCz3vj5ZCfmodnvN2blI32Qzg5QZDZD',
+                    eventName: 'PageView',
+                    eventId: `page_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+                    eventSourceUrl: window.location.href,
+                    userData: {
+                        client_user_agent: navigator.userAgent,
+                        client_ip_address: await fetch('https://api.ipify.org?format=json')
+                            .then(res => res.json()).then(data => data.ip).catch(() => ''),
+						fbc: getFbcCookie(),
+						fbp: getFbpCookie()	
+                    },
+                    customData: {
+                        page_title: pageData?.title || document.title,
+                        page_url: window.location.href,
+                        page_type: pageData?.type || 'unknown'
+                    }
+                };
+
+                // Send to Cloud Function
+                const response = await fetch(
+                    CONFIG.meta.capiEndpoint,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    }
+                );
+
+                if (!response.ok) throw new Error(await response.text());
+                return await response.json();
+
+            } catch (error) {
+                console.error('PageView Error:', error);
+                throw error;
+            }
+        };
+
+        // Meta Conversion API - ViewContent Event Handler
+        const handleMetaViewContentEvent = async (productData) => {
+            try {
+                // Construct payload
+                const payload = {
+                    pixelId: '1426121475492328',
+                    accessToken: 'EAALwBZBVJSZAgBO42LMioKD7dZB17ENvRFPONEflZCpNBVoZB6kdtaLkeWLLtjqd3vNsHS68CqCcd2KZBuglaoNGZA8Pi0Wdp1fqDOE60NFbN1dnSsb68vsZCfLf4AcWjevSHnOmstgtrcGb5HpjJ4DSrz3mh6OY748XniJ9rrODCZCz3vj5ZCfmodnvN2blI32Qzg5QZDZD',
+                    eventName: 'ViewContent',
+                    eventId: `view_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+                    eventSourceUrl: window.location.href,
+                    userData: {
+                        client_user_agent: navigator.userAgent,
+                        client_ip_address: await fetch('https://api.ipify.org?format=json')
+                            .then(res => res.json()).then(data => data.ip).catch(() => ''),
+						fbc: getFbcCookie(),
+						fbp: getFbpCookie()	
+                    },
+                    customData: {
+                        content_ids: 'ecomm-service',
+                        content_name: 'ecomm-service',
+                        content_type: 'ecomm-service',
+                        currency: 'PKR',
+                        value: '1999'
+                    }
+                };
+
+                // Send to Cloud Function
+                const response = await fetch(
+                    CONFIG.meta.capiEndpoint,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    }
+                );
+
+                if (!response.ok) throw new Error(await response.text());
+                return await response.json();
+
+            } catch (error) {
+                console.error('ViewContent Error:', error);
+                throw error;
+            }
+        };
+
+		function getFbcCookie() {
+			// Match the _fbc cookie
+			const match = document.cookie.match(/_fbc=([^;]+)/);
+			if (!match) return undefined;
+			
+			const fbcValue = match[1];
+			
+			// Updated validation pattern
+			const fbcPattern = /^fb\.([0-9]+)\.([0-9]+)(\.[0-9]+)?(\.[a-zA-Z0-9_\-]+)*$/i;
+			
+			if (!fbcPattern.test(fbcValue)) {
+				console.warn('Invalid FBC format detected:', fbcValue);
+				return undefined;
+			}
+			
+			// Extract timestamp (second segment)
+			const segments = fbcValue.split('.');
+			const timestamp = parseInt(segments[2]);
+			
+			// Check if timestamp is within 24 hours
+			const twentyFourHoursAgo = Date.now() - (24 * 60 * 60 * 1000);
+			if (timestamp < twentyFourHoursAgo / 1000) {
+				console.warn('Expired FBC value (older than 24 hours):', fbcValue);
+				return undefined;
+			}
+			
+			return fbcValue;
+		}
+
+        function getFbpCookie() {
+			const match = document.cookie.match(/_fbp=([^;]+)/);
+			return match ? match[1] : undefined;
+		}
+		
+		// Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Call Meta event handlers
+            const metaResponsePageViewEvent = handleMetaPageViewEvent({
+                title: CONFIG.product.name,
+                type: 'product_page'
+            }).then(response => {
+				console.log('PageView event successful:', response);
+			}).catch(error => {
+			console.error('PageView event failed:', error);
+			});
+            
+            const metaResponseViewContentEvent = handleMetaViewContentEvent({
+                productId: CONFIG.product.id,
+                price: CONFIG.product.currentPrice,
+                name: CONFIG.product.name
+            }).then(response => {
+				console.log('ViewContent event successful:', response);
+			}).catch(error => {
+			console.error('ViewContent event failed:', error);
+			});
+        });
+    </script>	
 </body>
 </html>
