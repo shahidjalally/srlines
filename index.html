@@ -1176,7 +1176,7 @@
                             <li>Reduced fake orders & increased delivery ratio</li>
                         </ul>
                         <a href="https://onextimeplus.shop" class="demo-link" target="_blank">View Demo Store <strong style="color: #800000;">Frontend</strong><i class="fas fa-external-link-alt"></i></a>
-			<a href="https://drive.google.com/file/d/1j4vyIqnrnhbl3JbyH-U-y4OSFCM6kUpp/view?usp=sharing" class="demo-link" target="_blank">View Demo Store <strong style="color: #800000;">Backend</strong><i class="fas fa-external-link-alt"></i></a>
+                        <a href="https://drive.google.com/file/d/1j4vyIqnrnhbl3JbyH-U-y4OSFCM6kUpp/view?usp=sharing" class="demo-link" target="_blank">View Demo Store <strong style="color: #800000;">Backend</strong><i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
                 <div class="service-card">
@@ -1196,6 +1196,28 @@
                             <li>Continuous A/B testing</li>
                         </ul>
                         <a href="#certifications" class="demo-link">View Our Certifications <i class="fas fa-arrow-down"></i></a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="WhatsApp Business API CRM">
+                    </div>
+                    <div class="service-content">
+                        <h3>WhatsApp Business API CRM</h3>
+                        <p>Official Meta Verified Tech Provider offering WhatsApp Business API solutions with simplified onboarding and transparent pricing.</p>
+                        <ul class="features-list">
+                            <li>Verified Tech Provider by Meta in Pakistan</li>
+                            <li>No reliance on third-party solution providers</li>
+                            <li>Simple monthly subscription at 1999 PKR/month</li>
+                            <li>No hidden charges or additional fees</li>
+                            <li>Direct connection to your Meta billing account</li>
+                            <li>Automated and quickest onboarding process</li>
+                            <li>Full control over your WhatsApp Business API</li>
+                        </ul>
+                        <p>We'll assist you in connecting your billing method with Meta WhatsApp Business Account. <a href="https://developers.facebook.com/docs/whatsapp/pricing" target="_blank" style="color: var(--primary);">View Meta's official pricing calculator</a> for WhatsApp Business API usage.</p>
+                        <p>Our onboarding process is fully automated - just visit our CRM page and click on 'Signup with Facebook for WhatsApp Business API Onboarding'.</p>
+                        <a href="https://shahidjalally.github.io/wa-crm/" class="demo-link" target="_blank">Access WhatsApp Business API CRM <i class="fas fa-external-link-alt"></i></a>
+                        <p style="margin-top: 10px; font-size: 0.9rem;">Demo credentials: username - user, password - user123</p>
                     </div>
                 </div>
             </div>
@@ -1483,11 +1505,11 @@
     </script>
     <noscript><img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=1426121475492328&ev=PageView&noscript=1"
-		src="https://www.facebook.com/tr?id=1426121475492328&ev=ViewContent&noscript=1"
+        src="https://www.facebook.com/tr?id=1426121475492328&ev=ViewContent&noscript=1"
     /></noscript>
     <!-- End Facebook Pixel Code -->
-	
-    <script>	
+    
+    <script>    
         // Meta Conversion API - PageView Event Handler
         const handleMetaPageViewEvent = async (pageData) => {
             try {
@@ -1502,8 +1524,8 @@
                         client_user_agent: navigator.userAgent,
                         client_ip_address: await fetch('https://api.ipify.org?format=json')
                             .then(res => res.json()).then(data => data.ip).catch(() => ''),
-						fbc: getFbcCookie(),
-						fbp: getFbpCookie()	
+                        fbc: getFbcCookie(),
+                        fbp: getFbpCookie()    
                     },
                     customData: {
                         page_title: pageData?.title || document.title,
@@ -1545,8 +1567,8 @@
                         client_user_agent: navigator.userAgent,
                         client_ip_address: await fetch('https://api.ipify.org?format=json')
                             .then(res => res.json()).then(data => data.ip).catch(() => ''),
-						fbc: getFbcCookie(),
-						fbp: getFbpCookie()	
+                        fbc: getFbcCookie(),
+                        fbp: getFbpCookie()    
                     },
                     customData: {
                         content_ids: 'ecomm-service',
@@ -1576,41 +1598,41 @@
             }
         };
 
-		function getFbcCookie() {
-			// Match the _fbc cookie
-			const match = document.cookie.match(/_fbc=([^;]+)/);
-			if (!match) return undefined;
-			
-			const fbcValue = match[1];
-			
-			// Updated validation pattern
-			const fbcPattern = /^fb\.([0-9]+)\.([0-9]+)(\.[0-9]+)?(\.[a-zA-Z0-9_\-]+)*$/i;
-			
-			if (!fbcPattern.test(fbcValue)) {
-				console.warn('Invalid FBC format detected:', fbcValue);
-				return undefined;
-			}
-			
-			// Extract timestamp (second segment)
-			const segments = fbcValue.split('.');
-			const timestamp = parseInt(segments[2]);
-			
-			// Check if timestamp is within 24 hours
-			const twentyFourHoursAgo = Date.now() - (24 * 60 * 60 * 1000);
-			if (timestamp < twentyFourHoursAgo / 1000) {
-				console.warn('Expired FBC value (older than 24 hours):', fbcValue);
-				return undefined;
-			}
-			
-			return fbcValue;
-		}
+        function getFbcCookie() {
+            // Match the _fbc cookie
+            const match = document.cookie.match(/_fbc=([^;]+)/);
+            if (!match) return undefined;
+            
+            const fbcValue = match[1];
+            
+            // Updated validation pattern
+            const fbcPattern = /^fb\.([0-9]+)\.([0-9]+)(\.[0-9]+)?(\.[a-zA-Z0-9_\-]+)*$/i;
+            
+            if (!fbcPattern.test(fbcValue)) {
+                console.warn('Invalid FBC format detected:', fbcValue);
+                return undefined;
+            }
+            
+            // Extract timestamp (second segment)
+            const segments = fbcValue.split('.');
+            const timestamp = parseInt(segments[2]);
+            
+            // Check if timestamp is within 24 hours
+            const twentyFourHoursAgo = Date.now() - (24 * 60 * 60 * 1000);
+            if (timestamp < twentyFourHoursAgo / 1000) {
+                console.warn('Expired FBC value (older than 24 hours):', fbcValue);
+                return undefined;
+            }
+            
+            return fbcValue;
+        }
 
         function getFbpCookie() {
-			const match = document.cookie.match(/_fbp=([^;]+)/);
-			return match ? match[1] : undefined;
-		}
-		
-		// Initialize the page
+            const match = document.cookie.match(/_fbp=([^;]+)/);
+            return match ? match[1] : undefined;
+        }
+        
+        // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
             
             // Call Meta event handlers
@@ -1618,21 +1640,21 @@
                 title: '',
                 type: 'product_page'
             }).then(response => {
-				console.log('PageView event successful:', response);
-			}).catch(error => {
-			console.error('PageView event failed:', error);
-			});
+                console.log('PageView event successful:', response);
+            }).catch(error => {
+            console.error('PageView event failed:', error);
+            });
             
             const metaResponseViewContentEvent = handleMetaViewContentEvent({
                 productId: '',
                 price: '',
                 name: ''
             }).then(response => {
-				console.log('ViewContent event successful:', response);
-			}).catch(error => {
-			console.error('ViewContent event failed:', error);
-			});
+                console.log('ViewContent event successful:', response);
+            }).catch(error => {
+            console.error('ViewContent event failed:', error);
+            });
         });
-    </script>	
+    </script>    
 </body>
 </html>
