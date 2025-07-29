@@ -1628,5 +1628,18 @@
         });
     });
 </script>    
+
+        <div id="widget-container"></div>
+        <script>
+            // Fetch the widget HTML content
+            fetch('https://crm.srlines.net/api/user/widget?id=hx2eiB3NJl')
+                .then(response => response.text())
+                .then(htmlContent => {
+                    // Inject the HTML content into the widget container
+                    document.getElementById('widget-container').innerHTML = htmlContent;
+                })
+                .catch(error => console.error('Error fetching widget content:', error));
+        </script>
+        
 </body>
 </html>
