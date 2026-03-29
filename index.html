@@ -35,16 +35,15 @@
     {
       "@context": "https://schema.org",
       "@graph": [
-
         {
           "@type": "Organization",
           "@id": "https://srlines.net/#organization",
           "name": "SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED",
           "legalName": "SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED",
-          "url": "https://srlines.net",
+          "url": "https://srlines.net/",
           "logo": "https://srlines.net/logo.png",
           "foundingDate": "2024",
-          "description": "Pakistan's #1 WhatsApp Cloud API Platform. Meta Verified Technology Partner offering affordable wCRM solutions built on official WhatsApp Cloud API.",
+          "description": "Pakistan's #1 WhatsApp Cloud API Platform and Meta Verified Technology Partner.",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Main Street Sultan Town",
@@ -54,83 +53,78 @@
             "addressCountry": "PK"
           },
           "founder": {
-            "@type": "Person",
-            "@id": "https://srlines.net/#founder",
-            "name": "Mr. Shahid Rasool",
-            "jobTitle": "CEO & Founder"
+            "@id": "https://srlines.net/#founder"
           },
           "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+92-333-9776136",
             "contactType": "customer service",
             "email": "contact@srlines.net",
-            "availableLanguage": ["English","Urdu"]
+            "availableLanguage": ["English", "Urdu"]
           },
+          "areaServed": [
+            {"@type": "Country", "name": "Pakistan"},
+            {"@type": "Place", "name": "Middle East"},
+            {"@type": "Place", "name": "Global"}
+          ],
           "sameAs": [
-             "https://github.com/srlinessoftwarehouse",
-             "https://www.npmjs.com/package/n8n-nodes-wcrm",
-             "https://n8n.io/creators/srlinessoftwarehouse",
-             "https://apps.shopify.com/wcrm",
-             "https://crm.srlines.net/app-release.apk",
-             "https://srlines.net/wa-wcrm.zip",
-             "https://crm.srlines.net/partners",
-             "https://crm.srlines.net/marketing",
-             "https://share.google/dDpuHAwplSaKWMvGf"
+            "https://github.com/srlinessoftwarehouse",
+            "https://www.npmjs.com/package/n8n-nodes-wcrm",
+            "https://n8n.io/creators/srlinessoftwarehouse",
+            "https://apps.shopify.com/wcrm",
+            "https://crm.srlines.net/partners",
+            "https://crm.srlines.net/marketing",
+            "https://share.google/dDpuHAwplSaKWMvGf"
           ]
         },
-
+        {
+          "@type": "Person",
+          "@id": "https://srlines.net/#founder",
+          "name": "Mr. Shahid Rasool",
+          "jobTitle": "CEO & Founder",
+          "worksFor": {"@id": "https://srlines.net/#organization"}
+        },
         {
           "@type": "WebSite",
           "@id": "https://srlines.net/#website",
-          "url": "https://srlines.net",
+          "url": "https://srlines.net/",
           "name": "SRLINES",
-          "publisher": {
-            "@id": "https://srlines.net/#organization"
-          },
+          "publisher": {"@id": "https://srlines.net/#organization"},
+          "inLanguage": "en",
           "hasPart": [
-            {
-              "@type": "WebSite",
-              "name": "wCRM Platform",
-              "url": "https://crm.srlines.net"
-            },
-            {
-              "@type": "WebSite",
-              "name": "Partners Platform",
-              "url": "https://crm.srlines.net/partners"
-            },
-            {
-              "@type": "WebSite",
-              "name": "CTWA Leads Attribution Platform",
-              "url": "https://crm.srlines.net/marketing"
-            },
-            {
-              "@type": "WebSite",
-              "name": "wCRM Transactional Notifier",
-              "url": "https://notify.srlines.net"
-            },
-            {
-              "@type": "WebSite",
-              "name": "Redirecting to Tracking...",
-              "url": "https://track.srlines.net"
-            },
-            {
-              "@type": "WebSite",
-              "name": "Blog",
-              "url": "https://blog.srlines.net"
-            },
-            {
-              "@type": "WebSite",
-              "name": "Documentation",
-              "url": "https://docs.srlines.net"
-            },
-            {
-              "@type": "WebSite",
-              "name": "Catalogify - Facebook Catalog Manager",
-              "url": "https://catalogify.pk"
-            }
+            {"@type": "WebSite", "name": "wCRM Platform", "url": "https://crm.srlines.net"},
+            {"@type": "WebSite", "name": "Partners Platform", "url": "https://crm.srlines.net/partners"},
+            {"@type": "WebSite", "name": "CTWA Leads Attribution Platform", "url": "https://crm.srlines.net/marketing"},
+            {"@type": "WebSite", "name": "wCRM Transactional Notifier", "url": "https://notify.srlines.net"},
+            {"@type": "WebSite", "name": "SRLINES Blog", "url": "https://blog.srlines.net"},
+            {"@type": "WebSite", "name": "SRLINES Documentation", "url": "https://docs.srlines.net"}
           ]
         },
-
+        {
+          "@type": "WebPage",
+          "@id": "https://srlines.net/#webpage",
+          "url": "https://srlines.net/",
+          "name": "SRLINES - Pakistan's #1 WhatsApp Cloud API Platform",
+          "isPartOf": {"@id": "https://srlines.net/#website"},
+          "about": {"@id": "https://srlines.net/#cloudapi"},
+          "primaryImageOfPage": "https://srlines.net/Grow%20Sales%20with%20WhatsApp%20CRM%20%26%20Live%20Chat.png",
+          "breadcrumb": {"@id": "https://srlines.net/#breadcrumb"},
+          "citation": [
+            {"@type": "WebPage", "name": "SRLINES Documentation", "url": "https://docs.srlines.net/"},
+            {"@type": "Blog", "name": "SRLINES Blog", "url": "https://blog.srlines.net/"}
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://srlines.net/#breadcrumb",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://srlines.net/"},
+            {"@type": "ListItem", "position": 2, "name": "Products", "item": "https://srlines.net/#products"},
+            {"@type": "ListItem", "position": 3, "name": "Features", "item": "https://srlines.net/#features"},
+            {"@type": "ListItem", "position": 4, "name": "Case Studies", "item": "https://srlines.net/#case-studies"},
+            {"@type": "ListItem", "position": 5, "name": "FAQ", "item": "https://srlines.net/#faq"}
+          ]
+        },
         {
           "@type": "SoftwareApplication",
           "@id": "https://srlines.net/#wcrm",
@@ -138,15 +132,17 @@
           "url": "https://crm.srlines.net",
           "applicationCategory": "BusinessApplication",
           "operatingSystem": "Web, Android",
-          "description": "Affordable WhatsApp Cloud API CRM with AI chatbot, broadcast campaigns, unified inbox, Shopify & WooCommerce integrations.",
-          "creator": {
-            "@id": "https://srlines.net/#organization"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "PKR"
-          },
+          "description": "WhatsApp Cloud API CRM with AI chatbot, broadcast campaigns, unified inbox, and commerce integrations.",
+          "creator": {"@id": "https://srlines.net/#organization"},
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "PKR"},
+          "featureList": [
+            "Shared team inbox",
+            "AI chatbot automation",
+            "Broadcast campaign manager",
+            "Shopify and WooCommerce integrations",
+            "Contact segmentation and labels",
+            "CTWA lead attribution"
+          ],
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.8",
@@ -155,49 +151,20 @@
             "worstRating": "1"
           }
         },
-
-        {
-          "@type": "SoftwareApplication",
-          "@id": "https://notify.srlines.net/#software",
-          "name": "wCRM Transactional Notifier",
-          "url": "https://notify.srlines.net",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "Web, SaaS",
-          "creator": {
-            "@id": "https://srlines.net/#organization"
-          },
-          "isPartOf": {
-            "@id": "https://srlines.net/#wcrm"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "PKR"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "127",
-            "bestRating": "5",
-            "worstRating": "1"
-          }
-        },
-
         {
           "@type": "Product",
           "@id": "https://srlines.net/#cloudapi",
           "name": "WhatsApp Cloud API CRM Platform",
-          "description": "Affordable WhatsApp Cloud API CRM with AI chatbot, broadcast campaigns, unified inbox, Shopify & WooCommerce integrations.",
-          "brand": {
-            "@id": "https://srlines.net/#organization"
-          },
-          "manufacturer": {
-            "@id": "https://srlines.net/#organization"
-          },
+          "description": "Business messaging platform for sales, support, and automation on official WhatsApp Cloud API.",
+          "brand": {"@id": "https://srlines.net/#organization"},
+          "manufacturer": {"@id": "https://srlines.net/#organization"},
           "url": "https://crm.srlines.net",
-          "isRelatedTo": {
-            "@id": "https://srlines.net/#wcrm"
-          },
+          "isRelatedTo": {"@id": "https://srlines.net/#wcrm"},
+          "areaServed": [
+            {"@type": "Country", "name": "Pakistan"},
+            {"@type": "Country", "name": "United Arab Emirates"},
+            {"@type": "Country", "name": "Saudi Arabia"}
+          ],
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.8",
@@ -206,17 +173,112 @@
             "worstRating": "1"
           }
         },
-
         {
-          "@type": "Person",
-          "@id": "https://srlines.net/#founder",
-          "name": "Mr. Shahid Rasool",
-          "jobTitle": "CEO & Founder",
-          "worksFor": {
-            "@id": "https://srlines.net/#organization"
-          }
+          "@type": "Service",
+          "@id": "https://srlines.net/#service",
+          "name": "WhatsApp CRM Implementation Service",
+          "provider": {"@id": "https://srlines.net/#organization"},
+          "serviceType": "WhatsApp Cloud API onboarding, chatbot automation, and campaign enablement",
+          "areaServed": [
+            {"@type": "Country", "name": "Pakistan"},
+            {"@type": "AdministrativeArea", "name": "Punjab"},
+            {"@type": "AdministrativeArea", "name": "Sindh"},
+            {"@type": "AdministrativeArea", "name": "Khyber Pakhtunkhwa"},
+            {"@type": "AdministrativeArea", "name": "Balochistan"},
+            {"@type": "Place", "name": "Remote worldwide setup"}
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://srlines.net/#faqpage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is SRLINES an official Meta technology partner?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. SRLINES is a Meta Verified Technology Partner and uses official WhatsApp Cloud API infrastructure."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do you add markup on Meta conversation fees?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Meta conversation charges are billed directly by Meta to your business account. SRLINES charges a separate SaaS subscription for platform features."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can SRLINES integrate with Shopify and WooCommerce?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. SRLINES provides integration support for Shopify and WooCommerce workflows including notifications, campaigns, and customer engagement automations."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which regions can you serve?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "SRLINES primarily serves Pakistan with remote onboarding and implementation support for international businesses."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://srlines.net/#feature-list",
+          "name": "Core Platform Features",
+          "numberOfItems": 8,
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "AI Chatbot Automation"},
+            {"@type": "ListItem", "position": 2, "name": "Unified Team Inbox"},
+            {"@type": "ListItem", "position": 3, "name": "Bulk Broadcast Campaigns"},
+            {"@type": "ListItem", "position": 4, "name": "Contact Segmentation"},
+            {"@type": "ListItem", "position": 5, "name": "CTWA Lead Attribution"},
+            {"@type": "ListItem", "position": 6, "name": "Shopify Integration"},
+            {"@type": "ListItem", "position": 7, "name": "WooCommerce Integration"},
+            {"@type": "ListItem", "position": 8, "name": "Analytics and Reporting"}
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://srlines.net/#comparison-list",
+          "name": "Platform Comparison Highlights",
+          "itemListOrder": "https://schema.org/ItemListOrderAscending",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Official WhatsApp Cloud API", "description": "SRLINES uses official Meta Cloud API workflows."},
+            {"@type": "ListItem", "position": 2, "name": "Transparent Pricing", "description": "Meta conversation fees are billed directly by Meta."},
+            {"@type": "ListItem", "position": 3, "name": "Local + Global Support", "description": "Pakistan-first onboarding with remote support for international teams."}
+          ]
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": "https://srlines.net/#case-studies-page",
+          "name": "SRLINES Case Studies",
+          "url": "https://srlines.net/#case-studies",
+          "hasPart": [
+            {
+              "@type": "CreativeWork",
+              "name": "Real Estate Lead Automation",
+              "about": "Automated lead routing and rapid response workflows for property sales teams.",
+              "keywords": ["Real Estate", "Lead Response", "WhatsApp Automation"]
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "E-Commerce Cart Recovery",
+              "about": "Campaigns and chatbot journeys to recover abandoned carts and increase repeat sales.",
+              "keywords": ["E-Commerce", "Cart Recovery", "Campaign ROI"]
+            },
+            {
+              "@type": "CreativeWork",
+              "name": "EdTech Admissions Automation",
+              "about": "Automated admissions FAQs, enrollment updates, and support response optimization.",
+              "keywords": ["EdTech", "Admissions", "FAQ Automation"]
+            }
+          ]
         }
-
       ]
     }
     </script>
@@ -1067,7 +1129,7 @@
                             <li><i class="fas fa-check-circle"></i> Customer Engagement Tools</li>
                             <li><i class="fas fa-check-circle"></i> Easy WordPress Setup</li>
                         </ul>
-                        <a href="https://srlines.net/wa-wcrm.zip" class="product-cta" target="_blank">View on WordPress <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://docs.srlines.net/" class="product-cta" target="_blank" rel="noopener">View WooCommerce Docs <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <!-- wCRM Android App -->
@@ -1086,7 +1148,7 @@
                             <li><i class="fas fa-check-circle"></i> Contact &amp; Tag Management</li>
                             <li><i class="fas fa-check-circle"></i> Lightweight &amp; Fast</li>
                         </ul>
-                        <a href="https://crm.srlines.net/app-release.apk" class="product-cta" target="_blank">Download Android App <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://crm.srlines.net" class="product-cta" target="_blank" rel="noopener">Open wCRM Platform <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <!-- n8n Community Node -->
@@ -2047,8 +2109,8 @@
                         <li><a href="https://crm.srlines.net" target="_blank">wCRM Platform</a></li>
                         <li><a href="https://catalogify.pk" target="_blank">Catalogify.pk</a></li>
                         <li><a href="https://apps.shopify.com/wcrm" target="_blank">wCRM Shopify App</a></li>
-                        <li><a href="https://srlines.net/wa-wcrm.zip" target="_blank">wCRM WooCommerce</a></li>
-                        <li><a href="" target="_blank">wCRM Android App</a></li>
+                        <li><a href="https://docs.srlines.net/" target="_blank" rel="noopener">wCRM WooCommerce Docs</a></li>
+                        <li><a href="https://crm.srlines.net" target="_blank" rel="noopener">wCRM Android App (inside platform)</a></li>
                         <li><a href="https://www.npmjs.com/package/n8n-nodes-wcrm" target="_blank">n8n Community Node</a></li>
                         <li><a href="https://crm.srlines.net/marketing" target="_blank">CTWA Leads Portal</a></li>
                         <li><a href="https://crm.srlines.net/partners" target="_blank">Partners Program</a></li>
