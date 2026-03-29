@@ -33,103 +33,162 @@
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED",
-        "url": "https://srlines.net",
-        "logo": "https://srlines.net/logo.png",
-        "description": "Pakistan's #1 WhatsApp Cloud API Platform. Meta Verified Technology Partner offering affordable wCRM solutions. SaaS platform built directly on Meta's official WhatsApp Cloud API.",
-        "foundingDate": "2024",
-        "legalName": "SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED",
-        "address": {
+      "@context": "https://schema.org",
+      "@graph": [
+
+        {
+          "@type": "Organization",
+          "@id": "https://srlines.net/#organization",
+          "name": "SRLINES SOFTWARE HOUSE",
+          "legalName": "SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED",
+          "url": "https://srlines.net",
+          "logo": "https://srlines.net/logo.png",
+          "foundingDate": "2024",
+          "description": "Pakistan's #1 WhatsApp Cloud API Platform. Meta Verified Technology Partner offering affordable wCRM solutions built on official WhatsApp Cloud API.",
+          "address": {
             "@type": "PostalAddress",
             "addressLocality": "Sadiqabad",
             "addressRegion": "Punjab",
             "addressCountry": "PK"
-        },
-        "founder": {
+          },
+          "founder": {
             "@type": "Person",
+            "@id": "https://srlines.net/#founder",
             "name": "Mr. Shahid Rasool",
             "jobTitle": "CEO & Founder"
-        },
-        "contactPoint": {
+          },
+          "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+92-333-9776136",
             "contactType": "customer service",
             "email": "contact@srlines.net",
-            "availableLanguage": ["English", "Urdu"]
+            "availableLanguage": ["English","Urdu"]
+          },
+          "sameAs": [
+             "https://github.com/srlinessoftwarehouse",
+             "https://www.npmjs.com/package/n8n-nodes-wcrm",
+             "https://n8n.io/creators/srlinessoftwarehouse",
+             "https://apps.shopify.com/wcrm",
+             "https://crm.srlines.net/app-release.apk",
+             "https://srlines.net/wa-wcrm.zip",
+             "https://crm.srlines.net/partners",
+             "https://crm.srlines.net/marketing",
+             "https://share.google/dDpuHAwplSaKWMvGf"
+          ]
         },
-        "sameAs": [
-            "https://github.com/srlinessoftwarehouse",
-            "https://www.npmjs.com/package/n8n-nodes-wcrm",
-            "https://n8n.io/creators/srlinessoftwarehouse",
-            "https://apps.shopify.com/wcrm",
-            "https://crm.srlines.net/app-release.apk",
-            "https://srlines.net/wa-wcrm.zip",
-            "https://crm.srlines.net/partners",
-            "https://share.google/dDpuHAwplSaKWMvGf"
-        ],
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "WhatsApp Cloud API Solutions",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "SoftwareApplication",
-                        "name": "wCRM Platform",
-                        "applicationCategory": "BusinessApplication"
-                    }
-                }
-            ]
-        }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "wCRM - WhatsApp Cloud API CRM",
-        "url": "https://crm.srlines.net",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web, Android",
-        "description": "Affordable WhatsApp Cloud API CRM platform with AI Chatbot, Broadcast Campaigns, Unified Inbox, Shopify & WooCommerce integrations.",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-            "description": "Free tier available"
-        },
-        "author": {
-            "@type": "Organization",
-            "name": "SRLINES SOFTWARE HOUSE"
-        }
-    }
-    </script>
 
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "SRLINES",
-        "url": "https://srlines.net/",
-        "description": "Official SRLINES website for WhatsApp Cloud API CRM, AI chatbot resources, documentation, and product updates.",
-        "publisher": {
-            "@type": "Organization",
-            "name": "SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED"
-        },
-        "hasPart": [
+        {
+          "@type": "WebSite",
+          "@id": "https://srlines.net/#website",
+          "url": "https://srlines.net",
+          "name": "SRLINES",
+          "publisher": {
+            "@id": "https://srlines.net/#organization"
+          },
+          "hasPart": [
             {
-                "@type": "WebPage",
-                "name": "Documentation",
-                "url": "https://docs.srlines.net/"
+              "@type": "WebSite",
+              "name": "wCRM Platform",
+              "url": "https://crm.srlines.net"
             },
             {
-                "@type": "Blog",
-                "name": "SRLINES Blog",
-                "url": "https://blog.srlines.net/"
+              "@type": "WebSite",
+              "name": "Partners Platform",
+              "url": "https://crm.srlines.net/partners"
+            },
+            {
+              "@type": "WebSite",
+              "name": "CTWA Leads Attribution Platform",
+              "url": "https://crm.srlines.net/marketing"
+            },
+            {
+              "@type": "WebSite",
+              "name": "wCRM Transactional Notifier",
+              "url": "https://notify.srlines.net"
+            },
+            {
+              "@type": "WebSite",
+              "name": "Redirecting to Tracking...",
+              "url": "https://track.srlines.net"
+            },
+            {
+              "@type": "WebSite",
+              "name": "Blog",
+              "url": "https://blog.srlines.net"
+            },
+            {
+              "@type": "WebSite",
+              "name": "Documentation",
+              "url": "https://docs.srlines.net"
+            },
+            {
+              "@type": "WebSite",
+              "name": "Catalogify - Facebook Catalog Manager",
+              "url": "https://catalogify.pk"
             }
-        ]
+          ]
+        },
+
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://srlines.net/#wcrm",
+          "name": "wCRM - WhatsApp Cloud API CRM",
+          "url": "https://crm.srlines.net",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web, Android",
+          "description": "Affordable WhatsApp Cloud API CRM with AI chatbot, broadcast campaigns, unified inbox, Shopify & WooCommerce integrations.",
+          "creator": {
+            "@id": "https://srlines.net/#organization"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "PKR"
+          }
+        },
+
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://notify.srlines.net/#software",
+          "name": "wCRM Transactional Notifier",
+          "url": "https://notify.srlines.net",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web, SaaS",
+          "creator": {
+            "@id": "https://srlines.net/#organization"
+          },
+          "isPartOf": {
+            "@id": "https://srlines.net/#wcrm"
+          }
+        },
+
+        {
+          "@type": "Product",
+          "@id": "https://srlines.net/#cloudapi",
+          "name": "WhatsApp Cloud API CRM Platform",
+          "brand": {
+            "@id": "https://srlines.net/#organization"
+          },
+          "manufacturer": {
+            "@id": "https://srlines.net/#organization"
+          },
+          "url": "https://crm.srlines.net",
+          "isRelatedTo": {
+            "@id": "https://srlines.net/#wcrm"
+          }
+        },
+
+        {
+          "@type": "Person",
+          "@id": "https://srlines.net/#founder",
+          "name": "Mr. Shahid Rasool",
+          "jobTitle": "CEO & Founder",
+          "worksFor": {
+            "@id": "https://srlines.net/#organization"
+          }
+        }
+
+      ]
     }
     </script>
 
