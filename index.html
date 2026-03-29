@@ -35,6 +35,7 @@
     {
       "@context": "https://schema.org",
       "@graph": [
+
         {
           "@type": "Organization",
           "@id": "https://srlines.net/#organization",
@@ -96,6 +97,7 @@
             }
           ]
         },
+
         {
           "@type": "Person",
           "@id": "https://srlines.net/#founder",
@@ -117,6 +119,7 @@
           ],
           "description": "Mr. Shahid Rasool Meta Verified Technology Partner & Coursera Certified Professional. Mr. Shahid Rasool is the visionary founder of SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED. Under his leadership, the company has grown into Pakistan's leading WhatsApp Cloud API solutions platform, serving 750+ businesses with enterprise-grade messaging infrastructure. With deep expertise in WhatsApp Cloud API, Node.js, and SaaS product development, Mr. Shahid has built an ecosystem of products from wCRM to Catalogify.pk, Shopify & WooCommerce integrations, and the n8n community node that power businesses across Pakistan and beyond."
         },
+
         {
           "@type": "WebSite",
           "@id": "https://srlines.net/#website",
@@ -133,38 +136,7 @@
             {"@type": "WebSite", "name": "SRLINES Documentation", "url": "https://docs.srlines.net"}
           ]
         },
-        {
-          "@type": "WebPage",
-          "@id": "https://srlines.net/#webpage",
-          "url": "https://srlines.net/",
-          "name": "SRLINES - Pakistan's #1 WhatsApp Cloud API Platform",
-          "isPartOf": {"@id": "https://srlines.net/#website"},
-          "about": {"@id": "https://srlines.net/#cloudapi"},
-          "mentions": [
-            {"@type": "Thing", "name": "WhatsApp Cloud API"},
-            {"@type": "Thing", "name": "WhatsApp Chatbot"},
-            {"@type": "Thing", "name": "Shopify Integration"},
-            {"@type": "Thing", "name": "WooCommerce Integration"},
-            {"@type": "Thing", "name": "N8N Integration"}
-          ],
-          "primaryImageOfPage": "https://srlines.net/Grow%20Sales%20with%20WhatsApp%20CRM%20%26%20Live%20Chat.png",
-          "breadcrumb": {"@id": "https://srlines.net/#breadcrumb"},
-          "citation": [
-            {"@type": "WebPage", "name": "SRLINES Documentation", "url": "https://docs.srlines.net/"},
-            {"@type": "Blog", "name": "SRLINES Blog", "url": "https://blog.srlines.net/"}
-          ]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://srlines.net/#breadcrumb",
-          "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://srlines.net/"},
-            {"@type": "ListItem", "position": 2, "name": "Products", "item": "https://srlines.net/#products"},
-            {"@type": "ListItem", "position": 3, "name": "Features", "item": "https://srlines.net/#features"},
-            {"@type": "ListItem", "position": 4, "name": "Case Studies", "item": "https://srlines.net/#case-studies"},
-            {"@type": "ListItem", "position": 5, "name": "FAQ", "item": "https://srlines.net/#faq"}
-          ]
-        },
+
         {
           "@type": "SoftwareApplication",
           "@id": "https://srlines.net/#wcrm",
@@ -172,146 +144,96 @@
           "url": "https://crm.srlines.net",
           "applicationCategory": "BusinessApplication",
           "operatingSystem": "Web, Android",
-          "description": "WhatsApp Cloud API CRM with AI chatbot, broadcast campaigns, unified inbox, and commerce integrations.",
-          "creator": {"@id": "https://srlines.net/#organization"},
-          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "PKR"},
-          "featureList": [
-            "Shared team inbox",
-            "AI chatbot automation",
-            "Broadcast campaign manager",
-            "Shopify and WooCommerce integrations",
-            "Contact segmentation and labels",
-            "CTWA lead attribution"
-          ]
-        },
-        {
-          "@type": "Product",
-          "@id": "https://srlines.net/#cloudapi",
-          "name": "WhatsApp Cloud API CRM Platform",
-          "description": "Business messaging platform for sales, support, and automation on official WhatsApp Cloud API.",
-          "brand": {"@id": "https://srlines.net/#organization"},
-          "manufacturer": {"@id": "https://srlines.net/#organization"},
-          "url": "https://crm.srlines.net",
-          "isRelatedTo": {"@id": "https://srlines.net/#wcrm"},
-          "areaServed": [
-            {"@type": "Country", "name": "Pakistan"},
-            {"@type": "Country", "name": "United Arab Emirates"},
-            {"@type": "Country", "name": "Saudi Arabia"}
-          ],
+          "description": "Affordable WhatsApp Cloud API CRM with AI chatbot, broadcast campaigns, unified inbox, Shopify & WooCommerce integrations.",
+          "creator": {
+            "@id": "https://srlines.net/#organization"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "PKR"
+          },
           "subjectOf": [
             {
               "@type": "WebPage",
               "name": "SRLINES Google Reviews",
               "url": "https://share.google/a74It3hQNKX3TPKSx"
             }
-          ]
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "16",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
         },
+
         {
-          "@type": "Service",
-          "@id": "https://srlines.net/#service",
-          "name": "WhatsApp CRM Implementation Service",
-          "provider": {"@id": "https://srlines.net/#organization"},
-          "serviceType": "WhatsApp Cloud API onboarding, chatbot automation, and campaign enablement",
-          "areaServed": [
-            {"@type": "Country", "name": "Pakistan"},
-            {"@type": "AdministrativeArea", "name": "Punjab"},
-            {"@type": "AdministrativeArea", "name": "Sindh"},
-            {"@type": "AdministrativeArea", "name": "Khyber Pakhtunkhwa"},
-            {"@type": "AdministrativeArea", "name": "Balochistan"},
-            {"@type": "Place", "name": "Remote worldwide setup"}
-          ]
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://srlines.net/#faqpage",
-          "mainEntity": [
+          "@type": "SoftwareApplication",
+          "@id": "https://notify.srlines.net/#software",
+          "name": "wCRM Transactional Notifier",
+          "url": "https://notify.srlines.net",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web, SaaS",
+          "creator": {
+            "@id": "https://srlines.net/#organization"
+          },
+          "isPartOf": {
+            "@id": "https://srlines.net/#wcrm"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "PKR"
+          },
+          "subjectOf": [
             {
-              "@type": "Question",
-              "name": "Is SRLINES an official Meta technology partner?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. SRLINES is a Meta Verified Technology Partner and uses official WhatsApp Cloud API infrastructure."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Do you add markup on Meta conversation fees?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No. Meta conversation charges are billed directly by Meta to your business account. SRLINES charges a separate SaaS subscription for platform features."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can SRLINES integrate with Shopify and WooCommerce?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. SRLINES provides integration support for Shopify and WooCommerce workflows including notifications, campaigns, and customer engagement automations."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Which regions can you serve?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "SRLINES primarily serves Pakistan with remote onboarding and implementation support for international businesses."
-              }
+              "@type": "WebPage",
+              "name": "SRLINES Google Reviews",
+              "url": "https://share.google/a74It3hQNKX3TPKSx"
             }
-          ]
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "16",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
         },
+
         {
-          "@type": "ItemList",
-          "@id": "https://srlines.net/#feature-list",
-          "name": "Core Platform Features",
-          "numberOfItems": 8,
-          "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "AI Chatbot Automation"},
-            {"@type": "ListItem", "position": 2, "name": "Unified Team Inbox"},
-            {"@type": "ListItem", "position": 3, "name": "Bulk Broadcast Campaigns"},
-            {"@type": "ListItem", "position": 4, "name": "Contact Segmentation"},
-            {"@type": "ListItem", "position": 5, "name": "CTWA Lead Attribution"},
-            {"@type": "ListItem", "position": 6, "name": "Shopify Integration"},
-            {"@type": "ListItem", "position": 7, "name": "WooCommerce Integration"},
-            {"@type": "ListItem", "position": 8, "name": "Analytics and Reporting"}
-          ]
-        },
-        {
-          "@type": "ItemList",
-          "@id": "https://srlines.net/#comparison-list",
-          "name": "Platform Comparison Highlights",
-          "itemListOrder": "https://schema.org/ItemListOrderAscending",
-          "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Official WhatsApp Cloud API", "description": "SRLINES uses official Meta Cloud API workflows."},
-            {"@type": "ListItem", "position": 2, "name": "Transparent Pricing", "description": "Meta conversation fees are billed directly by Meta."},
-            {"@type": "ListItem", "position": 3, "name": "Local + Global Support", "description": "Pakistan-first onboarding with remote support for international teams."}
-          ]
-        },
-        {
-          "@type": "CollectionPage",
-          "@id": "https://srlines.net/#case-studies-page",
-          "name": "SRLINES Case Studies",
-          "url": "https://srlines.net/#case-studies",
-          "hasPart": [
+          "@type": "Product",
+          "@id": "https://srlines.net/#cloudapi",
+          "name": "WhatsApp Cloud API CRM Platform",
+          "description": "Affordable WhatsApp Cloud API CRM with AI chatbot, broadcast campaigns, unified inbox, Shopify & WooCommerce integrations.",
+          "brand": {
+            "@id": "https://srlines.net/#organization"
+          },
+          "manufacturer": {
+            "@id": "https://srlines.net/#organization"
+          },
+          "url": "https://crm.srlines.net",
+          "isRelatedTo": {
+            "@id": "https://srlines.net/#wcrm"
+          },
+          "subjectOf": [
             {
-              "@type": "CreativeWork",
-              "name": "Real Estate Lead Automation",
-              "about": "Automated lead routing and rapid response workflows for property sales teams.",
-              "keywords": ["Real Estate", "Lead Response", "WhatsApp Automation"]
-            },
-            {
-              "@type": "CreativeWork",
-              "name": "E-Commerce Cart Recovery",
-              "about": "Campaigns and chatbot journeys to recover abandoned carts and increase repeat sales.",
-              "keywords": ["E-Commerce", "Cart Recovery", "Campaign ROI"]
-            },
-            {
-              "@type": "CreativeWork",
-              "name": "EdTech Admissions Automation",
-              "about": "Automated admissions FAQs, enrollment updates, and support response optimization.",
-              "keywords": ["EdTech", "Admissions", "FAQ Automation"]
+              "@type": "WebPage",
+              "name": "SRLINES Google Reviews",
+              "url": "https://share.google/a74It3hQNKX3TPKSx"
             }
-          ]
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "16",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
         }
+
       ]
     }
     </script>
