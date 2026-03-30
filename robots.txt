@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://srlines.net/sitemap.xml
+Host: srlines.net
