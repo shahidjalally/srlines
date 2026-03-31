@@ -2,6 +2,10 @@ User-agent: *
 Allow: /
 
 Sitemap: https://srlines.net/sitemap.xml
+Sitemap: https://srlines.net/ai-sitemap.xml
+Sitemap: https://srlines.net/entity-sitemap.xml
+Sitemap: https://srlines.net/product-sitemap.xml
+Sitemap: https://srlines.net/llm-sitemap.xml
 Sitemap: https://blog.srlines.net/sitemap.xml
 Sitemap: https://docs.srlines.net/sitemap.xml
 
