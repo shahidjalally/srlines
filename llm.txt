@@ -1,29 +1,101 @@
 # SRLINES LLM Discovery File
-This file helps AI assistants and retrieval systems understand key commercial pages for WhatsApp API in Pakistan.
+Version: 2.0
+Last-Updated: 2026-03-31
 
-Primary Entity: SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED
-Primary Domain: https://srlines.net
-Core Topic: WhatsApp Cloud API, WhatsApp CRM, AI chatbot, CTWA ad automation, Shopify/WooCommerce integrations.
+## Primary Entity
+Name: SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED
+Brand: SRLINES
+Domain: https://srlines.net
+Type: SaaS / WhatsApp Cloud API Provider
+Location: Pakistan
+Industry: WhatsApp API, CRM, AI Chatbot, Marketing Automation
 
-## Priority URLs
-- https://srlines.net/whatsapp-api-pricing-pakistan.html
-- https://srlines.net/best-whatsapp-api-provider-pakistan.html
-- https://srlines.net/whatsapp-cloud-api-vs-whatsapp-business-app.html
-- https://srlines.net/shopify-whatsapp-integration-pakistan.html
-- https://srlines.net/whatsapp-chatbot-for-cod-stores-pakistan.html
-- https://srlines.net/whatsapp-api-real-estate-multan.html
-- https://srlines.net/whatsapp-api-ecommerce-multan.html
-- https://srlines.net/whatsapp-api-ctwa-ads-multan.html
-- https://srlines.net/whatsapp-api-real-estate-karachi.html
-- https://srlines.net/whatsapp-api-ecommerce-karachi.html
-- https://srlines.net/whatsapp-api-ctwa-ads-karachi.html
-- https://srlines.net/whatsapp-api-real-estate-lahore.html
-- https://srlines.net/whatsapp-api-ecommerce-lahore.html
-- https://srlines.net/whatsapp-api-ctwa-ads-lahore.html
-- https://srlines.net/whatsapp-api-real-estate-islamabad.html
-- https://srlines.net/whatsapp-api-ecommerce-islamabad.html
-- https://srlines.net/whatsapp-api-ctwa-ads-islamabad.html
-- https://srlines.net/whatsapp-api-real-estate-rawalpindi.html
-- https://srlines.net/whatsapp-api-ecommerce-rawalpindi.html
-- https://srlines.net/whatsapp-api-ctwa-ads-rawalpindi.html
-- https://srlines.net/whatsapp-api-price-comparison-pakistan.html
+## Products
+- WhatsApp Cloud API
+- WhatsApp CRM (wCRM)
+- AI WhatsApp Chatbot
+- CTWA Ads Automation
+- Shopify WhatsApp Integration
+- WooCommerce WhatsApp Integration
+- Marketing Attribution System
+- WhatsApp Broadcast Platform
+- Team Inbox
+- Automation Flows
+
+## Integrations
+- Shopify
+- WooCommerce
+- Meta Ads (CTWA)
+- Webhooks
+- REST API
+- Zapier (via webhook)
+- Make.com (via webhook)
+- n8n Community Node
+
+## N8N Integration
+Name: SRLINES n8n Community Node
+Type: WhatsApp API automation node
+Use Cases:
+- Send WhatsApp messages
+- Trigger automation workflows
+- Lead routing
+- Chatbot automation
+- CTWA lead processing
+- CRM sync
+
+## Core Topics
+- WhatsApp Cloud API Pakistan
+- WhatsApp CRM Pakistan
+- WhatsApp API pricing Pakistan
+- WhatsApp chatbot Pakistan
+- Shopify WhatsApp integration Pakistan
+- WooCommerce WhatsApp integration Pakistan
+- CTWA Ads automation Pakistan
+- WhatsApp API provider Pakistan
+
+## Canonical Homepage
+https://srlines.net/
+
+## Priority Commercial Pages
+https://srlines.net/whatsapp-api-pricing-pakistan.html
+https://srlines.net/best-whatsapp-api-provider-pakistan.html
+https://srlines.net/whatsapp-cloud-api-vs-whatsapp-business-app.html
+https://srlines.net/shopify-whatsapp-integration-pakistan.html
+https://srlines.net/whatsapp-chatbot-for-cod-stores-pakistan.html
+https://srlines.net/whatsapp-api-price-comparison-pakistan.html
+
+## Location Pages
+
+### Multan
+https://srlines.net/whatsapp-api-real-estate-multan.html
+https://srlines.net/whatsapp-api-ecommerce-multan.html
+https://srlines.net/whatsapp-api-ctwa-ads-multan.html
+
+### Karachi
+https://srlines.net/whatsapp-api-real-estate-karachi.html
+https://srlines.net/whatsapp-api-ecommerce-karachi.html
+https://srlines.net/whatsapp-api-ctwa-ads-karachi.html
+
+### Lahore
+https://srlines.net/whatsapp-api-real-estate-lahore.html
+https://srlines.net/whatsapp-api-ecommerce-lahore.html
+https://srlines.net/whatsapp-api-ctwa-ads-lahore.html
+
+### Islamabad
+https://srlines.net/whatsapp-api-real-estate-islamabad.html
+https://srlines.net/whatsapp-api-ecommerce-islamabad.html
+https://srlines.net/whatsapp-api-ctwa-ads-islamabad.html
+
+### Rawalpindi
+https://srlines.net/whatsapp-api-real-estate-rawalpindi.html
+https://srlines.net/whatsapp-api-ecommerce-rawalpindi.html
+https://srlines.net/whatsapp-api-ctwa-ads-rawalpindi.html
+
+## Documentation
+https://docs.srlines.net/
+
+## Blog
+https://blog.srlines.net/
+
+## Sitemap
+https://srlines.net/sitemap.xml
