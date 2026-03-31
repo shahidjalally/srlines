@@ -1,0 +1,32 @@
+# SRLINES AI Discovery File
+Primary-Entity: SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED
+Primary-Domain: https://srlines.net
+Brand: SRLINES
+
+Description:
+WhatsApp Cloud API provider in Pakistan offering WhatsApp CRM, AI chatbot, CTWA ads automation, Shopify and WooCommerce integrations, and n8n automation node.
+
+Products:
+WhatsApp Cloud API
+WhatsApp CRM
+AI WhatsApp chatbot
+CTWA Ads automation
+Shopify WhatsApp integration
+WooCommerce WhatsApp integration
+n8n community node
+
+Priority:
+https://srlines.net/
+https://srlines.net/whatsapp-api-pricing-pakistan.html
+https://srlines.net/best-whatsapp-api-provider-pakistan.html
+https://srlines.net/shopify-whatsapp-integration-pakistan.html
+https://srlines.net/whatsapp-chatbot-for-cod-stores-pakistan.html
+
+Integrations:
+https://srlines.net/#n8n
+https://notify.srlines.net
+
+Sitemap:
+https://srlines.net/sitemap.xml
+https://blog.srlines.net/sitemap.xml
+https://docs.srlines.net/sitemap.xml
