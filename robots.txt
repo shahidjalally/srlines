@@ -2,4 +2,37 @@ User-agent: *
 Allow: /
 
 Sitemap: https://srlines.net/sitemap.xml
+Sitemap: https://blog.srlines.net/sitemap.xml
+Sitemap: https://docs.srlines.net/sitemap.xml
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Google AI
+User-agent: Google-Extended
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Common Crawlers
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
 Host: srlines.net
