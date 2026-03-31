@@ -99,3 +99,5 @@ https://blog.srlines.net/
 
 ## Sitemap
 https://srlines.net/sitemap.xml
+https://blog.srlines.net/sitemap.xml
+https://docs.srlines.net/sitemap.xml
