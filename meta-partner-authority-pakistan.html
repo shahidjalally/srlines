@@ -16,8 +16,34 @@
         h1 { font-size: 2rem; margin-bottom: 12px; }
         h2 { font-size: 1.35rem; margin-bottom: 10px; }
         p, li { color: var(--muted); }
-        .badge { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 16px 0 20px; }
-        .badge img { height: 68px; width: auto; background: #fff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 8px; }
+        .badge-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+            margin: 16px 0 20px;
+        }
+        .badge-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 14px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+        }
+        .badge-card img {
+            width: 100%;
+            max-width: 320px;
+            height: 110px;
+            object-fit: contain;
+            background: #fff;
+            border-radius: 10px;
+        }
+        .badge-card p {
+            text-align: center;
+            font-size: .95rem;
+        }
         .pill { display: inline-block; background: #e0f2fe; color: #0c4a6e; border-radius: 999px; padding: 6px 12px; font-weight: 700; font-size: .85rem; }
         a { color: var(--brand); font-weight: 700; text-decoration: none; }
     </style>
@@ -63,9 +89,15 @@
             <span class="pill">Meta Partner Authority - Pakistan</span>
             <h1>SRLINES Meta Partner Authority Page</h1>
             <p>This page centralizes SRLINES partner-level messaging credentials and enterprise trust signals for businesses seeking a Meta-focused WhatsApp API provider in Pakistan.</p>
-            <div class="badge">
-                <img src="MBP Badge - Light backgrounds.svg" alt="Meta Business Messaging Partner badge">
-                <p><strong>Badge:</strong> Meta Business Messaging Partner (MBP)</p>
+            <div class="badge-gallery">
+                <div class="badge-card">
+                    <img src="Current Tier Badged.png" alt="Current Tier Badged recognition image">
+                    <p><strong>Badge:</strong> Current Tier Badged</p>
+                </div>
+                <div class="badge-card">
+                    <img src="Meta Partner Performance Accelerator.png" alt="Meta Partner Performance Accelerator recognition image">
+                    <p><strong>Award:</strong> Meta Partner Performance Accelerator</p>
+                </div>
             </div>
         </section>
 
