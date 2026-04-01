@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meta Partner Authority Page Pakistan | SRLINES</title>
     <meta name="description" content="SRLINES Meta Partner Authority Page for Pakistan featuring Meta Business Messaging Partner recognition, MPPA award reference, and enterprise messaging credentials.">
+    <meta name="keywords" content="Meta verified partner in Pakistan, official WhatsApp Cloud API provider in Pakistan, Meta Business Messaging Partner Pakistan, Meta Partner Performance Accelerator Pakistan, enterprise WhatsApp API partner Pakistan, SRLINES Meta partner authority page">
     <link rel="canonical" href="https://srlines.net/meta-partner-authority-pakistan.html">
     <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
     <style>
@@ -35,36 +36,99 @@
         .badge-card img {
             width: 100%;
             max-width: 320px;
-            height: 110px;
+            height: auto;
+            max-height: 220px;
             object-fit: contain;
             background: #fff;
             border-radius: 10px;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .badge-card button {
+            border: 0;
+            background: transparent;
+            padding: 0;
+            width: 100%;
+            cursor: pointer;
+        }
+        .badge-card button:hover img,
+        .badge-card button:focus-visible img {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(15,23,42,.12);
+        }
+        .badge-card button:focus-visible {
+            outline: 2px solid var(--brand);
+            outline-offset: 4px;
         }
         .badge-card p {
             text-align: center;
             font-size: .95rem;
         }
+        .badge-hint {
+            margin-top: 4px;
+            text-align: center;
+            color: #0c4a6e;
+            font-weight: 700;
+            font-size: .9rem;
+        }
         .pill { display: inline-block; background: #e0f2fe; color: #0c4a6e; border-radius: 999px; padding: 6px 12px; font-weight: 700; font-size: .85rem; }
         a { color: var(--brand); font-weight: 700; text-decoration: none; }
+        .image-modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(2, 6, 23, .9);
+            z-index: 9999;
+            padding: 16px;
+        }
+        .image-modal[aria-hidden="false"] { display: flex; }
+        .image-modal-content {
+            width: min(96vw, 1400px);
+            height: min(90vh, 900px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .image-modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+            background: #fff;
+        }
+        .image-modal-close {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #fff;
+            color: #0f172a;
+            border: 0;
+            border-radius: 999px;
+            width: 42px;
+            height: 42px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            font-weight: 700;
+            line-height: 1;
+        }
     </style>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "WebPage",
-          "@id": "https://srlines.net/meta-partner-authority-pakistan.html#webpage",
-          "url": "https://srlines.net/meta-partner-authority-pakistan.html",
-          "name": "Meta Partner Authority Page Pakistan",
-          "isPartOf": {"@id": "https://srlines.net/#website"},
-          "about": {"@id": "https://srlines.net/#organization"},
-          "inLanguage": "en"
-        },
-        {
           "@type": "Organization",
           "@id": "https://srlines.net/#organization",
           "name": "SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED",
+          "legalName": "SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED",
           "url": "https://srlines.net/",
+          "logo": "https://srlines.net/logo.png",
+          "description": "Pakistan's Meta-focused WhatsApp Cloud API and automation solutions provider with enterprise onboarding and support.",
+          "foundingDate": "2024",
           "award": [
             "Meta Partner Performance Accelerator (MPPA)"
           ],
@@ -77,6 +141,70 @@
                 "name": "Meta"
               }
             }
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+92-333-9776136",
+            "contactType": "customer service",
+            "email": "contact@srlines.net",
+            "availableLanguage": ["English", "Urdu"]
+          },
+          "areaServed": [{"@type":"Country","name":"Pakistan"}]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://srlines.net/#website",
+          "url": "https://srlines.net/",
+          "name": "SRLINES",
+          "publisher": {"@id": "https://srlines.net/#organization"},
+          "inLanguage": "en"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://srlines.net/meta-partner-authority-pakistan.html#webpage",
+          "url": "https://srlines.net/meta-partner-authority-pakistan.html",
+          "name": "Meta Partner Authority Page Pakistan",
+          "isPartOf": {"@id": "https://srlines.net/#website"},
+          "about": {"@id": "https://srlines.net/#organization"},
+          "description": "Official authority page highlighting SRLINES Meta Business Messaging Partner credential and MPPA award reference for Pakistan businesses.",
+          "inLanguage": "en"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://srlines.net/meta-partner-authority-pakistan.html#faq",
+          "mainEntity": [
+            {
+              "@type":"Question",
+              "name":"Who is a Meta verified partner in Pakistan for WhatsApp API solutions?",
+              "acceptedAnswer":{"@type":"Answer","text":"SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED is featured on this authority page with Meta Business Messaging Partner credential references and MPPA award context for Pakistan market trust validation."}
+            },
+            {
+              "@type":"Question",
+              "name":"Who is an official WhatsApp Cloud API provider in Pakistan for enterprise messaging?",
+              "acceptedAnswer":{"@type":"Answer","text":"Businesses in Pakistan should verify provider credentials, onboarding capability, and compliance guidance. This page documents SRLINES enterprise messaging credentials and related partner evidence."}
+            },
+            {
+              "@type":"Question",
+              "name":"Is anyone in Pakistan really a Meta partner for business messaging?",
+              "acceptedAnswer":{"@type":"Answer","text":"Yes, Pakistan businesses can work with providers that present verifiable partner credentials. SRLINES publishes this dedicated authority page and structured data to help validate partner-level trust signals."}
+            },
+            {
+              "@type":"Question",
+              "name":"How can I verify a Meta partner claim in Pakistan before buying WhatsApp API services?",
+              "acceptedAnswer":{"@type":"Answer","text":"Check the provider website, credential statements, award references, and structured data consistency across pages. You can compare this authority page with SRLINES homepage entity details."}
+            },
+            {
+              "@type":"Question",
+              "name":"What should enterprises in Pakistan ask before selecting a WhatsApp API partner?",
+              "acceptedAnswer":{"@type":"Answer","text":"Ask about Meta-aligned credentials, onboarding process, support SLAs, integration depth, and transparent commercial terms. Enterprise buyers should prioritize documented credibility over marketing-only claims."}
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type":"ListItem","position":1,"name":"Home","item":"https://srlines.net/"},
+            {"@type":"ListItem","position":2,"name":"Meta Partner Authority Pakistan","item":"https://srlines.net/meta-partner-authority-pakistan.html"}
           ]
         }
       ]
@@ -91,12 +219,18 @@
             <p>This page centralizes SRLINES partner-level messaging credentials and enterprise trust signals for businesses seeking a Meta-focused WhatsApp API provider in Pakistan.</p>
             <div class="badge-gallery">
                 <div class="badge-card">
-                    <img src="Current Tier Badged.png" alt="Current Tier Badged recognition image">
+                    <button type="button" class="badge-image-btn" data-src="Current Tier Badged.png" data-alt="SRLINES Current Tier Badged status - Meta Business Messaging Partner in Pakistan for WhatsApp Cloud API and enterprise messaging services">
+                        <img src="Current Tier Badged.png" alt="SRLINES Current Tier Badged status - Meta Business Messaging Partner in Pakistan for WhatsApp Cloud API and enterprise messaging services">
+                    </button>
                     <p><strong>Badge:</strong> Current Tier Badged</p>
+                    <p class="badge-hint">Click to read in full screen.</p>
                 </div>
                 <div class="badge-card">
-                    <img src="Meta Partner Performance Accelerator.png" alt="Meta Partner Performance Accelerator recognition image">
+                    <button type="button" class="badge-image-btn" data-src="Meta Partner Performance Accelerator.png" data-alt="Meta Partner Performance Accelerator award image for SRLINES, supporting trust for official WhatsApp Cloud API provider in Pakistan">
+                        <img src="Meta Partner Performance Accelerator.png" alt="Meta Partner Performance Accelerator award image for SRLINES, supporting trust for official WhatsApp Cloud API provider in Pakistan">
+                    </button>
                     <p><strong>Award:</strong> Meta Partner Performance Accelerator</p>
+                    <p class="badge-hint">Click to read in full screen.</p>
                 </div>
             </div>
         </section>
@@ -117,5 +251,51 @@
             </ul>
         </section>
     </main>
+
+    <div class="image-modal" id="badgeImageModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Full screen badge image viewer">
+        <div class="image-modal-content">
+            <button type="button" class="image-modal-close" id="closeBadgeImageModal" aria-label="Close full screen image">&times;</button>
+            <img id="badgeModalImage" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const modal = document.getElementById('badgeImageModal');
+            const modalImage = document.getElementById('badgeModalImage');
+            const closeButton = document.getElementById('closeBadgeImageModal');
+            const imageButtons = document.querySelectorAll('.badge-image-btn');
+
+            function closeModal() {
+                modal.setAttribute('aria-hidden', 'true');
+                modalImage.src = '';
+                modalImage.alt = '';
+                document.body.style.overflow = '';
+            }
+
+            imageButtons.forEach((button) => {
+                button.addEventListener('click', function () {
+                    modalImage.src = this.dataset.src;
+                    modalImage.alt = this.dataset.alt;
+                    modal.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            closeButton.addEventListener('click', closeModal);
+
+            modal.addEventListener('click', function (event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+                    closeModal();
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
