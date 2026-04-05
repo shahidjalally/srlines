@@ -407,8 +407,9 @@
 
         .logo-text p { font-size: 0.65rem; color: var(--gray); font-weight: 600; text-transform: uppercase; }
 
-        nav ul { display: flex; list-style: none; gap: 28px; }
-        nav a { color: var(--dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; padding: 8px 0; position: relative; }
+        nav ul { display: flex; list-style: none; gap: 28px; align-items: center; }
+        nav ul > li { display: flex; align-items: center; }
+        nav a { color: var(--dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; padding: 8px 0; position: relative; line-height: 1; }
         nav a:hover { color: var(--primary); }
         nav a::after { content: ''; position: absolute; width: 0; height: 3px; bottom: 0; left: 0; background: var(--gradient-hero); transition: width 0.3s ease; border-radius: 2px; }
         nav a:hover::after { width: 100%; }
@@ -436,7 +437,7 @@
         .submenu a::after { display: none; }
         .has-submenu:hover .submenu,
         .has-submenu:focus-within .submenu { opacity: 1; visibility: visible; transform: translateY(0); }
-        .submenu-trigger { display: inline-flex; align-items: center; gap: 8px; }
+        .submenu-trigger { display: inline-flex; align-items: center; gap: 8px; line-height: 1; }
         .submenu-trigger i { font-size: 0.75rem; }
 
         .mobile-menu-btn { display: none; background: none; border: none; color: var(--dark); font-size: 1.5rem; cursor: pointer; z-index: 1001; }
