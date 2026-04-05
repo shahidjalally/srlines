@@ -28,7 +28,7 @@
     *{box-sizing:border-box}
     body{margin:0;font-family:Inter,Arial,sans-serif;background:linear-gradient(180deg,#0b1220,#0e172a);color:var(--text);line-height:1.7}
     .container{max-width:1080px;margin:0 auto;padding:32px 20px}
-    .hero{padding:34px;border-radius:16px;background:rgba(18,26,43,.9);border:1px solid #26314a}
+    .hero{padding:34px;border-radius:16px;background:radial-gradient(circle at top right,rgba(99,102,241,.25),rgba(18,26,43,.92) 45%);border:1px solid #26314a}
     h1{line-height:1.2;margin-top:0;font-size:2.1rem}
     h2{margin-top:30px;font-size:1.45rem}
     h3{font-size:1.08rem}
@@ -39,6 +39,10 @@
     .cta-secondary{background:#1f2937;border:1px solid #334155}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:14px}
     .card{padding:18px;background:var(--card);border-radius:12px;border:1px solid #2b3955}
+    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:16px}
+    .stat-card{background:linear-gradient(180deg,rgba(15,23,42,.8),rgba(30,41,59,.9));border:1px solid #334155;border-radius:12px;padding:14px}
+    .stat-value{display:block;font-size:1.35rem;font-weight:800;color:#c4b5fd}
+    .stat-label{font-size:.86rem;color:#bfdbfe}
     .faq-item{padding:16px;margin:12px 0;background:var(--card);border-radius:12px;border:1px solid #2b3955}
     .note{background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:14px;color:#dbeafe}
     a{color:#93c5fd}
@@ -101,7 +105,17 @@
               "itemOffered": {
                 "@type": "SoftwareApplication",
                 "name": "Zal Ultra ISP CRM",
-                "url": "https://onezeroart.com/zal-ultra-isp-crm"
+                "description": "ISP CRM solution with built-in billing, support ticketing, and WhatsApp communication workflows.",
+                "url": "https://onezeroart.com/zal-ultra-isp-crm",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Web",
+                "offers": {
+                  "@type": "Offer",
+                  "url": "https://onezeroart.com/zal-ultra-isp-crm",
+                  "availability": "https://schema.org/InStock",
+                  "priceCurrency": "PKR",
+                  "price": "0"
+                }
               }
             },
             {
@@ -109,7 +123,17 @@
               "itemOffered": {
                 "@type": "SoftwareApplication",
                 "name": "Zal Pro ISP CRM",
-                "url": "https://onezeroart.com/zal-pro-isp-crm"
+                "description": "ISP CRM platform for subscriber lifecycle, billing reminders, and customer support automation.",
+                "url": "https://onezeroart.com/zal-pro-isp-crm",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Web",
+                "offers": {
+                  "@type": "Offer",
+                  "url": "https://onezeroart.com/zal-pro-isp-crm",
+                  "availability": "https://schema.org/InStock",
+                  "priceCurrency": "PKR",
+                  "price": "0"
+                }
               }
             }
           ]
@@ -184,6 +208,12 @@
         <a class="cta" href="https://wa.me/923339776136" target="_blank" rel="noopener">Talk to Integration Team</a>
         <a class="cta cta-secondary" href="https://srlines.net" target="_blank" rel="noopener">Back to SRLINES</a>
       </div>
+      <div class="stats-grid" aria-label="Key MOU highlights">
+        <div class="stat-card"><span class="stat-value">2</span><span class="stat-label">ISP CRM products included</span></div>
+        <div class="stat-card"><span class="stat-value">24/7</span><span class="stat-label">Operational messaging readiness</span></div>
+        <div class="stat-card"><span class="stat-value">4+</span><span class="stat-label">Core workflow categories</span></div>
+        <div class="stat-card"><span class="stat-value">Official</span><span class="stat-label">MOU-backed integration scope</span></div>
+      </div>
     </section>
 
     <section>
@@ -194,10 +224,10 @@
         auditable messaging workflows, and support-team productivity improvements.
       </p>
       <div class="grid">
-        <div class="card"><h3>Billing &amp; Revenue Workflows</h3><p>Automated invoice notifications, due-date reminders, overdue follow-ups, and payment confirmation updates from CRM events.</p></div>
-        <div class="card"><h3>Support Ticket Messaging</h3><p>Two-way WhatsApp communication for complaint registration, ticket status updates, escalation notices, and closure feedback requests.</p></div>
-        <div class="card"><h3>Service Operations</h3><p>Proactive outage alerts, maintenance schedules, service restoration notifications, and onboarding activation updates.</p></div>
-        <div class="card"><h3>Retention &amp; Growth</h3><p>Renewal campaigns, win-back automation, broadband plan upsell journeys, and segmented customer engagement campaigns.</p></div>
+        <div class="card"><h3>💳 Billing &amp; Revenue Workflows</h3><p>Automated invoice notifications, due-date reminders, overdue follow-ups, and payment confirmation updates from CRM events.</p></div>
+        <div class="card"><h3>🎫 Support Ticket Messaging</h3><p>Two-way WhatsApp communication for complaint registration, ticket status updates, escalation notices, and closure feedback requests.</p></div>
+        <div class="card"><h3>🛠️ Service Operations</h3><p>Proactive outage alerts, maintenance schedules, service restoration notifications, and onboarding activation updates.</p></div>
+        <div class="card"><h3>📈 Retention &amp; Growth</h3><p>Renewal campaigns, win-back automation, broadband plan upsell journeys, and segmented customer engagement campaigns.</p></div>
       </div>
     </section>
 
