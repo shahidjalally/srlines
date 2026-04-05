@@ -412,6 +412,32 @@
         nav a:hover { color: var(--primary); }
         nav a::after { content: ''; position: absolute; width: 0; height: 3px; bottom: 0; left: 0; background: var(--gradient-hero); transition: width 0.3s ease; border-radius: 2px; }
         nav a:hover::after { width: 100%; }
+        .has-submenu { position: relative; }
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 14px 34px rgba(15, 23, 42, 0.15);
+            padding: 10px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.25s ease;
+            z-index: 1100;
+        }
+        .submenu a { font-size: 0.9rem; padding: 6px 0; }
+        .submenu a::after { display: none; }
+        .has-submenu:hover .submenu,
+        .has-submenu:focus-within .submenu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .submenu-trigger { display: inline-flex; align-items: center; gap: 8px; }
+        .submenu-trigger i { font-size: 0.75rem; }
 
         .mobile-menu-btn { display: none; background: none; border: none; color: var(--dark); font-size: 1.5rem; cursor: pointer; z-index: 1001; }
 
@@ -432,8 +458,26 @@
         }
 
         .mobile-menu.active { transform: translateX(0); }
-        .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 24px; }
-        .mobile-menu a { color: var(--dark); text-decoration: none; font-size: 1.1rem; font-weight: 600; display: block; padding: 12px 0; border-bottom: 1px solid var(--gray-light); }
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 0;
+            background: var(--light);
+            color: var(--dark);
+            width: 42px;
+            height: 42px;
+            border-radius: 999px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+        .mobile-menu a { color: var(--dark); text-decoration: none; font-size: 1.05rem; font-weight: 600; display: block; padding: 10px 0; border-bottom: 1px solid var(--gray-light); }
+        .mobile-submenu { margin-left: 12px; border-left: 2px solid var(--gray-light); padding-left: 12px; display: flex; flex-direction: column; gap: 8px; }
+        .mobile-submenu a { font-size: 0.95rem; color: var(--gray); border-bottom: 0; padding: 4px 0; }
 
         .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 999; backdrop-filter: blur(4px); }
         .overlay.active { display: block; }
@@ -796,6 +840,7 @@
 
         @media (max-width: 768px) {
             nav ul { display: none; }
+            .submenu { display: none; }
             .mobile-menu-btn { display: block; }
             .mobile-menu { display: block; }
             .hero { padding: 140px 0 80px; }
@@ -844,12 +889,23 @@
                 <ul>
                     <li><a href="#about">About</a></li>
                     <li><a href="#architecture">Architecture</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="https://docs.srlines.net/" target="_blank" rel="noopener">Docs</a></li>
-                    <li><a href="https://blog.srlines.net/" target="_blank" rel="noopener">Blog</a></li>
-                    <li><a href="#n8n">n8n</a></li>
-                    <li><a href="#case-studies">Case Studies</a></li>
-                    <li><a href="#reviews">Reviews</a></li>
+                    <li class="has-submenu">
+                        <a href="#products" class="submenu-trigger">Products <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <ul class="submenu" aria-label="Products submenu">
+                            <li><a href="#products">Core Products</a></li>
+                            <li><a href="#n8n">n8n Integration</a></li>
+                            <li><a href="official-mou-onezeroart-whatsapp-integration.html">OneZero Art MOU</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#case-studies" class="submenu-trigger">Resources <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <ul class="submenu" aria-label="Resources submenu">
+                            <li><a href="#case-studies">Case Studies</a></li>
+                            <li><a href="#reviews">Reviews</a></li>
+                            <li><a href="https://docs.srlines.net/" target="_blank" rel="noopener">Docs</a></li>
+                            <li><a href="https://blog.srlines.net/" target="_blank" rel="noopener">Blog</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#compliance">Compliance</a></li>
                     <li><a href="#ceo">Founder</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -863,15 +919,27 @@
 
     <div class="overlay" id="overlay"></div>
     <div class="mobile-menu" id="mobile-menu">
+        <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu"><i class="fas fa-times"></i></button>
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#architecture">Architecture</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="https://docs.srlines.net/" target="_blank" rel="noopener">Docs</a></li>
-            <li><a href="https://blog.srlines.net/" target="_blank" rel="noopener">Blog</a></li>
-            <li><a href="#n8n">n8n</a></li>
-            <li><a href="#case-studies">Case Studies</a></li>
-            <li><a href="#reviews">Reviews</a></li>
+            <li>
+                <a href="#products">Products</a>
+                <div class="mobile-submenu" aria-label="Products submenu">
+                    <a href="#products">Core Products</a>
+                    <a href="#n8n">n8n Integration</a>
+                    <a href="official-mou-onezeroart-whatsapp-integration.html">OneZero Art MOU</a>
+                </div>
+            </li>
+            <li>
+                <a href="#case-studies">Resources</a>
+                <div class="mobile-submenu" aria-label="Resources submenu">
+                    <a href="#case-studies">Case Studies</a>
+                    <a href="#reviews">Reviews</a>
+                    <a href="https://docs.srlines.net/" target="_blank" rel="noopener">Docs</a>
+                    <a href="https://blog.srlines.net/" target="_blank" rel="noopener">Blog</a>
+                </div>
+            </li>
             <li><a href="#compliance">Compliance</a></li>
             <li><a href="#ceo">Founder</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -2220,6 +2288,7 @@
                         <li><a href="https://share.google/dDpuHAwplSaKWMvGf" target="_blank">Google Business Profile</a></li>
                         <li><a href="https://docs.srlines.net/" target="_blank" rel="noopener">Documentation</a></li>
                         <li><a href="https://blog.srlines.net/" target="_blank" rel="noopener">Blog &amp; Insights</a></li>
+                        <li><a href="official-mou-onezeroart-whatsapp-integration.html">OneZero Art MOU</a></li>
                     </ul>
                 </div>
                 <div class="footer-col" id="privacy">
@@ -2245,33 +2314,40 @@
     <script>
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
         const overlay = document.getElementById('overlay');
 
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
-            const icon = this.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        }
 
-        overlay.addEventListener('click', function() {
+        function closeMobileMenu() {
             mobileMenu.classList.remove('active');
             overlay.classList.remove('active');
             document.body.style.overflow = 'auto';
-            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+
+        mobileMenuBtn.addEventListener('click', function() {
+            if (mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
         });
 
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        overlay.addEventListener('click', closeMobileMenu);
+
         document.querySelectorAll('.mobile-menu a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = 'auto';
-                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-            });
+            link.addEventListener('click', closeMobileMenu);
         });
 
         document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
