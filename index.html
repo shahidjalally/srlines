@@ -312,6 +312,39 @@
         },
 
         {
+          "@type": "SoftwareApplication",
+          "@id": "https://srlines.net/#multi-assets-crm",
+          "name": "Multi Assets CRM",
+          "url": "https://srlines.net/multi-assets-crm.html",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "description": "Unified WhatsApp conversations, team inboxes, contacts, broadcasts, and multi-channel business assets in one SRLINES CRM experience.",
+          "image": [
+            "https://srlines.net/Multi%20Assets%20CRM%20-%20SRLINES.jpeg",
+            "https://srlines.net/SRLINES%20ALL%20CONVERSATIONS.png",
+            "https://srlines.net/ALL%20IN%20ONE%20AD.png"
+          ],
+          "publisher": {"@id": "https://srlines.net/#organization"},
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "PKR", "availability": "https://schema.org/InStock"}
+        },
+
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://srlines.net/#bitrix24-whatsapp-app",
+          "name": "Bitrix24 WhatsApp App",
+          "url": "https://srlines.net/bitrix24-whatsapp-app.html",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "description": "SRLINES Bitrix24 WhatsApp App connects Bitrix24 CRM pipelines with WhatsApp Cloud API messaging, lead engagement, and support conversations.",
+          "image": [
+            "https://srlines.net/ChatGPT_Image_Jun_2_2026_05_11_22_PM_1280x720.png",
+            "https://srlines.net/ChatGPT%20Image%20May%2017,%202026,%2012_40_10%20AM.png"
+          ],
+          "publisher": {"@id": "https://srlines.net/#organization"},
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "PKR", "availability": "https://schema.org/InStock"}
+        },
+
+        {
           "@type": "Product",
           "@id": "https://srlines.net/#cloudapi",
           "name": "WhatsApp Cloud API CRM Platform",
@@ -651,6 +684,8 @@
         .product-cta { display: block; text-align: center; padding: 12px 20px; background: var(--gradient-hero); color: white; text-decoration: none; border-radius: 10px; font-weight: 700; transition: all 0.3s ease; }
         .product-cta:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3); }
         .product-badge { position: absolute; top: 16px; right: 16px; background: #fbbf24; color: var(--dark); padding: 5px 14px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+        .product-media { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; border-bottom: 1px solid var(--gray-light); }
+        .product-card.featured-product { display: flex; flex-direction: column; }
 
         /* Features Grid */
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
@@ -897,6 +932,8 @@
                         <a href="#products" class="submenu-trigger">Products <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <ul class="submenu" aria-label="Products submenu">
                             <li><a href="#products">Core Products</a></li>
+                            <li><a href="multi-assets-crm.html">Multi Assets CRM</a></li>
+                            <li><a href="bitrix24-whatsapp-app.html">Bitrix24 App</a></li>
                             <li><a href="#n8n">n8n Integration</a></li>
                             <li><a href="official-mou-onezeroart-whatsapp-integration.html">OneZero Art MOU</a></li>
                         </ul>
@@ -931,6 +968,8 @@
                 <a href="#products">Products</a>
                 <div class="mobile-submenu" aria-label="Products submenu">
                     <a href="#products">Core Products</a>
+                    <a href="multi-assets-crm.html">Multi Assets CRM</a>
+                    <a href="bitrix24-whatsapp-app.html">Bitrix24 App</a>
                     <a href="#n8n">n8n Integration</a>
                     <a href="official-mou-onezeroart-whatsapp-integration.html">OneZero Art MOU</a>
                 </div>
@@ -1218,6 +1257,46 @@
                 <p>A complete ecosystem of WhatsApp Cloud API products built to scale your business</p>
             </div>
             <div class="products-grid">
+                <!-- Multi Assets CRM -->
+                <div class="product-card featured-product">
+                    <img src="Multi Assets CRM - SRLINES.jpeg" alt="Multi Assets CRM by SRLINES dashboard" class="product-media" loading="lazy">
+                    <div class="product-header">
+                        <div class="product-icon"><i class="fas fa-layer-group"></i></div>
+                        <h3>Multi Assets CRM</h3>
+                        <p class="subtitle">Unified WhatsApp conversations &amp; assets</p>
+                        <span class="product-badge">MULTI ASSETS</span>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> All WhatsApp conversations in one CRM</li>
+                            <li><i class="fas fa-check-circle"></i> Multi business asset handling</li>
+                            <li><i class="fas fa-check-circle"></i> Team inbox for sales &amp; support</li>
+                            <li><i class="fas fa-check-circle"></i> Broadcasts, contacts, tags &amp; notes</li>
+                            <li><i class="fas fa-check-circle"></i> Built on SRLINES wCRM workflows</li>
+                        </ul>
+                        <a href="multi-assets-crm.html" class="product-cta">View Multi Assets CRM <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- Bitrix24 WhatsApp App -->
+                <div class="product-card featured-product">
+                    <img src="ChatGPT_Image_Jun_2_2026_05_11_22_PM_1280x720.png" alt="SRLINES Bitrix24 WhatsApp App integration banner" class="product-media" loading="lazy">
+                    <div class="product-header">
+                        <div class="product-icon"><i class="fas fa-puzzle-piece"></i></div>
+                        <h3>Bitrix24 WhatsApp App</h3>
+                        <p class="subtitle">WhatsApp Cloud API for Bitrix24 CRM</p>
+                        <span class="product-badge">BITRIX24</span>
+                    </div>
+                    <div class="product-body">
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> Connect Bitrix24 CRM with WhatsApp</li>
+                            <li><i class="fas fa-check-circle"></i> Lead, deal &amp; support messaging</li>
+                            <li><i class="fas fa-check-circle"></i> Conversation context for CRM teams</li>
+                            <li><i class="fas fa-check-circle"></i> WhatsApp Cloud API implementation</li>
+                            <li><i class="fas fa-check-circle"></i> SRLINES setup &amp; support</li>
+                        </ul>
+                        <a href="bitrix24-whatsapp-app.html" class="product-cta">View Bitrix24 App <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
                 <!-- wCRM Platform -->
                 <div class="product-card">
                     <div class="product-header">
@@ -2269,10 +2348,12 @@
                     <h4>Products</h4>
                     <ul>
                         <li><a href="https://crm.srlines.net" target="_blank">wCRM Platform</a></li>
+                        <li><a href="multi-assets-crm.html">Multi Assets CRM</a></li>
+                        <li><a href="bitrix24-whatsapp-app.html">Bitrix24 App</a></li>
                         <li><a href="https://catalogify.pk" target="_blank">Catalogify.pk</a></li>
                         <li><a href="https://apps.shopify.com/wcrm" target="_blank">wCRM Shopify App</a></li>
                         <li><a href="https://srlines.net/wa-wcrm.zip" target="_blank">wCRM WooCommerce</a></li>
-                        <li><a href="" target="_blank">wCRM Android App</a></li>
+                        <li><a href="https://crm.srlines.net/app-release.apk" target="_blank">wCRM Android App</a></li>
                         <li><a href="https://www.npmjs.com/package/n8n-nodes-wcrm" target="_blank">n8n Community Node</a></li>
                         <li><a href="https://crm.srlines.net/marketing" target="_blank">CTWA Leads Portal</a></li>
                         <li><a href="https://crm.srlines.net/partners" target="_blank">Partners Program</a></li>
