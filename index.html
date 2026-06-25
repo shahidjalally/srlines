@@ -555,6 +555,7 @@
         .hero-badge {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
@@ -563,9 +564,51 @@
             font-size: 0.85rem;
             font-weight: 600;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            min-height: 40px;
         }
 
         .hero-badge i { color: #fbbf24; }
+
+        .hero-badge-link {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 0 0 rgba(251, 191, 36, 0.45);
+            animation: badgePulse 2.4s ease-in-out infinite;
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .hero-badge-link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -80%;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+            transform: skewX(-18deg);
+            animation: badgeShine 3.2s ease-in-out infinite;
+        }
+
+        .hero-badge-link:hover,
+        .hero-badge-link:focus-visible {
+            transform: translateY(-3px) scale(1.03);
+            background: rgba(255, 255, 255, 0.24);
+            border-color: rgba(251, 191, 36, 0.75);
+            box-shadow: 0 10px 26px rgba(15, 23, 42, 0.18), 0 0 24px rgba(251, 191, 36, 0.35);
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.36); }
+            50% { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0); }
+        }
+
+        @keyframes badgeShine {
+            0%, 55% { left: -80%; }
+            100% { left: 130%; }
+        }
 
         .hero-meta-badge-wrap { margin: 0 auto 24px; text-align: center; }
 
@@ -898,6 +941,7 @@
             .hero { padding: 140px 0 80px; }
             .hero h1 { font-size: 1.8rem; }
             .hero p { font-size: 1rem; }
+            .hero-badge { width: 100%; max-width: 280px; }
             .hero-meta-badge-link { font-size: 0.85rem; padding: 8px 10px; }
             .hero-meta-badge-link img { height: 36px; }
             .products-grid { grid-template-columns: 1fr; }
@@ -1009,7 +1053,7 @@
             <div class="hero-content">
                 <div class="hero-badges">
                     <div class="hero-badge"><i class="fab fa-meta"></i> Meta Verified Partner</div>
-                    <div class="hero-badge"><i class="fas fa-building"></i> SECP Registered</div>
+                    <a href="https://eservices.secp.gov.pk/eServices/ControllerServlet?request_id=VERIFY_ONLINE_INCORP_CERT&amp;id=0226235" class="hero-badge hero-badge-link" target="_blank" rel="noopener noreferrer" aria-label="Verify SRLINES SECP registration in a new tab"><i class="fas fa-building"></i> SECP Registered</a>
                     <div class="hero-badge"><i class="fas fa-tag"></i> Most Affordable Pricing</div>
                 </div>
                 <div class="hero-meta-badge-wrap">
