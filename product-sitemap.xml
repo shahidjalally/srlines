@@ -33,4 +33,9 @@
 <loc>https://crm.srlines.net/kanban</loc>
 </url>
 
+  <url>
+    <loc>https://srlines.net/social-meida-management.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
 </urlset>

@@ -101,3 +101,4 @@ https://blog.srlines.net/
 https://srlines.net/sitemap.xml
 https://blog.srlines.net/sitemap.xml
 https://docs.srlines.net/sitemap.xml
+- Social Meida Management: https://srlines.net/social-meida-management.html
