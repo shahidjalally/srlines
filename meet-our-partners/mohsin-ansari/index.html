@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohsin Ansari - Business Consulting | SRLINES Partner Profile</title>
-    <meta name="description" content="Mohsin Ansari is a strategic partner of SRLINES providing business consulting and digital integration services.">
+    <title>Mohsin Ansari | SRLINES Partner Profile</title>
+    <meta name="description" content="Mohsin Ansari is a strategic partner of SRLINES specializing in business consulting and digital integration services.">
     <meta name="keywords" content="Mohsin Ansari, business consulting, digital integration, SRLINES partner">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://srlines.net/meet-our-partners/mohsin-ansari/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://srlines.net/meet-our-partners/mohsin-ansari/">
+    <meta property="og:title" content="Mohsin Ansari | SRLINES Partner">
+    <meta property="og:description" content="Discover Mohsin Ansari's services, a strategic SRLINES business partner.">
+    <meta property="og:image" content="https://srlines.net/meet-our-partners/mohsin-ansari/profile.jpg">
 
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,16 +22,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfilePage",
       "mainEntity": {
         "@type": "Person",
+        "@id": "https://srlines.net/meet-our-partners/mohsin-ansari/#person",
         "name": "Mohsin Ansari",
-        "jobTitle": "Business Consultant",
-        "description": "Strategic partner providing business consulting and digital integration services with SRLINES.",
+        "jobTitle": "Business Consultant & Digital Integration Specialist",
+        "description": "Strategic partner of SRLINES specializing in business consulting and digital integration services.",
         "url": "https://srlines.net/meet-our-partners/mohsin-ansari/",
+        "image": "https://srlines.net/meet-our-partners/mohsin-ansari/profile.jpg",
         "sameAs": [
           "https://www.linkedin.com/in/mohsin-ansari-4b294a2a/",
           "https://www.facebook.com/mohsin.ansarii.3"
@@ -35,6 +45,10 @@
           "telephone": "+92-332-7975228",
           "email": "muhammadmohsin84@gmail.com"
         }
+      },
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "@id": "https://srlines.net/meet-our-partners/#collection"
       }
     }
     </script>
@@ -52,6 +66,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body { font-family: 'Inter', 'Poppins', sans-serif; color: var(--dark); line-height: 1.6; background-color: #ffffff; }
         .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
         header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 16px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08); }
@@ -71,6 +86,7 @@
         .section-alt { background: var(--light); }
         .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
         .profile-image-wrapper { text-align: center; }
+        .profile-image { max-width: 350px; width: 100%; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); }
         .contact-list { background: white; border-radius: 16px; padding: 28px; margin-top: 32px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
         .contact-list h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; }
         .contact-item { display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
@@ -107,7 +123,7 @@
     </style>
 </head>
 <body>
-    <header>
+    <header id="header">
         <div class="container header-container">
             <a href="../../index.html" class="logo">
                 <img src="../../logo.png" alt="SRLINES Logo" class="logo-img">
@@ -132,47 +148,65 @@
             </div>
         </div>
 
+        <!-- Profile Hero -->
         <section class="profile-hero">
             <div class="container">
                 <h1>Mohsin Ansari</h1>
-                <p>Business Consultant | SRLINES Strategic Partner</p>
+                <p>Business Consultant & Digital Integration Specialist | SRLINES Strategic Partner</p>
             </div>
         </section>
 
+        <!-- Profile Content -->
         <section class="section">
             <div class="container">
                 <div class="profile-grid">
                     <div class="profile-image-wrapper">
-                        <div style="width: 100%; max-width: 350px; height: 350px; background: var(--gradient-hero); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white;">
-                            <i class="fas fa-user" style="font-size: 100px; opacity: 0.3;"></i>
-                        </div>
+                        <img src="./profile.jpg" alt="Mohsin Ansari" class="profile-image" loading="lazy">
                     </div>
+
                     <div class="profile-info">
                         <h2>Mohsin Ansari</h2>
-                        <p class="subtitle">Business Consultant & Digital Integration Specialist</p>
-                        <p>Mohsin Ansari is an accomplished business consultant with deep expertise in business optimization and digital integration. As a strategic partner with SRLINES, Mohsin brings valuable insights in streamlining operations and integrating technology solutions to drive business excellence.</p>
-                        <p>His consulting approach focuses on identifying growth opportunities and implementing digital strategies that enhance operational efficiency and client satisfaction.</p>
+                        <p class="subtitle">Business Consultant & Digital Integration Expert</p>
+                        <p>Mohsin Ansari is an accomplished business consultant with extensive experience in helping organizations optimize their operations through digital integration and technology adoption. With a track record of successful implementations across diverse industries, Mohsin collaborates with SRLINES to provide comprehensive business solutions.</p>
+                        
+                        <p>As a strategic partner, Mohsin brings valuable expertise in business process optimization, technology integration, and organizational transformation, complementing SRLINES' innovative platforms and services.</p>
+
                         <div class="contact-list">
                             <h3>Contact Information</h3>
                             <div class="contact-item">
-                                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
                                 <div class="contact-text">
                                     <h4>WhatsApp / Phone</h4>
                                     <a href="tel:+923327975228">+92-332-7975228</a>
                                 </div>
                             </div>
                             <div class="contact-item">
-                                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
                                 <div class="contact-text">
                                     <h4>Email</h4>
                                     <a href="mailto:muhammadmohsin84@gmail.com">muhammadmohsin84@gmail.com</a>
                                 </div>
                             </div>
                             <div class="contact-item">
-                                <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+                                <div class="contact-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
                                 <div class="contact-text">
-                                    <h4>LinkedIn</h4>
+                                    <h4>LinkedIn Profile</h4>
                                     <a href="https://www.linkedin.com/in/mohsin-ansari-4b294a2a/" target="_blank" rel="noopener noreferrer">View Profile</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fab fa-facebook"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Facebook</h4>
+                                    <a href="https://www.facebook.com/mohsin.ansarii.3" target="_blank" rel="noopener noreferrer">Connect</a>
                                 </div>
                             </div>
                         </div>
@@ -181,41 +215,46 @@
             </div>
         </section>
 
+        <!-- Company Information -->
         <section class="section section-alt">
             <div class="container">
                 <div class="company-info">
-                    <h2>Business Consulting Services</h2>
-                    <p>Mohsin Ansari offers comprehensive business consulting services designed to help organizations optimize their operations and achieve sustainable growth. With a focus on digital integration and strategic planning, he collaborates with SRLINES to deliver tailored solutions.</p>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-top: 28px; margin-bottom: 16px;">Areas of Expertise</h3>
+                    <h2>Business Consulting & Digital Integration Services</h2>
+                    <p>Mohsin Ansari provides comprehensive business consulting and digital integration services to help organizations navigate digital transformation, optimize operations, and leverage technology for competitive advantage.</p>
+                    
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-top: 28px; margin-bottom: 16px;">Services & Expertise</h3>
                     <ul style="list-style: none; padding: 0;">
                         <li style="display: flex; align-items: center; gap: 12px; padding: 8px 0; color: var(--gray);"><i class="fas fa-check" style="color: var(--success);"></i> Business Process Optimization</li>
-                        <li style="display: flex; align-items: center; gap: 12px; padding: 8px 0; color: var(--gray);"><i class="fas fa-check" style="color: var(--success);"></i> Digital Integration Strategy</li>
-                        <li style="display: flex; align-items: center; gap: 12px; padding: 8px 0; color: var(--gray);"><i class="fas fa-check" style="color: var(--success);"></i> Operational Excellence Consulting</li>
-                        <li style="display: flex; align-items: center; gap: 12px; padding: 8px 0; color: var(--gray);"><i class="fas fa-check" style="color: var(--success);"></i> Client Engagement & Retention</li>
+                        <li style="display: flex; align-items: center; gap: 12px; padding: 8px 0; color: var(--gray);"><i class="fas fa-check" style="color: var(--success);"></i> Digital Integration Solutions</li>
+                        <li style="display: flex; align-items: center; gap: 12px; padding: 8px 0; color: var(--gray);"><i class="fas fa-check" style="color: var(--success);"></i> Technology Implementation</li>
+                        <li style="display: flex; align-items: center; gap: 12px; padding: 8px 0; color: var(--gray);"><i class="fas fa-check" style="color: var(--success);"></i> Organizational Transformation</li>
                     </ul>
+
                     <div class="cta-buttons">
                         <a href="https://www.linkedin.com/in/mohsin-ansari-4b294a2a/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                             <i class="fab fa-linkedin"></i> LinkedIn Profile
                         </a>
-                        <a href="https://www.facebook.com/mohsin.ansarii.3" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                            <i class="fab fa-facebook-f"></i> Facebook
+                        <a href="tel:+923327975228" class="btn btn-secondary">
+                            <i class="fas fa-phone"></i> Get in Touch
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Partnership Note -->
         <section class="section">
             <div class="container">
                 <div style="background: linear-gradient(135deg, #fef3c7 0%, #fef08a 100%); border: 2px solid #fbbf24; border-radius: 16px; padding: 32px;">
                     <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; color: var(--dark);">Partnership Disclaimer</h3>
-                    <p style="color: var(--dark-alt); margin-bottom: 12px;">Mohsin Ansari is an independent business consultant collaborating strategically with SRLINES. This partnership focuses on delivering enhanced consulting and business solutions. Mohsin maintains complete business autonomy and is not a subsidiary, branch, or equity partner of SRLINES.</p>
-                    <p style="color: var(--dark-alt);">For more information about SRLINES' partnership structure, please visit our <a href="../#disclaimer-section" style="color: var(--primary); text-decoration: none; font-weight: 600;">Disclaimer & Important Notice</a> page.</p>
+                    <p style="color: var(--dark-alt); margin-bottom: 12px;">Mohsin Ansari is an independent business consultant collaborating strategically with SRLINES. This partnership is focused on delivering enhanced solutions to clients. Mohsin maintains complete business autonomy and is not an employee, subsidiary, or equity partner of SRLINES.</p>
+                    <p style="color: var(--dark-alt);">For more information about SRLINES' partnership structure and policies, please visit our <a href="../#disclaimer-section" style="color: var(--primary); text-decoration: none; font-weight: 600;">Disclaimer & Important Notice</a> page.</p>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
