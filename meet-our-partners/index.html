@@ -63,6 +63,7 @@
               "name": "Pak Official Panel (Wahid Zaman)",
               "description": "Strategic partner providing social media panel services and digital solutions.",
               "url": "https://srlines.net/meet-our-partners/wahid-zaman/",
+              "image": "https://srlines.net/meet-our-partners/wahid-zaman/profile.jpg",
               "founder": {
                 "@type": "Person",
                 "name": "Wahid Zaman"
@@ -85,6 +86,7 @@
               "name": "Buraqlabs (Hassan Zafar)",
               "description": "Strategic partner specializing in software development and digital transformation services.",
               "url": "https://srlines.net/meet-our-partners/hassan-zafar/",
+              "image": "https://srlines.net/meet-our-partners/hassan-zafar/profile.jpg",
               "founder": {
                 "@type": "Person",
                 "name": "Hassan Zafar"
@@ -106,6 +108,7 @@
               "name": "Mohsin Ansari Business Solutions",
               "description": "Strategic partner offering business consulting and digital integration services.",
               "url": "https://srlines.net/meet-our-partners/mohsin-ansari/",
+              "image": "https://srlines.net/meet-our-partners/mohsin-ansari/profile.jpg",
               "founder": {
                 "@type": "Person",
                 "name": "Mohsin Ansari"
@@ -127,6 +130,7 @@
               "name": "MNA Trader (Muhammad Noyan Abdullah)",
               "description": "Strategic partner providing trading solutions and market intelligence services.",
               "url": "https://srlines.net/meet-our-partners/muhammad-noyan-abdullah/",
+              "image": "https://srlines.net/meet-our-partners/muhammad-noyan-abdullah/profile.jpg",
               "founder": {
                 "@type": "Person",
                 "name": "Muhammad Noyan Abdullah"
@@ -217,21 +221,23 @@
         .logo-text p { font-size: 0.65rem; color: var(--gray); font-weight: 600; text-transform: uppercase; }
 
         nav ul { display: flex; list-style: none; gap: 28px; align-items: center; }
-        nav ul > li { display: flex; align-items: center; }
+        nav ul > li { display: flex; align-items: center; position: relative; }
         nav a { color: var(--dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; padding: 8px 0; position: relative; line-height: 1; }
-        nav a:hover { color: var(--primary); }
+        nav a:hover { color: var(--primary); transform: translateY(-2px); }
+        nav a.active { color: var(--primary); }
         nav a::after { 
             content: ''; 
             position: absolute; 
             width: 0; 
             height: 3px; 
-            bottom: 0; 
+            bottom: -2px; 
             left: 0; 
             background: var(--gradient-hero); 
-            transition: width 0.3s ease; 
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
             border-radius: 2px; 
         }
         nav a:hover::after { width: 100%; }
+        nav a.active::after { width: 100%; }
 
         .mobile-menu-btn { display: none; background: none; border: none; color: var(--dark); font-size: 1.5rem; cursor: pointer; z-index: 1001; }
 
@@ -305,28 +311,29 @@
             box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
         }
 
-        .partner-header {
-            padding: 32px;
+        .partner-image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .partner-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-hero);
-            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 2rem;
-            margin-bottom: 16px;
-            transition: transform 0.3s ease;
         }
 
-        .partner-card:hover .partner-icon {
-            transform: scale(1.1) rotate(5deg);
+        .partner-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .partner-card:hover .partner-image-container img {
+            transform: scale(1.08);
+        }
+
+        .partner-header {
+            padding: 24px;
         }
 
         .partner-header h3 {
@@ -343,7 +350,7 @@
         }
 
         .partner-body {
-            padding: 24px 32px;
+            padding: 0 24px 24px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -393,7 +400,7 @@
         }
 
         .partner-footer {
-            padding: 16px 32px;
+            padding: 16px 24px;
             background: var(--light);
             border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
@@ -530,6 +537,13 @@
             margin-bottom: 20px;
         }
 
+        .footer-col p {
+            opacity: 0.8;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
         .footer-col ul {
             list-style: none;
         }
@@ -607,9 +621,9 @@
             .footer-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 1.4rem; }
             .hero p { font-size: 0.95rem; }
-            .partner-header { padding: 24px; }
-            .partner-body { padding: 16px 24px; }
-            .partner-footer { padding: 12px 24px; }
+            .partner-header { padding: 20px; }
+            .partner-body { padding: 0 20px 20px; }
+            .partner-footer { padding: 12px 20px; }
         }
     </style>
 </head>
@@ -627,7 +641,7 @@
                 <ul>
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="../index.html#products">Products</a></li>
-                    <li><a href="../index.html#partners" class="active">Partners</a></li>
+                    <li><a href="./" class="active">Partners</a></li>
                     <li><a href="../index.html#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -658,10 +672,10 @@
                 <div class="partners-grid">
                     <!-- Pak Official Panel -->
                     <div class="partner-card">
+                        <div class="partner-image-container">
+                            <img src="./wahid-zaman/profile.jpg" alt="Wahid Zaman - Pak Official Panel" loading="lazy">
+                        </div>
                         <div class="partner-header">
-                            <div class="partner-icon">
-                                <i class="fas fa-globe"></i>
-                            </div>
                             <h3>Pak Official Panel</h3>
                             <p class="subtitle">Social Media & Digital Solutions</p>
                         </div>
@@ -689,10 +703,10 @@
 
                     <!-- Buraqlabs -->
                     <div class="partner-card">
+                        <div class="partner-image-container">
+                            <img src="./hassan-zafar/profile.jpg" alt="Hassan Zafar - Buraqlabs" loading="lazy">
+                        </div>
                         <div class="partner-header">
-                            <div class="partner-icon">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
                             <h3>Buraqlabs</h3>
                             <p class="subtitle">Software Development & Digital Transformation</p>
                         </div>
@@ -724,10 +738,10 @@
 
                     <!-- Mohsin Ansari -->
                     <div class="partner-card">
+                        <div class="partner-image-container">
+                            <img src="./mohsin-ansari/profile.jpg" alt="Mohsin Ansari - Business Solutions" loading="lazy">
+                        </div>
                         <div class="partner-header">
-                            <div class="partner-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
                             <h3>Mohsin Ansari</h3>
                             <p class="subtitle">Business Consulting & Digital Integration</p>
                         </div>
@@ -755,10 +769,10 @@
 
                     <!-- MNA Trader -->
                     <div class="partner-card">
+                        <div class="partner-image-container">
+                            <img src="./muhammad-noyan-abdullah/profile.jpg" alt="Muhammad Noyan Abdullah - MNA Trader" loading="lazy">
+                        </div>
                         <div class="partner-header">
-                            <div class="partner-icon">
-                                <i class="fas fa-briefcase"></i>
-                            </div>
                             <h3>MNA Trader</h3>
                             <p class="subtitle">Trading Solutions & Market Intelligence</p>
                         </div>
@@ -825,16 +839,16 @@
                     <h4>SRLINES</h4>
                     <p>Pakistan's #1 WhatsApp Cloud API Platform and Meta Verified Technology Partner.</p>
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/srlinessoftwarehouse" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.facebook.com/srlinessoftwarehouse" target="_blank" rel="noopener noreferrer" title="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.instagram.com/srlinessoftwarehouse" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.instagram.com/srlinessoftwarehouse" target="_blank" rel="noopener noreferrer" title="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://x.com/srlineshouse" target="_blank" rel="noopener noreferrer">
+                        <a href="https://x.com/srlineshouse" target="_blank" rel="noopener noreferrer" title="Twitter/X">
                             <i class="fab fa-x-twitter"></i>
                         </a>
-                        <a href="https://www.linkedin.com/company/srlines-software-house-smc-pvt-limited" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.linkedin.com/company/srlines-software-house-smc-pvt-limited" target="_blank" rel="noopener noreferrer" title="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
@@ -862,7 +876,7 @@
                     <ul>
                         <li><a href="../privacy-policy.html">Privacy Policy</a></li>
                         <li><a href="../terms-of-service.html">Terms of Service</a></li>
-                        <li><a href="../meet-our-partners/#disclaimer-section">Disclaimer</a></li>
+                        <li><a href="#disclaimer-section">Disclaimer</a></li>
                         <li><a href="../index.html#contact">Legal Inquiries</a></li>
                     </ul>
                 </div>
@@ -874,7 +888,6 @@
     </footer>
 
     <script>
-        // Smooth scroll and animation triggers
         document.addEventListener('DOMContentLoaded', function() {
             const header = document.getElementById('header');
             
@@ -886,7 +899,6 @@
                 }
             });
 
-            // Intersection Observer for partner card animations
             const cards = document.querySelectorAll('.partner-card');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -904,7 +916,6 @@
             });
         });
 
-        // Add animation
         const style = document.createElement('style');
         style.textContent = `
             @keyframes slideIn {
