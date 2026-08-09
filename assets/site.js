@@ -24,3 +24,25 @@ document.addEventListener('click', (event) => {
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') setIndustryMenu(false);
 });
+
+const lightbox = document.querySelector('.image-lightbox');
+const lightboxImage = lightbox?.querySelector('img');
+const lightboxClose = lightbox?.querySelector('.lightbox-close');
+
+document.querySelectorAll('.image-zoom').forEach((trigger) => {
+  trigger.addEventListener('click', () => {
+    lightboxImage.src = trigger.dataset.fullImage;
+    lightboxImage.alt = trigger.dataset.imageAlt;
+    lightbox.showModal();
+  });
+});
+
+lightboxClose?.addEventListener('click', () => lightbox.close());
+lightbox?.addEventListener('click', (event) => {
+  if (event.target === lightbox) lightbox.close();
+});
+
+lightbox?.addEventListener('close', () => {
+  lightboxImage.removeAttribute('src');
+  lightboxImage.alt = '';
+});
