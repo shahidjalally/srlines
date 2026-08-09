@@ -179,4 +179,10 @@
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
+  <url><loc>https://srlines.net/industries/real-estate.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://srlines.net/industries/recruitment.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://srlines.net/industries/hospitality.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://srlines.net/industries/healthcare.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://srlines.net/industries/ecommerce.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://srlines.net/industries/professional-services.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
