@@ -208,6 +208,7 @@
             }
         }
     </style>
+<link rel="stylesheet" href="/assets/contact-form.css">
 </head>
 <body>
     <!-- Header -->
@@ -315,7 +316,34 @@
     </main>
 
     <!-- Footer -->
-    <footer>
+    <section class="wcrm-contact" aria-labelledby="contact-heading">
+  <div class="wcrm-contact__inner">
+    <h2 id="contact-heading">Contact us</h2>
+    <p class="wcrm-contact__intro">Tell us how we can help and our team will get back to you.</p>
+    <form id="contact-form">
+      <label>Name
+        <input type="text" name="name" autocomplete="name" required>
+      </label>
+      <label>Email
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+      <label>Phone
+        <input type="tel" name="phone" autocomplete="tel">
+      </label>
+      <label>Company
+        <input type="text" name="company" autocomplete="organization">
+      </label>
+      <label class="wcrm-contact__full">How can we help?
+        <textarea name="message" required></textarea>
+      </label>
+      <label class="wcrm-contact__honeypot" aria-hidden="true">Website
+        <input type="text" name="wcrm_website" tabindex="-1" autocomplete="off">
+      </label>
+      <button type="submit">Send message</button>
+      <div data-wcrm-result aria-live="polite"></div>
+    </form>
+  </div>
+</section><footer>
         <div class="container">
             <div class="footer-container">
                 <div class="footer-col">
@@ -344,5 +372,6 @@
             </div>
         </div>
     </footer>
+<script src="https://crm.srlines.net/form-widget.js" data-form-id="wf_n7XM70piQmFNx5ZJY7kfckWj" data-form-selector="#contact-form"></script>
 </body>
 </html>
