@@ -2,4 +2,17 @@
 @media(min-width:650px){.cards,.credential-grid{grid-template-columns:repeat(2,1fr)}.contact-layout form{grid-template-columns:1fr 1fr}.contact-layout form h2,.contact-layout form p,.contact-layout .full,.contact-layout form button,.form-status{grid-column:1/-1}.organogram article{grid-template-columns:160px 1fr;column-gap:25px}.organogram article img{grid-row:1/5}.organogram article span{align-self:end}footer{grid-template-columns:2fr 1fr 1.4fr 1fr}footer small{grid-column:1/-1}}
 @media(min-width:900px){.site-header{height:82px}.desktop-nav{display:flex}.quote{display:inline-flex}.menu-toggle{display:none}.page-hero{grid-template-columns:1.55fr .7fr;align-items:center}.cards{grid-template-columns:repeat(3,1fr)}.credential-grid{grid-template-columns:repeat(3,1fr)}.split{grid-template-columns:1fr 1fr}.contact-layout{grid-template-columns:1.5fr .7fr}.organogram ol{grid-template-columns:1fr 1fr}.organogram li+li:before{position:absolute;top:50%;left:-30px;width:30px;border-top:2px solid var(--blue);content:''}}
 @media(max-width:1120px) and (min-width:900px){.desktop-nav>a,.nav-group>button{padding-inline:6px;font-size:13px}.quote{padding-inline:13px}.brand{width:110px}}
+
+/* Size the portrait logo by the header's available height, not by its width. */
+.site-header .brand{width:auto;height:100%;max-height:52px;flex:0 0 auto}
+.site-header .brand img{width:auto;height:100%;max-height:52px}
+
+/* Show the same full-colour logo in the footer on a contrasting surface. */
+footer .brand-light{width:104px;padding:8px;border-radius:14px;background:#fff;filter:none}
+footer .brand-light img{width:100%;height:auto}
+
+@media(max-width:649px){
+  .site-header .brand,.site-header .brand img{max-height:48px}
+  footer .brand-light{width:96px}
+}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
