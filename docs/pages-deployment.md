@@ -31,3 +31,16 @@ Merging a new commit requests a fresh branch-based Pages build. Neither a new
 commit nor `.nojekyll` can guarantee recovery of a GitHub-side stuck deployment,
 force-cancel an old run, or prove the public site has updated. Verify the new
 run's final deployment status before reporting a successful publish.
+
+## Portrait update deployment retry
+
+PR #35 includes Muhammad Soban's uploaded portrait, leadership spacing and
+connecting lines. If its deployment fails, merge the follow-up static-publish
+commit to request a fresh build from `main`; the existing `.nojekyll` marker is
+retained. Its contents are explanatory only: GitHub Pages uses the marker's
+presence to skip Jekyll.
+
+After merging, verify the new Pages run completes and open `/team.html`.
+Confirm Soban's photograph loads from `/assets/team/muhammad-oban.jpeg` and
+the leadership cards show the updated spacing and connector. If deployment
+fails again, inspect that run's deploy-job logs before deciding on another retry.
