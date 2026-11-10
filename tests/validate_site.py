@@ -27,7 +27,7 @@ def path_for(url):
 def main():
     tree=ET.parse(ROOT/"sitemap.xml")
     urls=[n.text for n in tree.findall("s:url/s:loc",NS)]
-    assert len(urls)==30, f"expected 30 public pages, found {len(urls)}"
+    assert len(urls)==32, f"expected 32 public pages, found {len(urls)}"
     failures=[]
     for url in urls:
         file=path_for(url)
@@ -43,6 +43,16 @@ def main():
             elif href.startswith("/") and not href.startswith("//"):
                 local=path_for(href)
                 if not local.exists(): failures.append(f"broken internal link: {file.relative_to(ROOT)} {href}")
+    team=(ROOT/'team.html').read_text()
+    assert all(name in team for name in ('Shahid Rasool','Muhammad Saim','Rubab Javed','Muhammad Sarim'))
+    assert 'Chief Executive Officer &amp; Head of Technical Operations' in team
+    assert '<ol class="org-managers">' in team
+    for url in urls:
+        text=path_for(url).read_text()
+        assert '/products/srlines-pbx.html' in text and '/products/shopify-mobile-app.html' in text
+        assert all(number in text for number in ('0226235','Z-25-22334/26','C05/PSEB/2026/8766'))
+    app=(ROOT/'products/shopify-mobile-app.html').read_text()
+    assert 'id=net.srlines.ecommerce' in app and 'https://ecommerce.srlines.net/' in app
     # Check body labels on the three project profiles rather than relying on brand ownership inference.
     for slug in ("signsyncer","formsyncer","whatsell"):
         text=(ROOT/f"portfolio/{slug}.html").read_text(encoding="utf-8").lower()
