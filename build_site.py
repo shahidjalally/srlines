@@ -6,6 +6,14 @@ import json
 
 ROOT = Path(__file__).parent
 DOMAIN = "https://srlines.net"
+OPENAI_ADS_PIXEL = (
+    '<script>!function(w,d,s,u){if(w.oaiq)return;'
+    'var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;'
+    'var j=d.createElement(s);j.async=1;j.src=u;'
+    'var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f);'
+    '}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");'
+    'oaiq("init",{pixelId:"Gdnu5euNH4BuKr7TaBQfL3",debug:true});</script>'
+)
 
 NAV = {
     "Company": [("About SRLINES", "/about.html"), ("Team & Organogram", "/team.html"), ("Credentials & Partnerships", "/credentials.html"), ("Contact", "/contact.html")],
@@ -56,7 +64,7 @@ def shell(path,title,desc,body,crumb=""):
     canonical=DOMAIN+("/" if path=="index.html" else "/"+path)
     bc=f'<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>{escape(crumb or title)}</span></nav>' if path!="index.html" else ""
     schema=json.dumps({"@context":"https://schema.org","@type":"WebPage","name":title,"url":canonical,"description":desc},separators=(',',':'))
-    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | SRLINES</title><meta name="description" content="{escape(desc,quote=True)}"><link rel="canonical" href="{canonical}"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title,quote=True)} | SRLINES"><meta property="og:description" content="{escape(desc,quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{DOMAIN}/Grow%20Sales%20with%20WhatsApp%20CRM%20%26%20Live%20Chat.png"><meta property="og:image:width" content="1280"><meta property="og:image:height" content="720"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/redesign.css"><script type="application/ld+json">{schema}</script></head><body data-path="/{path}">{header(path)}<main id="main">{bc}{body}<aside class="flagship-strip" aria-label="Explore flagship solutions"><span>Built for connected business</span><a href="/products/srlines-pbx.html">SRLINES PBX · AI &amp; CRM connected →</a><a href="/products/shopify-mobile-app.html">Your branded Shopify mobile app →</a></aside></main>{footer()}<script src="/assets/redesign.js" defer></script></body></html>'''
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8">{OPENAI_ADS_PIXEL}<meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | SRLINES</title><meta name="description" content="{escape(desc,quote=True)}"><link rel="canonical" href="{canonical}"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title,quote=True)} | SRLINES"><meta property="og:description" content="{escape(desc,quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{DOMAIN}/Grow%20Sales%20with%20WhatsApp%20CRM%20%26%20Live%20Chat.png"><meta property="og:image:width" content="1280"><meta property="og:image:height" content="720"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/redesign.css"><script type="application/ld+json">{schema}</script></head><body data-path="/{path}">{header(path)}<main id="main">{bc}{body}<aside class="flagship-strip" aria-label="Explore flagship solutions"><span>Built for connected business</span><a href="/products/srlines-pbx.html">SRLINES PBX · AI &amp; CRM connected →</a><a href="/products/shopify-mobile-app.html">Your branded Shopify mobile app →</a></aside></main>{footer()}<script src="/assets/redesign.js" defer></script></body></html>'''
 
 def hero(kicker,title,text,actions=''):
     return f'<section class="page-hero"><div><span class="eyebrow">{kicker}</span><h1>{title}</h1><p>{text}</p>{actions}</div><div class="hero-art" aria-hidden="true"><i></i><i></i><i></i><b>SR</b></div></section>'
