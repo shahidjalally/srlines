@@ -78,4 +78,12 @@
       invalid.focus();
     }
   }, true);
+
+  if (current === '/contact.html') {
+    form?.addEventListener('wcrm:form-success', () => {
+      if (typeof window.oaiq === 'function') {
+        window.oaiq('measure', 'lead_created', { type: 'customer_action' });
+      }
+    });
+  }
 })();
