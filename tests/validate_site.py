@@ -10,10 +10,12 @@ from urllib.parse import unquote, urljoin, urlsplit
 from urllib.robotparser import RobotFileParser
 from xml.etree import ElementTree as ET
 
+from structured_data import objects, schema_issues
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from site_identity import DOMAIN, PBX, PHONE, company_graph  # noqa: E402
-from voice_content import LANDINGS  # noqa: E402
+from voice_content import LANDINGS, VIDEO_EMBED, VIDEO_UPLOAD_DATE  # noqa: E402
 
 OBSOLETE = re.compile(r"(?<!\d)(?:(?:\+?92|0092)[\s().-]*|0)311[\s().-]*110[\s().-]*1996(?!\d)")
 
@@ -31,11 +33,20 @@ class PageParser(HTMLParser):
         self.generated = False
         self.schema = []
         self.capture = ""
+        self.in_body = False
+        self.skip_text = None
+        self.visible_text = []
+        self.embeds = set()
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
-        if tag == "body" and "data-path" in attrs:
-            self.generated = True
+        if tag == "body":
+            self.in_body = True
+            self.generated = "data-path" in attrs
+        if tag in ("script", "style", "template"):
+            self.skip_text = tag
+        if tag == "iframe" and attrs.get("src"):
+            self.embeds.add(attrs["src"])
         if attrs.get("id"):
             self.ids.add(attrs["id"])
         if tag == "a" and attrs.get("href"):
@@ -58,10 +69,16 @@ class PageParser(HTMLParser):
             self.title += data
         if self.capture == "schema":
             self.schema.append(data)
+        if self.in_body and not self.skip_text:
+            self.visible_text.append(data)
 
     def handle_endtag(self, tag):
         if tag in ("script", "title"):
             self.capture = ""
+        if tag == "body":
+            self.in_body = False
+        if tag == self.skip_text:
+            self.skip_text = None
 
 
 def path_for(url):
@@ -78,6 +95,8 @@ def main():
     failures = []
     pages = {}
     public = set()
+    definitions = {}
+    references = set()
     for file in ROOT.rglob("*.html"):
         parts = file.relative_to(ROOT).parts
         if any(part.startswith(".") for part in parts) or parts[0] in {
@@ -90,7 +109,7 @@ def main():
         if OBSOLETE.search(raw):
             failures.append(f"Obsolete UAN: {file}")
         if "noindex" in page.meta.get("robots", ""):
-            assert file.name == "404.html", file
+            assert file.name == "404.html" and not page.schema, file
             continue
         assert page.canonical.startswith(DOMAIN + "/"), file
         url = page.canonical
@@ -107,15 +126,37 @@ def main():
                 assert link["href"] == "tel:" + PHONE, (url, link)
         try:
             assert len(page.schema) == 1
-            graph = json.loads(page.schema[0])["@graph"]
+            payload = json.loads(page.schema[0])
+            assert payload["@context"] == "https://schema.org"
+            graph = payload["@graph"]
             ids = [node["@id"] for node in graph if "@id" in node]
             assert len(ids) == len(set(ids))
             assert graph[:4] == company_graph()
             webpage = next(node for node in graph if node.get("@id") == url + "#webpage")
             assert webpage["publisher"] == {"@id": DOMAIN + "/#organization"}
             assert webpage["url"] == url and webpage["isPartOf"] == {"@id": DOMAIN + "/#website"}
+            failures.extend(f"{url}: {issue}" for issue in schema_issues(graph, page, url))
+            if url in (DOMAIN + "/", DOMAIN + PBX):
+                assert VIDEO_EMBED in page.embeds, "Missing official demo player"
+                demo = [entity for entity in graph if entity.get("@id") == DOMAIN + PBX + "#demo-video"]
+                if VIDEO_UPLOAD_DATE:
+                    assert len(demo) == 1 and demo[0].get("uploadDate") == VIDEO_UPLOAD_DATE
+                    assert webpage["video"] == [{"@id": demo[0]["@id"]}]
+                else:
+                    assert not demo and "video" not in webpage
+            for entity in objects(graph):
+                identity = entity.get("@id", "")
+                if not identity.startswith(DOMAIN + "/"):
+                    continue
+                if entity.keys() == {"@id"}:
+                    references.add(identity)
+                elif definitions.setdefault(identity, entity) != entity:
+                    failures.append(f"{url}: conflicting definitions of {identity}")
         except (AssertionError, KeyError, ValueError, StopIteration):
             failures.append(f"Invalid structured data: {url}")
+
+    failures.extend(f"Unresolved local JSON-LD reference: {identity}"
+                    for identity in sorted(references - definitions.keys()))
 
     sitemap = sitemap_urls(ROOT / "sitemap.xml")
     assert set(sitemap) == public and len(sitemap) == len(public), "Sitemap coverage mismatch"
@@ -175,7 +216,7 @@ def main():
 
     assert not failures, "\n" + "\n".join(failures)
     print(f"Validated {len(public)} canonical pages and five sitemaps, metadata, headings, "
-          "JSON-LD identity, internal links and assets, crawler access, and UAN.")
+          "JSON-LD identity, rich-result fields, internal links and assets, crawler access, and UAN.")
 
 
 if __name__ == "__main__":

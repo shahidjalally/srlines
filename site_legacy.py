@@ -27,14 +27,14 @@ def update_legacy(html, path):
             if identity in {DOMAIN + fragment for fragment in ("/#organization", "/#website", "/#contact", "/#catalog")}:
                 continue
             if kind == "WebPage":
-                for key in ("primaryImageOfPage", "potentialAction"):
+                for key in ("mainEntity", "mentions", "primaryImageOfPage", "potentialAction"):
                     if key in properties:
                         page[key] = properties[key]
                 continue
             if kind in ("ProfilePage", "CollectionPage"):
                 page["@type"] = kind
                 page.update({key: value for key, value in properties.items()
-                             if key in ("mainEntity", "hasPart")})
+                             if key in ("about", "mainEntity", "hasPart")})
                 continue
             # Preserve page-specific markup. Legacy breadcrumbs without a matching
             # visible breadcrumb and commercial offers without current evidence
@@ -46,7 +46,7 @@ def update_legacy(html, path):
                 properties["isPartOf"] = {"@id": page["@id"]}
             properties.pop("offers", None)
             graph.append(properties)
-            if kind in ("Service", "SoftwareApplication", "Article", "BlogPosting") and identity:
+            if kind in ("Service", "Article", "BlogPosting") and identity:
                 page["mainEntity"] = {"@id": identity}
     schema = '<script type="application/ld+json">' + schema_json(graph) + '</script>'
     html = JSON_LD.sub(lambda _: schema, html, count=1)
