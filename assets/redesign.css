@@ -19,7 +19,7 @@ footer .brand-light img{width:100%;height:auto}
 
 /* Buyer-focused homepage evidence and delivery components */
 .trust-grid{display:grid;max-width:1240px;margin:-32px auto 0;padding:0 20px;gap:12px;position:relative;z-index:2}.trust-grid a,.verification-links a{display:flex;flex-direction:column;gap:5px;padding:22px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--shadow)}.trust-grid span,.verification-links strong{color:var(--blue);font-weight:850}.trust-grid strong{font-size:18px}.trust-grid small,.verification-links span{color:var(--muted);line-height:1.45}.evidence-grid,.review-grid{display:grid;max-width:1240px;margin:auto;gap:16px}.evidence-grid article,.review-grid figure{margin:0;padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}.evidence-grid article>span{color:var(--blue);font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.evidence-grid h3{font-size:24px}.evidence-grid p{color:var(--muted)}.review-grid blockquote{margin:0 0 28px;font-size:18px;line-height:1.7}.review-grid figcaption{display:flex;flex-direction:column;gap:3px}.review-grid figcaption span{color:var(--muted);font-size:14px}.product-shot{margin:0}.product-shot img{display:block;width:100%;border-radius:18px;box-shadow:0 24px 70px #0005}.product-shot figcaption{margin-top:10px;color:#bdcce1;font-size:13px}.light-link{color:#fff}.delivery ol{display:grid;max-width:1240px;margin:auto;padding:0;gap:12px;list-style:none}.delivery li{padding:22px;border-top:3px solid var(--blue);background:var(--pale)}.delivery li b{color:var(--blue)}.delivery li h3{margin:10px 0 4px}.delivery li p{margin:0;color:var(--muted)}.verification-links{display:grid;max-width:1000px;margin:40px auto 0;gap:12px}
-@media(min-width:650px){.evidence-grid,.review-grid,.trust-grid,.verification-links{grid-template-columns:repeat(2,1fr)}.delivery ol{grid-template-columns:repeat(5,1fr)}}
+@media(min-width:650px){.evidence-grid,.review-grid,.trust-grid,.verification-links{grid-template-columns:repeat(2,1fr)}.delivery ol{grid-template-columns:repeat(auto-fit,minmax(145px,1fr))}}
 @media(min-width:960px){.trust-grid,.review-grid,.evidence-grid{grid-template-columns:repeat(3,1fr)}}
 .hero-product{margin:0;align-self:center}.hero-product img{display:block;width:100%;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.hero-product figcaption{padding-top:8px;color:var(--muted);font-size:13px}
 /* Leadership hierarchy and flagship product presentation */
@@ -33,3 +33,22 @@ footer .brand-light img{width:100%;height:auto}
 .org-leadership:before{content:"";position:absolute;left:calc(50% - 24px);top:182px;width:48px;height:2px;background:#9bb3d3}
 .org-leadership .soban-portrait{object-fit:cover;object-position:center 20%;border-radius:16px}
 @media(max-width:760px){.org-leadership{gap:36px;background:linear-gradient(#9bb3d3,#9bb3d3) center/2px 100% no-repeat}.org-leadership:before{display:none}}
+
+/* Flagship voice platform */
+.desktop-nav .primary-product, .mobile-drawer .primary-product {font-weight: 800; color: #1852a5}
+.voice-hero .voice-visual {min-width: 0; max-width: 32rem; justify-self: center}
+.voice-visual img {display: block; width: 100%; height: auto}
+.voice-video {width: 100%; height: auto; aspect-ratio: 16 / 9; border: 0; border-radius: 12px; background: #101f39}
+.voice-sections {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3rem)}
+.voice-sections h2, .voice-flow h2 {font-size: clamp(1.3rem, 3vw, 1.8rem)}
+.voice-sections p {max-width: 62ch; line-height: 1.68}
+.voice-resources ul {display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: .75rem 2rem; padding-inline-start: 1.4rem}
+.voice-resources a {text-decoration: underline; text-underline-offset: .18em}
+.voice-flow {min-width: 0; padding: clamp(1.25rem, 4vw, 2.75rem); border: 1px solid #cad6e8; border-radius: 20px; background: #edf4ff; color: #101f39}
+.voice-flow ol {padding-inline-start: 1.4rem}
+.voice-flow li {margin-block: .65rem}
+.voice-actions .button {white-space: normal}
+.voice-actions a:focus-visible, .voice-resources a:focus-visible, .primary-product:focus-visible {outline: 3px solid #1852a5; outline-offset: 4px}
+@media (max-width: 680px) {
+  .voice-sections {grid-template-columns: minmax(0, 1fr)}
+}

@@ -1,3 +1,6 @@
+# Search and training crawlers have separate purposes.
+# Keep the existing site-wide access policy pending owner review of training access.
 User-agent: *
 Allow: /
+
 Sitemap: https://srlines.net/sitemap.xml
