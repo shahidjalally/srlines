@@ -1,37 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-<url>
-<loc>https://srlines.net/llm.txt</loc>
-</url>
-
-<url>
-<loc>https://srlines.net/.llms.txt</loc>
-</url>
-
-<url>
-<loc>https://srlines.net/ai-sitemap.xml</loc>
-</url>
-
-<url>
-<loc>https://srlines.net/#n8n</loc>
-</url>
-
-<url>
-<loc>https://docs.srlines.net/</loc>
-</url>
-
-<url>
-<loc>https://blog.srlines.net/</loc>
-</url>
-  
-<url>
-<loc>https://srlines.net/kanban-sales-pipeline.html</loc>
-</url>
-
-  <url>
-    <loc>https://srlines.net/social-meida-management.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
+  <url><loc>https://srlines.net/</loc></url>
+  <url><loc>https://srlines.net/about.html</loc></url>
+  <url><loc>https://srlines.net/contact.html</loc></url>
+  <url><loc>https://srlines.net/credentials.html</loc></url>
+  <url><loc>https://srlines.net/products/srlines-pbx.html</loc></url>
 </urlset>

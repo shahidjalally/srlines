@@ -20,15 +20,22 @@
   const closeButton = document.querySelector('.drawer-close');
   const backdrop = document.querySelector('.drawer-backdrop');
   let returnFocus;
-  const focusable = () => [...drawer.querySelectorAll('a,button,summary')].filter((item) => !item.hidden);
+  const focusable = () => [...drawer.querySelectorAll('a,button,summary')].filter((item) => item.getClientRects().length > 0);
   const setDrawer = (open) => {
     if (open) returnFocus = document.activeElement;
     drawer.classList.toggle('open', open);
-    drawer.setAttribute('aria-hidden', String(!open));
+    if (open) {
+      drawer.inert = false;
+      drawer.setAttribute('aria-hidden', 'false');
+    } else {
+      returnFocus?.focus();
+      drawer.inert = true;
+      drawer.setAttribute('aria-hidden', 'true');
+    }
     toggle.setAttribute('aria-expanded', String(open));
     backdrop.hidden = !open;
     document.body.classList.toggle('drawer-open', open);
-    if (open) closeButton.focus(); else returnFocus?.focus();
+    if (open) closeButton.focus();
   };
   toggle?.addEventListener('click', () => setDrawer(true));
   closeButton?.addEventListener('click', () => setDrawer(false));
@@ -80,6 +87,15 @@
   }, true);
 
   if (current === '/contact.html') {
+    const interest = form?.elements.namedItem('interest');
+    const params = new URLSearchParams(location.search);
+    if (form && params.get('service') === 'srlines-pbx') {
+      if (interest && !interest.value) interest.value = 'SRLINES PBX';
+      if (params.get('intent') === 'consultation') {
+        const heading = form.querySelector('[data-enquiry-heading]');
+        if (heading) heading.textContent = 'Book an AI calling consultation';
+      }
+    }
     form?.addEventListener('wcrm:form-success', () => {
       if (typeof window.oaiq === 'function') {
         window.oaiq('measure', 'lead_created', { type: 'customer_action' });
