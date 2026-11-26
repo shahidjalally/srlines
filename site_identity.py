@@ -33,7 +33,7 @@ def company_graph():
         "postalCode": "64350", "addressCountry": "PK",
     }
     return [
-        node(["Organization", "ProfessionalService"], "/#organization",
+        node("LocalBusiness", "/#organization",
              name="SRLINES", legalName=LEGAL_NAME, alternateName="SRLINES Software House",
              url=DOMAIN + "/", logo=DOMAIN + "/logo.png", image=DOMAIN + "/logo.png",
              description=DESCRIPTION, telephone=PHONE, email=EMAIL, address=address,
@@ -44,18 +44,18 @@ def company_graph():
                                       ("PSEB Call Center/BPO", "C05/PSEB/2026/8766")]
              ],
              knowsAbout=["AI Calling Agents", "AI-enabled PBX", "SIP telephony", "CRM integration"],
-             hasOfferCatalog=ref("/#catalog")),
+             subjectOf=ref("/products/index.html#webpage")),
         node("ContactPoint", "/#contact", contactType="sales", telephone=PHONE, email=EMAIL),
         node("WebSite", "/#website", name="SRLINES", alternateName="SRLINES Software House",
              url=DOMAIN + "/", publisher=ref("/#organization"), inLanguage="en"),
-        node("OfferCatalog", "/#catalog", name="SRLINES products and implementation services",
-             itemListElement=[ref(path + suffix) for path, suffix in [
-                 (PBX, "#software"), (PBX, "#service"), ("/products/wcrm.html", "#software"),
-                 ("/products/shopify-mobile-app.html", "#software"),
-                 ("/services/n8n-workflows.html", "#service"),
-                 ("/services/digital-advertising.html", "#service"),
-                 ("/services/web-application-development.html", "#service"),
-             ]]),
+        node("ItemList", "/#catalog", name="SRLINES featured products",
+             itemListElement=[
+                 {"@type": "ListItem", "position": i, "item": ref(path)}
+                 for i, path in enumerate((
+                     PBX + "#software", "/products/wcrm.html#software",
+                     "/products/shopify-mobile-app.html#software",
+                 ), 1)
+             ]),
     ]
 
 
@@ -70,6 +70,8 @@ def page_schema(path, title, description, crumb=None, *, entities=(), faqs=(), a
         page["video"] = [{"@id": asset["@id"]} for asset in media]
     if entities:
         page["mainEntity"] = {"@id": entities[0]["@id"]}
+    if path == "/products/index.html":
+        page["mainEntity"] = ref("/#catalog")
     if crumb:
         page["breadcrumb"] = ref(path + "#breadcrumb")
         graph.append(node("BreadcrumbList", path + "#breadcrumb", itemListElement=[
@@ -90,10 +92,11 @@ def schema_json(graph):
                       ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
 
 
-def software(path, name, description, **fields):
-    return node("SoftwareApplication", path + "#software", name=name, description=description,
+def software(path, name, description, *, genre="Business software", **fields):
+    """Describe software with stable IDs when app offers and ratings are unavailable."""
+    return node("CreativeWork", path + "#software", name=name, description=description,
                 url=DOMAIN + path, publisher=ref("/#organization"), creator=ref("/#organization"),
-                applicationCategory="BusinessApplication", **fields)
+                genre=genre, **fields)
 
 
 def service(path, name, description, **fields):

@@ -8,6 +8,9 @@ SCHOOL = "/industries/school-ai-calling.html"
 VIDEO = "https://youtu.be/8TfKMlWI9Qs"
 VIDEO_EMBED = "https://www.youtube-nocookie.com/embed/8TfKMlWI9Qs"
 VIDEO_IMAGE = "https://i.ytimg.com/vi/8TfKMlWI9Qs/hqdefault.jpg"
+VIDEO_TITLE = "SRLINES AI Calling Agent and PBX demonstration"
+# Use the original public publication date from the uploader, in ISO 8601.
+VIDEO_UPLOAD_DATE = None
 CONSULT = "/contact.html?service=srlines-pbx&intent=consultation#contact-form"
 QUOTE = "/contact.html?service=srlines-pbx&intent=quotation#contact-form"
 

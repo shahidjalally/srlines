@@ -8,7 +8,7 @@ from site_identity import (
 )
 from voice_content import (
     AGENT, CONSULT, HOSPITAL, LANDINGS, PBX_FAQS, PBX_SECTIONS, PRICING, QUOTE,
-    RECEPTION, RESTAURANT, SCHOOL, VIDEO, VIDEO_EMBED, VIDEO_IMAGE,
+    RECEPTION, RESTAURANT, SCHOOL, VIDEO, VIDEO_EMBED, VIDEO_IMAGE, VIDEO_TITLE, VIDEO_UPLOAD_DATE,
 )
 from site_legacy import complete_public_site
 
@@ -70,13 +70,16 @@ def footer():
 def shell(path, title, desc, body, crumb="", *, entities=(), faqs=(), about=None, voice=False, media=()):
     canonical=DOMAIN+("/" if path=="index.html" else "/"+path)
     bc=f'<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">{escape(crumb or title)}</span></nav>' if path!="index.html" else ""
-    schema = page_schema(canonical.removeprefix(DOMAIN), title, desc,
-                         (crumb or title) if bc else None, entities=entities,
-                         faqs=faqs, about=about, media=media)
+    structured_data = ""
+    if path != "404.html":
+        schema = page_schema(canonical.removeprefix(DOMAIN), title, desc,
+                             (crumb or title) if bc else None, entities=entities,
+                             faqs=faqs, about=about, media=media)
+        structured_data = f'<script type="application/ld+json">{schema}</script>'
     og_image = "/assets/srlines-pbx.webp" if voice else "/Grow%20Sales%20with%20WhatsApp%20CRM%20%26%20Live%20Chat.png"
     og_width, og_height = (960, 960) if voice else (1280, 720)
     robots = '<meta name="robots" content="noindex">' if path == "404.html" else ""
-    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8">{OPENAI_ADS_PIXEL}{robots}<script src="/assets/whatsapp-conversion.js" defer></script><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | SRLINES</title><meta name="description" content="{escape(desc,quote=True)}"><link rel="canonical" href="{canonical}"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title,quote=True)} | SRLINES"><meta property="og:description" content="{escape(desc,quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{DOMAIN}{og_image}"><meta property="og:image:width" content="{og_width}"><meta property="og:image:height" content="{og_height}"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/redesign.css"><script type="application/ld+json">{schema}</script></head><body data-path="/{path}">{header()}<main id="main">{bc}{body}<aside class="flagship-strip" aria-label="Explore flagship solutions"><span>Built for connected business</span><a href="/products/srlines-pbx.html">AI Calling Agent &amp; AI-Enabled PBX →</a><a href="/products/shopify-mobile-app.html">Shopify-integrated mobile app →</a></aside></main>{footer()}<script src="/assets/redesign.js" defer></script></body></html>'''
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8">{OPENAI_ADS_PIXEL}{robots}<script src="/assets/whatsapp-conversion.js" defer></script><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} | SRLINES</title><meta name="description" content="{escape(desc,quote=True)}"><link rel="canonical" href="{canonical}"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title,quote=True)} | SRLINES"><meta property="og:description" content="{escape(desc,quote=True)}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="{DOMAIN}{og_image}"><meta property="og:image:width" content="{og_width}"><meta property="og:image:height" content="{og_height}"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/assets/redesign.css">{structured_data}</head><body data-path="/{path}">{header()}<main id="main">{bc}{body}<aside class="flagship-strip" aria-label="Explore flagship solutions"><span>Built for connected business</span><a href="/products/srlines-pbx.html">AI Calling Agent &amp; AI-Enabled PBX →</a><a href="/products/shopify-mobile-app.html">Shopify-integrated mobile app →</a></aside></main>{footer()}<script src="/assets/redesign.js" defer></script></body></html>'''
 
 def hero(kicker,title,text,actions=''):
     return f'<section class="page-hero"><div><span class="eyebrow">{kicker}</span><h1>{title}</h1><p>{text}</p>{actions}</div><div class="hero-art" aria-hidden="true"><i></i><i></i><i></i><b>SR</b></div></section>'
@@ -119,15 +122,19 @@ def demo_section():
         '<section class="section split tinted" id="demo"><div><h2>Watch the SRLINES calling demo</h2>'
         '<p>See a walkthrough of the AI calling and PBX platform. For a tailored demo, bring a sample enquiry and the route it should take to your staff.</p>'
         f'<p><a href="{VIDEO}" target="_blank" rel="noopener noreferrer">Watch the SRLINES demo on YouTube</a></p></div>'
-        f'<iframe class="voice-video" src="{VIDEO_EMBED}" title="SRLINES AI Calling Agent and PBX demonstration" width="560" height="315" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></section>'
+        f'<iframe class="voice-video" src="{VIDEO_EMBED}" title="{escape(VIDEO_TITLE, quote=True)}" width="560" height="315" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></section>'
     )
 
 
-def demo_entity():
-    return node("VideoObject", PBX + "#demo-video", name="SRLINES AI Calling Agent and PBX demonstration",
-                description="Official walkthrough of the SRLINES business calling platform.",
-                thumbnailUrl=VIDEO_IMAGE, embedUrl=VIDEO_EMBED, url=VIDEO,
-                publisher=ref("/#organization"), about=ref(PBX + "#software"))
+def demo_media():
+    # The visible player remains available while required upload metadata is pending.
+    if not VIDEO_UPLOAD_DATE:
+        return ()
+    return (node("VideoObject", PBX + "#demo-video", name=VIDEO_TITLE,
+                 description="Official walkthrough of the SRLINES business calling platform.",
+                 thumbnailUrl=VIDEO_IMAGE, uploadDate=VIDEO_UPLOAD_DATE,
+                 embedUrl=VIDEO_EMBED, url=VIDEO, publisher=ref("/#organization"),
+                 about=ref(PBX + "#software")),)
 
 
 def voice_sections(sections):
@@ -163,11 +170,10 @@ def build_voice():
     pbx += faq(PBX_FAQS, "AI Calling Agent and PBX FAQs")
     write(PBX.lstrip("/"), shell(PBX.lstrip("/"), pbx_title, pbx_desc, pbx, "AI Calling & PBX",
                                  voice=True, faqs=PBX_FAQS, entities=(
-        software(PBX, FLAGSHIP, pbx_desc, applicationSubCategory="Business telephony",
-                 featureList=["Inbound and outbound AI calling", "Urdu and English conversations", "Human call transfer", "Layered IVR", "SIP connectivity", "Team extensions", "Call recording", "Reporting", "wCRM integration"]),
-        service(PBX, "AI Calling Agent and AI-Enabled PBX implementation",
-                "Deployment and configuration of business calling and wCRM workflows."),
-    ), media=(demo_entity(),)))
+        service(PBX, FLAGSHIP, pbx_desc),
+        software(PBX, FLAGSHIP, pbx_desc, genre="Business telephony software",
+                 image=DOMAIN + "/assets/srlines-pbx.webp"),
+    ), about=ref(PBX + "#software"), media=demo_media()))
 
     for path, (title, description, heading, intro, sections, faqs) in LANDINGS.items():
         visual = ('<div class="voice-flow"><h2>Call workflow</h2><ol>'
@@ -227,7 +233,7 @@ def wcrm_resources():
 def build_commerce():
     app=hero('Branded mobile commerce','Your brand. Your app. Your complete commerce ecosystem.','Launch a mobile shopping experience with your own name, logo, products and identity—connected to Shopify and a web-based admin panel.','<div class="actions"><a class="button" href="https://play.google.com/store/apps/details?id=net.srlines.ecommerce" target="_blank" rel="noopener noreferrer">Try the Android app</a><a class="button secondary" href="https://ecommerce.srlines.net/" target="_blank" rel="noopener noreferrer">Explore the admin panel</a></div>')
     app += f'<section class="section product-infographic"><img src="/Ecommerce_App_Promotional_Banner_1200x600.png" alt="SRLINES branded ecommerce mobile application" width="1200" height="600" loading="lazy"></section><section class="section">'+cards([('Mobile shopping','A store in your customer’s pocket','Give customers a dedicated Android shopping experience under your own brand.'),('Store operations','Products & order management','Manage your catalogue and orders through the web-based backend.'),('Shopify connectivity','Connected store workflows','Connect the mobile app, backend and Shopify store with synchronized product and order workflows.'),('White-label option','Your identity, throughout','Choose a branded admin panel for a complete white-label commerce ecosystem.')])+f'</section><section class="section split tinted"><div><span class="eyebrow">Live demonstration</span><h2>Experience the complete setup.</h2><p>Explore mobile shopping, product and order management, the admin backend, Shopify connectivity and app-to-backend synchronization.</p><p>Demo store identifier: <strong>demo</strong></p><a class="text-link" href="/contact.html?service=shopify-mobile-app-demo">Request demo access →</a></div><div><h2>Built around your business.</h2><p>Your brand name, logo, product catalogue and visual identity. Add your own branding to the administration panel for a consistent experience across your commerce operations.</p><p>Contact our team for pricing, deployment details and next steps.</p></div></section><section class="cta"><h2>Your next storefront is in their hands.</h2><p>Tell us about your store and the experience you want to create.</p><a class="button light" href="{WHATSAPP}?text=INTERESTED%20in%20the%20Shopify%20Integrated%20Mobile%20App" target="_blank" rel="noopener noreferrer">I’m interested</a></section>'
-    write('products/shopify-mobile-app.html',shell('products/shopify-mobile-app.html','Shopify Integrated Mobile App','Launch your branded Android ecommerce app, Shopify connectivity and web admin panel, with optional white-label administration.',app, entities=(software('/products/shopify-mobile-app.html', 'Shopify Integrated Mobile App', 'Branded Android shopping app connected to Shopify.', operatingSystem='Android', screenshot=DOMAIN + '/Ecommerce_App_Promotional_Banner_1200x600.png'),)))
+    write('products/shopify-mobile-app.html',shell('products/shopify-mobile-app.html','Shopify Integrated Mobile App','Launch your branded Android ecommerce app, Shopify connectivity and web admin panel, with optional white-label administration.',app, entities=(software('/products/shopify-mobile-app.html', 'Shopify Integrated Mobile App', 'Branded Android shopping app connected to Shopify.', genre='Android commerce software', image=DOMAIN + '/Ecommerce_App_Promotional_Banner_1200x600.png'),)))
 
 def build():
     home = voice_hero("SRLINES business communication",
@@ -252,7 +258,7 @@ def build():
     home += '<section class="section"><h2>Explore automation guides</h2><p><a href="https://blog.srlines.net/" target="_blank" rel="noopener noreferrer">Read the SRLINES blog</a> for customer communication, WhatsApp and business automation guides.</p></section>'
     write('index.html', shell('index.html', 'AI Calling Agent & AI-Enabled PBX Pakistan',
           'Automate business calls with SRLINES AI Calling Agents and AI-enabled PBX in Pakistan. Explore AI reception, IVR, recording, UAN and wCRM integration.',
-          home, voice=True, faqs=home_faqs, media=(demo_entity(),)))
+          home, voice=True, faqs=home_faqs, media=demo_media()))
 
     about=hero('Ideas to Impact','Technology with purpose. Delivery with precision.','SRLINES SOFTWARE HOUSE (SMC-PRIVATE) LIMITED works with business owners, agencies and operational teams in Pakistan and international markets.')+'''<section class="section split"><div><h2>What we do</h2><p>We translate business processes into websites, applications, connected workflows and measured digital operations. Our flagship platform is <a href="/products/srlines-pbx.html">SRLINES AI Calling Agent &amp; AI-Enabled PBX</a>, integrated with wCRM. Our other products include branded Shopify mobile commerce. We combine product expertise with bespoke software delivery to help your business operate with confidence.</p></div><div><h2>How we work</h2><ul class="checks"><li>Clarify the problem, users and constraints</li><li>Define scope, access and acceptance criteria</li><li>Build and review in practical stages</li><li>Document launch, ownership and next steps</li></ul></div></section>'''
     about += f'''<section class="section split"><div><h2>Company credentials</h2>
@@ -297,7 +303,7 @@ def build():
         body+=f'''<section class="section split"><div><span class="eyebrow">Position in the ecosystem</span><h2>A connected part of your customer workflow.</h2><p>{desc}</p><p>This page describes the <strong>{kind.lower()}</strong> within the company-owned wCRM ecosystem.</p></div><div><h2>Plan the right setup</h2><ul class="checks"><li>Confirm the operational use case</li><li>Review required platform accounts and permissions</li><li>Map customer consent and data responsibilities</li><li>Agree onboarding or integration support</li></ul></div></section><section class="cta"><h2>See whether this fits your workflow.</h2><a class="button light" href="{url}" target="_blank" rel="noopener noreferrer">{cta}</a></section>'''
         if slug == "wcrm":
             body += '<section class="section"><h2>Connect voice calls with wCRM</h2><p>Explore how the <a href="/products/srlines-pbx.html">AI Calling Agent and AI-enabled PBX</a> can route calls and link agreed call activity with customer workflows.</p></section>' + wcrm_resources()
-        fields = {"operatingSystem": "Android"} if slug == "wcrm-mobile" else {}
+        fields = {"genre": "Android business software"} if slug == "wcrm-mobile" else {}
         write(f'products/{slug}.html', shell(f'products/{slug}.html', title, desc, body, title,
               entities=(software(f'/products/{slug}.html', title, desc, **fields),)))
     overview=hero('SRLINES product portfolio','Connected communications. Branded commerce. Smarter operations.','Explore our flagship AI Calling Agent and AI-enabled PBX, the wCRM ecosystem and branded mobile commerce.')+flagship_section()+'<section class="section">'+cards(prod_cards)+'</section>'
