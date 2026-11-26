@@ -10,7 +10,7 @@ VIDEO_EMBED = "https://www.youtube-nocookie.com/embed/8TfKMlWI9Qs"
 VIDEO_IMAGE = "https://i.ytimg.com/vi/8TfKMlWI9Qs/hqdefault.jpg"
 VIDEO_TITLE = "SRLINES AI Calling Agent and PBX demonstration"
 # Use the original public publication date from the uploader, in ISO 8601.
-VIDEO_UPLOAD_DATE = None
+VIDEO_UPLOAD_DATE = "2026-11-13"
 CONSULT = "/contact.html?service=srlines-pbx&intent=consultation#contact-form"
 QUOTE = "/contact.html?service=srlines-pbx&intent=quotation#contact-form"
 
