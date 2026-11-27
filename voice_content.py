@@ -9,8 +9,8 @@ VIDEO = "https://youtu.be/8TfKMlWI9Qs"
 VIDEO_EMBED = "https://www.youtube-nocookie.com/embed/8TfKMlWI9Qs"
 VIDEO_IMAGE = "https://i.ytimg.com/vi/8TfKMlWI9Qs/hqdefault.jpg"
 VIDEO_TITLE = "SRLINES AI Calling Agent and PBX demonstration"
-# Use the original public publication date from the uploader, in ISO 8601.
-VIDEO_UPLOAD_DATE = "2026-11-13"
+# The uploader confirmed the date only. Represent it at the start of day in Pakistan.
+VIDEO_UPLOAD_DATE = "2026-11-13T00:00:00+05:00"
 CONSULT = "/contact.html?service=srlines-pbx&intent=consultation#contact-form"
 QUOTE = "/contact.html?service=srlines-pbx&intent=quotation#contact-form"
 
@@ -92,7 +92,7 @@ LANDINGS = {
     ),
 }
 
-# Plan, inbound AI minutes, OpenAI (PKR), and SRLINES (PKR/min).
+# Plan, combined inbound and outbound AI minutes, OpenAI (PKR), and SRLINES (PKR/min).
 PBX_PLANS = (
     ("Starter", 200, 860, 6),
     ("Essential", 400, 1_720, 5),
@@ -110,15 +110,17 @@ PBX_EXTRA_MINUTE_USD = 0.05
 
 PBX_PACKAGE_FEATURES = [
     ("AI telephone receptionist", "Answers routine questions, captures enquiries and takes booking, appointment or order requests. Configured rules can route exceptions to your team."),
-    ("Business calling identity", "A DID is the number customers dial. A CLI is the authorised caller ID shown on outbound calls. Licensed telecom operators control allocation and use, subject to verification, approval and availability. A specific number or permanent ownership is not guaranteed."),
+    ("One business UAN", "Every plan includes one Universal Access Number (UAN). Number activation and outbound caller ID are subject to operator verification, approval and availability."),
     ("Self-service web portal", "Manage AI prompts, business knowledge and automation workflows. See allocated and remaining minutes, plan expiry and available activity reports."),
-    ("Shared call capacity", "Plans use a shared pool of simultaneous SIP call sessions. Fair use, network availability and shared capacity apply. Dedicated simultaneous lines are outside the package."),
+    ("Three concurrent call sessions", "Every plan supports up to three simultaneous calls across inbound and outbound traffic."),
+    ("IVR and DTMF keypad routing", "Play a menu and route callers by their keypad selection to an AI or human agent."),
+    ("Up to 20 soft extensions", "Assign up to 20 extensions across AI and human agents. Human agents can sign in on a softphone app or a compatible VoIP phone."),
 ]
 
 PBX_PRICING_FAQS = [
-    ("How are inbound AI minutes counted?", "Each connected AI session uses the plan’s inbound AI allowance and is rounded up to the next full minute per call."),
+    ("How are AI minutes counted?", "Inbound and outbound AI calls draw from one allowance at the same rate within your plan. Each connected AI session is rounded up to the next full minute per call."),
     ("Do unused minutes roll over?", "Unused minutes expire at the end of each prepaid 30-day cycle without rollover or refund. Service may pause when the allowance or prepaid credit runs out."),
-    ("Are outbound calls included?", "Outbound calls are billed separately unless included by written agreement. Charges cover AI processing, applicable operator airtime, taxes and destination-based charges. SRLINES confirms the rates before activation."),
+    ("Are outbound calls included?", "Yes. Outbound calls use the included outbound airtime allowance. Outbound calls handled by an AI agent also use the same AI allowance as inbound AI calls. SRLINES confirms rates for airtime beyond the included allowance and any destination-specific charges before activation."),
     ("Can I activate any number or outbound caller ID?", "Activation requires operator approval, customer verification (KYC), a lawful business purpose and availability. Confirm number allocation and outbound caller-ID use before publishing a number."),
 ]
 
@@ -138,7 +140,7 @@ PBX_SECTIONS = [
     ("Pakistani UAN, SIP and carrier terms", "Discuss whether your existing business UAN or a new number can be connected. Number availability, inbound and outbound routes, concurrent sessions and charges depend on carrier terms and the selected package. Confirm compatibility before porting or publishing a number."),
     ("Deployment and onboarding", "Map call intent, hours, escalation, consent and staff ownership first. Then test SIP connectivity, a small set of AI scenarios, fallbacks, peak load and the wCRM handoff before routing live traffic. Agree a rollback route for launch."),
     ("Recording, consent and data handling", "Agree which calls are recorded, how callers are informed, who can access call data, how long it is kept and when staff should take over. Use authorized outbound lists and a documented opt-out process. Review privacy and applicable requirements before going live."),
-    ("Plans and custom quotations", "Compare published 30-day inbound AI plans and one-time setup on the pricing page. Request a quote for outbound usage, integrations or custom workflows. The signed quote defines the commercial terms."),
+    ("Plans and custom quotations", "Compare published 30-day plans with a shared inbound and outbound AI allowance and one-time setup on the pricing page. Request a quote for usage beyond the included allowances, integrations or custom workflows. The signed quote defines the commercial terms."),
 ]
 
 PBX_FAQS = [
