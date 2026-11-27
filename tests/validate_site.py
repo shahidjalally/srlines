@@ -15,7 +15,7 @@ from structured_data import objects, schema_issues
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from site_identity import DOMAIN, PBX, PHONE, company_graph  # noqa: E402
-from voice_content import LANDINGS, VIDEO_EMBED, VIDEO_UPLOAD_DATE  # noqa: E402
+from voice_content import LANDINGS, PRICING, VIDEO_EMBED, VIDEO_UPLOAD_DATE  # noqa: E402
 
 OBSOLETE = re.compile(r"(?<!\d)(?:(?:\+?92|0092)[\s().-]*|0)311[\s().-]*110[\s().-]*1996(?!\d)")
 
@@ -168,7 +168,7 @@ def main():
 
     crawler = RobotFileParser()
     crawler.parse((ROOT / "robots.txt").read_text().splitlines())
-    for url in [DOMAIN + "/", DOMAIN + PBX, *(DOMAIN + path for path in LANDINGS)]:
+    for url in [DOMAIN + "/", DOMAIN + PBX, DOMAIN + PRICING, *(DOMAIN + path for path in LANDINGS)]:
         assert url in public, url
         assert pages[url].meta["og:url"] == url
         for agent in ("OAI-SearchBot", "ChatGPT-User", "Googlebot", "Bingbot"):

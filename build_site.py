@@ -7,8 +7,10 @@ from site_identity import (
     UAN, WHATSAPP, node, page_schema, ref, service, software,
 )
 from voice_content import (
-    AGENT, CONSULT, HOSPITAL, LANDINGS, PBX_FAQS, PBX_SECTIONS, PRICING, QUOTE,
-    RECEPTION, RESTAURANT, SCHOOL, VIDEO, VIDEO_EMBED, VIDEO_IMAGE, VIDEO_TITLE, VIDEO_UPLOAD_DATE,
+    AGENT, CONSULT, HOSPITAL, LANDINGS, PBX_EXAMPLE_EXCHANGE_RATE, PBX_EXTRA_MINUTE_USD,
+    PBX_FAQS, PBX_PACKAGE_FEATURES, PBX_PACKAGE_TERMS, PBX_PLANS, PBX_PRICING_FAQS,
+    PBX_SECTIONS, PBX_SETUP_PKR, PRICING, QUOTE, RECEPTION, RESTAURANT, SCHOOL,
+    VIDEO, VIDEO_EMBED, VIDEO_IMAGE, VIDEO_TITLE, VIDEO_UPLOAD_DATE,
 )
 from site_legacy import complete_public_site
 
@@ -161,6 +163,90 @@ def flagship_section():
     <article><h3>Shopify-integrated mobile app</h3><p>Launch a branded Android shopping app connected to your store.</p><a href="/products/shopify-mobile-app.html">Explore mobile commerce</a></article></div></section>'''
 
 
+def build_pbx_pricing():
+    title = "AI Calling Agent & PBX Pricing in Pakistan"
+    starting_plan, starting_price, starting_minutes = PBX_PLANS[0]
+    description = (f"Compare prepaid SRLINES AI PBX plans from USD {starting_price:g} per 30 days "
+                   f"for {starting_minutes:,} inbound AI minutes, plus PKR {PBX_SETUP_PKR:,} one-time setup.")
+    intro = ("Compare prepaid plans for a managed AI receptionist that answers routine calls, "
+             "captures enquiries and routes exceptions to your team.")
+    quote_url = escape(QUOTE, quote=True)
+    actions = (f'<div class="actions voice-actions"><a class="button" href="#plans">Compare plans</a>'
+               f'<a class="button secondary" href="{quote_url}">Request a quote</a></div>')
+    summary = f'''<aside class="voice-flow pbx-price-summary" aria-label="Starting price">
+        <strong>USD {starting_price:g}</strong><span>per prepaid 30-day cycle</span>
+        <p>{starting_minutes:,} inbound AI minutes on {starting_plan}</p>
+        <p>PKR {PBX_SETUP_PKR:,} one-time setup per business</p>
+    </aside>'''
+    body = voice_hero("Managed AI telephone receptionist", "AI Calling Agent and PBX Pricing in Pakistan",
+                      intro, actions, summary)
+    rows = "".join(
+        f'<tr id="{name.lower()}"><th scope="row">{name}</th>'
+        f'<td>USD {price:,.2f}</td><td>{minutes:,}</td></tr>'
+        for name, price, minutes in PBX_PLANS
+    )
+    example_per_minute = starting_price * PBX_EXAMPLE_EXCHANGE_RATE / starting_minutes
+    body += f'''<section class="section tinted pbx-pricing" id="plans">
+        <div class="section-title"><h2>Compare inbound AI plans</h2>
+        <p>All five plans include shared infrastructure and renew every 30 days on a prepaid basis.
+        The package total includes shared capacity without a separate line-rental charge.</p></div>
+        <table class="pbx-plan-table" aria-describedby="pbx-exchange-note">
+            <caption>Prepaid SRLINES AI PBX plans</caption>
+            <thead><tr><th scope="col">Plan</th><th scope="col">Price per 30 days</th><th scope="col">Included inbound AI minutes</th></tr></thead>
+            <tbody>{rows}</tbody>
+        </table>
+        <p id="pbx-exchange-note">At an illustrative rate of USD 1 = PKR {PBX_EXAMPLE_EXCHANGE_RATE:,},
+        all five plans average PKR {example_per_minute:g} per included AI minute.
+        The invoice states the exchange rate used for PKR billing.</p>
+    </section>
+    <section class="section pbx-pricing" id="charges">
+        <div class="section-title"><h2>Setup and additional charges</h2></div>
+        {cards([
+            ("One-time fee", f"PKR {PBX_SETUP_PKR:,} setup", "Paid in advance per business. Includes initial account setup, basic agent configuration and portal onboarding."),
+            ("Extra inbound usage", f"USD {PBX_EXTRA_MINUTE_USD:.2f} per minute", "Additional inbound AI minutes are prepaid and subject to availability."),
+            ("Quoted separately", "Outbound calls and custom work", "Confirm outbound AI and carrier rates before activation. Custom integrations, extra numbers and substantial workflow development are quoted separately."),
+        ])}
+    </section>'''
+    body += '<section class="section tinted pbx-pricing" id="included">'
+    body += '<div class="section-title"><h2>What each plan includes</h2></div>'
+    body += '<div class="voice-sections">' + "".join(
+        f'<article><h3>{escape(heading)}</h3><p>{escape(copy)}</p></article>'
+        for heading, copy in PBX_PACKAGE_FEATURES
+    ) + '</div></section>'
+    body += faq(PBX_PRICING_FAQS, "AI PBX pricing FAQs")
+    body += '<section class="section tinted pbx-pricing" id="service-terms">'
+    body += '<div class="section-title"><h2>Service terms and safeguards</h2></div>'
+    body += '<div class="voice-sections">' + "".join(
+        f'<article><h3>{escape(heading)}</h3><p>{escape(copy)}</p></article>'
+        for heading, copy in PBX_PACKAGE_TERMS
+    ) + '</div></section>'
+    body += voice_resources(PRICING)
+    body += f'''<section class="cta">
+        <h2>Request a quote for your calling setup</h2>
+        <p>Share your expected inbound minutes, busiest call times, any outbound needs and the workflows you want to automate.</p>
+        <a class="button light" href="{quote_url}">Request a quote</a>
+        <a class="button light" href="tel:{PHONE}">Call {UAN}</a>
+    </section>'''
+
+    managed_service = ref(PBX + "#service")
+    plan_offers = [
+        node("Offer", PRICING + "#" + name.lower(), name=name,
+             url=DOMAIN + PRICING + "#" + name.lower(),
+             description=f"Includes {minutes:,} inbound AI minutes per prepaid 30-day cycle.",
+             itemOffered=managed_service, offeredBy=ref("/#organization"),
+             price=price, priceCurrency="USD",
+             priceSpecification={
+                 "@type": "UnitPriceSpecification", "price": price, "priceCurrency": "USD",
+                 "referenceQuantity": {"@type": "QuantitativeValue", "value": 30, "unitCode": "DAY"},
+             })
+        for name, price, minutes in PBX_PLANS
+    ]
+    plan_catalog = node("OfferCatalog", PRICING + "#plans", name="Prepaid SRLINES AI PBX plans",
+                        itemListElement=plan_offers)
+    write(PRICING.lstrip("/"), shell(PRICING.lstrip("/"), title, description, body, "AI PBX Pricing",
+                                     voice=True, entities=(plan_catalog,), about=managed_service))
+
+
 def build_voice():
     pbx_title = "AI Calling Agent & AI PBX in Pakistan"
     pbx_desc = "Explore SRLINES conversational AI, business SIP, UAN, IVR, call recording, human handover and wCRM integration. Watch the demo or request a quote."
@@ -181,11 +267,14 @@ def build_voice():
         body = voice_hero("Business calling", heading, intro, voice_actions(), visual)
         body += voice_sections(sections) + faq(faqs, heading + " FAQs") + voice_resources(path)
         body += f'<section class="cta"><h2>Plan your calling workflow</h2><p>Share your number, call volume and the enquiries you want to handle.</p><a class="button light" href="{escape(QUOTE, quote=True)}">Request a Quotation</a></section>'
-        entities = () if path == PRICING else (service(path, heading, description,
-                                                        audience={"@type": "BusinessAudience", "name": AUDIENCES[path]}),)
+        entities = (service(path, heading, description,
+                            audience={"@type": "BusinessAudience", "name": AUDIENCES[path]}),)
         write(path.lstrip("/"), shell(path.lstrip("/"), title, description, body, title,
                                      voice=True, entities=entities, faqs=faqs,
                                      about=ref(PBX + "#software")))
+
+
+    build_pbx_pricing()
 
 
 FLOW_STEPS = {
@@ -194,7 +283,6 @@ FLOW_STEPS = {
     RESTAURANT: ("Identify the branch", "Answer menu or takeaway questions", "Send orders and reservation requests to staff"),
     HOSPITAL: ("Identify the department", "Share approved clinic information", "Route appointment requests to staff"),
     SCHOOL: ("Ask about campus and grade", "Share published admissions information", "Connect the caller to the office"),
-    PRICING: ("Estimate simultaneous calls", "Separate setup from recurring charges", "Confirm carrier and AI billing terms"),
 }
 AUDIENCES = {
     AGENT: "Businesses in Pakistan", RECEPTION: "Customer-facing businesses",

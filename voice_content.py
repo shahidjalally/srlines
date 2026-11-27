@@ -90,22 +90,41 @@ LANDINGS = {
             ("Can parents ask about fees?", "The workflow can use an approved, dated fee schedule for the relevant campus and programme. Staff handle account-specific balances and exceptions."),
         ],
     ),
-    PRICING: (
-        "AI PBX Pricing Pakistan",
-        "Understand AI PBX quotation components in Pakistan, including setup, subscriptions, AI usage, SIP call rates, concurrency and taxes.",
-        "AI Calling Agent and PBX Pricing in Pakistan",
-        "SRLINES prices the platform by quotation. Send your current number and carrier, expected inbound and outbound minutes, peak simultaneous calls, and required CRM workflows.",
-        [
-            ("One-time implementation", "Ask for separate line items for discovery, number and SIP setup, call-flow configuration, business instructions, integrations, testing, staff onboarding and migration."),
-            ("Subscriptions, AI usage and telephony", "A quote should specify monthly charges, included minutes or resources, AI billing units, overage, outbound carrier rates and any number or trunk charges. Confirm how taxes and exchange-rate-dependent charges are handled."),
-            ("Compare like-for-like capacity", "For a monthly comparison, add subscription, AI usage beyond allowances, carrier charges and taxes. Compare both systems at the same busy-hour concurrency, support coverage and recording or storage requirements. Implementation remains a separate one-time cost."),
-        ],
-        [
-            ("What is a concurrent call session?", "It is a call active at the same time as another call. Ask how AI calls, queued calls and transfers count against carrier and platform capacity."),
-            ("Can I get a price before choosing a carrier?", "Request an indicative scope first. Confirm rates, available numbers and outbound terms once the carrier and package are established."),
-        ],
-    ),
 }
+
+# Brochure prices in USD per prepaid 30-day cycle and included inbound AI minutes.
+PBX_PLANS = (
+    ("Starter", 10, 200),
+    ("Essential", 20, 400),
+    ("Growth", 37.50, 750),
+    ("Business", 70, 1400),
+    ("Scale", 125, 2500),
+)
+PBX_SETUP_PKR = 12_000
+PBX_EXTRA_MINUTE_USD = 0.05
+PBX_EXAMPLE_EXCHANGE_RATE = 300
+
+PBX_PACKAGE_FEATURES = [
+    ("AI telephone receptionist", "Answers routine questions, captures enquiries and takes booking, appointment or order requests. Configured rules can route exceptions to your team."),
+    ("Business calling identity", "A DID is the number customers dial. A CLI is the authorised caller ID shown on outbound calls. Licensed telecom operators control allocation and use, subject to verification, approval and availability. A specific number or permanent ownership is not guaranteed."),
+    ("Self-service web portal", "Manage AI prompts, business knowledge and automation workflows. See allocated and remaining minutes, plan expiry and available activity reports."),
+    ("Shared call capacity", "Plans use a shared pool of simultaneous SIP call sessions. Fair use, network availability and shared capacity apply. Dedicated simultaneous lines are outside the package."),
+]
+
+PBX_PRICING_FAQS = [
+    ("How are inbound AI minutes counted?", "Each connected AI session is rounded up to the next full minute per call. Under the current operator arrangement, incoming telecom airtime is assumed to be free, while AI conversation time uses your plan minutes."),
+    ("Do unused minutes roll over?", "Unused minutes expire at the end of each prepaid 30-day cycle without rollover or refund. Service may pause when the allowance or prepaid credit runs out."),
+    ("Are outbound calls included?", "Outbound calls are billed separately unless included by written agreement. Charges cover AI processing, applicable operator airtime, taxes and destination-based charges. SRLINES confirms the rates before activation."),
+    ("Can I activate any number or outbound caller ID?", "Activation requires operator approval, customer verification (KYC), a lawful business purpose and availability. Confirm number allocation and outbound caller-ID use before publishing a number."),
+]
+
+PBX_PACKAGE_TERMS = [
+    ("Billing and renewals", "Pay for each 30-day cycle in advance. Fees are invoiced in USD or the PKR equivalent at the exchange rate shown on the invoice. Applicable taxes and third-party charges are extra. The setup fee is non-refundable once implementation starts. Material changes and custom work require separate written approval."),
+    ("Pricing changes", "Prices, included minutes, extra-minute charges and service conditions may change because of exchange rates, inflation, taxes, operator tariffs or AI-provider pricing. SRLINES communicates changes before the next renewal. Existing prepaid periods remain subject to applicable law and agreed terms."),
+    ("Consent and acceptable use", "Customers are responsible for lawful calling lists, consent, marketing restrictions, notices and recording permissions. Spoofing, spam, fraud, harassment and unlawful automated dialling are prohibited. SRLINES may suspend misuse or act on regulator or operator instructions."),
+    ("AI and data handling", "AI can give inaccurate answers. Review prompts, business information and high-impact workflows. Minimise sensitive personal or medical information and manage authorised portal users. The infrastructure and AI providers needed to deliver the service process data under applicable policies."),
+    ("Availability and liability", "Shared telecom capacity, networks, operators and AI services can experience interruptions. Call-answer rates, uptime, sales outcomes and suitability for emergency services are not guaranteed. As permitted by law, liability is limited to fees paid for the affected service in the preceding 30 days, and indirect losses are excluded."),
+]
 
 PBX_SECTIONS = [
     ("Conversational AI and business telephony", "SRLINES AI Calling Agent and AI-Enabled PBX is a wCRM-integrated business communication platform for Pakistani businesses. Conversational AI listens to a caller’s request and responds using business instructions. Traditional interactive voice response (IVR) plays prompts and routes by menu choice, including DTMF keypad input. A deployment can combine the two."),
@@ -115,7 +134,7 @@ PBX_SECTIONS = [
     ("Pakistani UAN, SIP and carrier terms", "Discuss whether your existing business UAN or a new number can be connected. Number availability, inbound and outbound routes, concurrent sessions and charges depend on carrier terms and the selected package. Confirm compatibility before porting or publishing a number."),
     ("Deployment and onboarding", "Map call intent, hours, escalation, consent and staff ownership first. Then test SIP connectivity, a small set of AI scenarios, fallbacks, peak load and the wCRM handoff before routing live traffic. Agree a rollback route for launch."),
     ("Recording, consent and data handling", "Agree which calls are recorded, how callers are informed, who can access call data, how long it is kept and when staff should take over. Use authorized outbound lists and a documented opt-out process. Review privacy and applicable requirements before going live."),
-    ("Quotation and usage", "Request a scope covering one-time implementation, monthly subscription, included usage, additional AI usage, carrier charges, concurrency, taxes and any exchange-rate-dependent rates. The signed quote defines the commercial terms."),
+    ("Plans and custom quotations", "Compare published 30-day inbound AI plans and one-time setup on the pricing page. Request a quote for outbound usage, integrations or custom workflows. The signed quote defines the commercial terms."),
 ]
 
 PBX_FAQS = [
