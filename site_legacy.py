@@ -112,8 +112,8 @@ def complete_public_site(root, write):
         if '<body data-path=' not in html:
             write(relative, update_legacy(html, path))
     write("sitemap.xml", sitemap(public))
-    write("ai-sitemap.xml", sitemap(["/", PBX, *LANDINGS]))
-    write("product-sitemap.xml", sitemap(path for path in public if path in LANDINGS or
+    write("ai-sitemap.xml", sitemap(["/", PBX, *LANDINGS, PRICING]))
+    write("product-sitemap.xml", sitemap(path for path in public if path in LANDINGS or path == PRICING or
                                         path.startswith("/products/")))
     entities = ["/", "/about.html", "/contact.html", "/credentials.html", PBX]
     for name in ("entity-sitemap.xml", "llm-sitemap.xml"):
@@ -132,7 +132,7 @@ Sitemap: {DOMAIN}/sitemap.xml
 - [Flagship platform and demo]({DOMAIN}{PBX})
 - [AI Calling Agent]({DOMAIN}{AGENT})
 - [AI Receptionist]({DOMAIN}{RECEPTION})
-- [AI PBX pricing and quotation]({DOMAIN}{PRICING})
+- [AI PBX plans, setup fees and usage charges]({DOMAIN}{PRICING})
 - [wCRM]({DOMAIN}/products/wcrm.html)
 - [Company and credentials]({DOMAIN}/about.html)
 - [Contact SRLINES]({DOMAIN}/contact.html) · {UAN}

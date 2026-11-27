@@ -52,3 +52,29 @@ footer .brand-light img{width:100%;height:auto}
 @media (max-width: 680px) {
   .voice-sections {grid-template-columns: minmax(0, 1fr)}
 }
+
+/* AI PBX pricing */
+.pbx-price-summary {align-self: center}
+.pbx-price-summary strong {display: block; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1}
+.pbx-price-summary span {display: block; color: var(--muted); margin-bottom: 1rem}
+.pbx-price-summary p + p {margin-top: .5rem}
+.pbx-pricing {scroll-margin-top: 5rem}
+.pbx-pricing > .voice-sections, #pbx-exchange-note {max-width: 58rem; margin-inline: auto}
+.pbx-plan-table {
+  width: 100%;
+  max-width: 58rem;
+  margin-inline: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--white);
+  font-variant-numeric: tabular-nums;
+}
+.pbx-plan-table caption {padding-bottom: .6rem; text-align: left; font-weight: 700}
+.pbx-plan-table th, .pbx-plan-table td {padding: .7rem clamp(.5rem, 2vw, 1.4rem); text-align: left}
+.pbx-plan-table thead {background: var(--navy); color: var(--white)}
+.pbx-plan-table tbody tr + tr > * {border-top: 1px solid var(--line)}
+.pbx-plan-table td {white-space: nowrap}
+.pbx-plan-table tr {scroll-margin-top: 5.5rem}
