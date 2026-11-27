@@ -7,9 +7,10 @@ from site_identity import (
     UAN, WHATSAPP, node, page_schema, ref, service, software,
 )
 from voice_content import (
-    AGENT, CONSULT, HOSPITAL, LANDINGS, PBX_EXAMPLE_EXCHANGE_RATE, PBX_EXTRA_MINUTE_USD,
-    PBX_FAQS, PBX_PACKAGE_FEATURES, PBX_PACKAGE_TERMS, PBX_PLANS, PBX_PRICING_FAQS,
-    PBX_SECTIONS, PBX_SETUP_PKR, PRICING, QUOTE, RECEPTION, RESTAURANT, SCHOOL,
+    AGENT, CONSULT, HOSPITAL, LANDINGS, PBX_EXTRA_MINUTE_USD,
+    PBX_FAQS, PBX_OPENAI_RATE_PKR, PBX_OPENAI_RATE_USD, PBX_PACKAGE_FEATURES, PBX_PACKAGE_TERMS, PBX_PLANS, PBX_PRICING_FAQS,
+    PBX_SECTIONS, PBX_SETUP_PKR, PBX_ZONG_MINUTES, PBX_ZONG_PKR, PBX_ZONG_RATE_PKR,
+    PRICING, QUOTE, RECEPTION, RESTAURANT, SCHOOL,
     VIDEO, VIDEO_EMBED, VIDEO_IMAGE, VIDEO_TITLE, VIDEO_UPLOAD_DATE,
 )
 from site_legacy import complete_public_site
@@ -165,48 +166,53 @@ def flagship_section():
 
 def build_pbx_pricing():
     title = "AI Calling Agent & PBX Pricing in Pakistan"
-    starting_plan, starting_price, starting_minutes = PBX_PLANS[0]
-    description = (f"Compare prepaid SRLINES AI PBX plans from USD {starting_price:g} per 30 days "
-                   f"for {starting_minutes:,} inbound AI minutes, plus PKR {PBX_SETUP_PKR:,} one-time setup.")
-    intro = ("Compare prepaid plans for a managed AI receptionist that answers routine calls, "
-             "captures enquiries and routes exceptions to your team.")
+    description = ("Compare SRLINES AI PBX plans in Pakistan with PKR totals, included inbound AI minutes "
+                   "and separate Zong, OpenAI and SRLINES costs.")
     quote_url = escape(QUOTE, quote=True)
-    actions = (f'<div class="actions voice-actions"><a class="button" href="#plans">Compare plans</a>'
-               f'<a class="button secondary" href="{quote_url}">Request a quote</a></div>')
-    summary = f'''<aside class="voice-flow pbx-price-summary" aria-label="Starting price">
-        <strong>USD {starting_price:g}</strong><span>per prepaid 30-day cycle</span>
-        <p>{starting_minutes:,} inbound AI minutes on {starting_plan}</p>
-        <p>PKR {PBX_SETUP_PKR:,} one-time setup per business</p>
-    </aside>'''
-    body = voice_hero("Managed AI telephone receptionist", "AI Calling Agent and PBX Pricing in Pakistan",
-                      intro, actions, summary)
+    body = f'''<section class="page-hero pbx-pricing-hero"><div>
+        <h1>AI Calling Agent and PBX Pricing in Pakistan</h1>
+        <p>Prepaid plans for a managed AI receptionist that answers routine calls,
+        captures enquiries and routes exceptions to your team.</p>
+        <div class="actions voice-actions"><a class="button" href="#plans">Compare plans</a>
+        <a class="button secondary" href="{quote_url}">Request a quote</a></div>
+    </div></section>'''
+    packages = []
+    for name, minutes, openai_cost, srlines_rate in PBX_PLANS:
+        srlines_cost = minutes * srlines_rate
+        total = PBX_ZONG_PKR + openai_cost + srlines_cost
+        packages.append((name, minutes, openai_cost, srlines_rate, srlines_cost, total))
     rows = "".join(
-        f'<tr id="{name.lower()}"><th scope="row">{name}</th>'
-        f'<td>USD {price:,.2f}</td><td>{minutes:,}</td></tr>'
-        for name, price, minutes in PBX_PLANS
+        f'<tr id="{name.lower()}"><th scope="row">{name}</th><td>{minutes:,}</td>'
+        f'<td>{PBX_ZONG_PKR:,}</td><td>{openai_cost:,}</td><td>{srlines_rate:.2f}</td>'
+        f'<td>{srlines_cost:,}</td><td><strong>{total:,}</strong></td></tr>'
+        for name, minutes, openai_cost, srlines_rate, srlines_cost, total in packages
     )
-    example_per_minute = starting_price * PBX_EXAMPLE_EXCHANGE_RATE / starting_minutes
-    body += f'''<section class="section tinted pbx-pricing" id="plans">
-        <div class="section-title"><h2>Compare inbound AI plans</h2>
-        <p>All five plans include shared infrastructure and renew every 30 days on a prepaid basis.
-        The package total includes shared capacity without a separate line-rental charge.</p></div>
-        <table class="pbx-plan-table" aria-describedby="pbx-exchange-note">
-            <caption>Prepaid SRLINES AI PBX plans</caption>
-            <thead><tr><th scope="col">Plan</th><th scope="col">Price per 30 days</th><th scope="col">Included inbound AI minutes</th></tr></thead>
-            <tbody>{rows}</tbody>
-        </table>
-        <p id="pbx-exchange-note">At an illustrative rate of USD 1 = PKR {PBX_EXAMPLE_EXCHANGE_RATE:,},
-        all five plans average PKR {example_per_minute:g} per included AI minute.
-        The invoice states the exchange rate used for PKR billing.</p>
-    </section>
-    <section class="section pbx-pricing" id="charges">
-        <div class="section-title"><h2>Setup and additional charges</h2></div>
-        {cards([
-            ("One-time fee", f"PKR {PBX_SETUP_PKR:,} setup", "Paid in advance per business. Includes initial account setup, basic agent configuration and portal onboarding."),
-            ("Extra inbound usage", f"USD {PBX_EXTRA_MINUTE_USD:.2f} per minute", "Additional inbound AI minutes are prepaid and subject to availability."),
-            ("Quoted separately", "Outbound calls and custom work", "Confirm outbound AI and carrier rates before activation. Custom integrations, extra numbers and substantial workflow development are quoted separately."),
-        ])}
-    </section>'''
+    body += f'''<section class="section pbx-pricing" id="plans"><div class="pbx-plan-content">
+        <h2 id="pbx-plans-title">Simple monthly packages</h2>
+        <p>All plans are prepaid, renew every 30 days, and include the stated <strong>inbound AI conversation minutes</strong>.
+        Incoming telecom airtime is currently assumed free under our operator arrangement. AI processing still consumes plan minutes.</p>
+        <div class="pbx-plan-scroll" role="region" aria-labelledby="pbx-plans-title" tabindex="0">
+            <table class="pbx-plan-table" aria-labelledby="pbx-plans-title" aria-describedby="pbx-rate-notes">
+                <thead><tr><th scope="col">Plan</th><th scope="col">AI minutes</th><th scope="col">Zong (PKR)</th>
+                <th scope="col">OpenAI (PKR)</th><th scope="col">SRLINES /min</th><th scope="col">SRLINES (PKR)</th>
+                <th scope="col">Total (PKR)</th></tr></thead>
+                <tbody>{rows}</tbody>
+            </table>
+        </div>
+        <div class="pbx-rate-notes" id="pbx-rate-notes">
+            <p>Zong: fixed {PBX_ZONG_MINUTES:,} airtime minutes per plan at PKR {PBX_ZONG_RATE_PKR:.2f}/min = PKR {PBX_ZONG_PKR:,}/month.</p>
+            <p>OpenAI: USD {PBX_OPENAI_RATE_USD:.4f}/min (approx. PKR {PBX_OPENAI_RATE_PKR:.2f}). AI minutes vary by plan.</p>
+            <p>Rates may change at short notice due to Zong tariffs, USD/PKR changes and inflation.</p>
+        </div>
+        <div id="charges">
+            <p><strong>One-time implementation and setup:</strong> PKR {PBX_SETUP_PKR:,} per business, payable in advance.
+            Includes initial account setup, basic agent configuration and portal onboarding. Custom integrations,
+            additional numbers and substantial workflow development are quoted separately.</p>
+            <p><strong>Additional inbound AI minutes:</strong> USD {PBX_EXTRA_MINUTE_USD:.2f} per minute, prepaid, subject to availability.
+            <strong>Outbound calls:</strong> billed separately for AI processing plus applicable operator airtime,
+            taxes and destination-based charges, at rates confirmed before activation.</p>
+        </div>
+    </div></section>'''
     body += '<section class="section tinted pbx-pricing" id="included">'
     body += '<div class="section-title"><h2>What each plan includes</h2></div>'
     body += '<div class="voice-sections">' + "".join(
@@ -234,14 +240,14 @@ def build_pbx_pricing():
              url=DOMAIN + PRICING + "#" + name.lower(),
              description=f"Includes {minutes:,} inbound AI minutes per prepaid 30-day cycle.",
              itemOffered=managed_service, offeredBy=ref("/#organization"),
-             price=price, priceCurrency="USD",
+             price=total, priceCurrency="PKR",
              priceSpecification={
-                 "@type": "UnitPriceSpecification", "price": price, "priceCurrency": "USD",
+                 "@type": "UnitPriceSpecification", "price": total, "priceCurrency": "PKR",
                  "referenceQuantity": {"@type": "QuantitativeValue", "value": 30, "unitCode": "DAY"},
              })
-        for name, price, minutes in PBX_PLANS
+        for name, minutes, _, _, _, total in packages
     ]
-    plan_catalog = node("OfferCatalog", PRICING + "#plans", name="Prepaid SRLINES AI PBX plans",
+    plan_catalog = node("OfferCatalog", PRICING + "#plans", name="Simple monthly packages",
                         itemListElement=plan_offers)
     write(PRICING.lstrip("/"), shell(PRICING.lstrip("/"), title, description, body, "AI PBX Pricing",
                                      voice=True, entities=(plan_catalog,), about=managed_service))
