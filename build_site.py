@@ -166,7 +166,7 @@ def flagship_section():
 
 def build_pbx_pricing():
     title = "AI Calling Agent & PBX Pricing in Pakistan"
-    description = ("Compare SRLINES AI PBX plans in Pakistan with PKR totals, included inbound AI minutes "
+    description = ("Compare SRLINES AI PBX plans in Pakistan with PKR totals, a shared inbound and outbound AI allowance "
                    "and separate Zong, OpenAI and SRLINES costs.")
     quote_url = escape(QUOTE, quote=True)
     body = f'''<section class="page-hero pbx-pricing-hero"><div>
@@ -182,15 +182,16 @@ def build_pbx_pricing():
         total = PBX_ZONG_PKR + openai_cost + srlines_cost
         packages.append((name, minutes, openai_cost, srlines_rate, srlines_cost, total))
     rows = "".join(
-        f'<tr id="{name.lower()}"><th scope="row">{name}</th><td>{minutes:,}</td>'
+        f'<tr id="{name.lower()}"><th scope="row">{name}</th>'
+        f'<td>{minutes:,}<small>{minutes // 60} h {minutes % 60:02d} min</small></td>'
         f'<td>{PBX_ZONG_PKR:,}</td><td>{openai_cost:,}</td><td>{srlines_rate:.2f}</td>'
         f'<td>{srlines_cost:,}</td><td><strong>{total:,}</strong></td></tr>'
         for name, minutes, openai_cost, srlines_rate, srlines_cost, total in packages
     )
     body += f'''<section class="section pbx-pricing" id="plans"><div class="pbx-plan-content">
         <h2 id="pbx-plans-title">Simple monthly packages</h2>
-        <p>All plans are prepaid, renew every 30 days, and include the stated <strong>inbound AI conversation minutes</strong>.
-        Incoming telecom airtime is currently assumed free under our operator arrangement. AI processing still consumes plan minutes.</p>
+        <p>All plans are prepaid and renew every 30 days. The table shows the <strong>total AI conversation time</strong> for each plan.
+        Inbound and outbound AI calls share this allowance and use the same AI rate within the plan.</p>
         <div class="pbx-plan-scroll" role="region" aria-labelledby="pbx-plans-title" tabindex="0">
             <table class="pbx-plan-table" aria-labelledby="pbx-plans-title" aria-describedby="pbx-rate-notes">
                 <thead><tr><th scope="col">Plan</th><th scope="col">AI minutes</th><th scope="col">Zong (PKR)</th>
@@ -200,17 +201,20 @@ def build_pbx_pricing():
             </table>
         </div>
         <div class="pbx-rate-notes" id="pbx-rate-notes">
-            <p>Zong: fixed {PBX_ZONG_MINUTES:,} airtime minutes per plan at PKR {PBX_ZONG_RATE_PKR:.2f}/min = PKR {PBX_ZONG_PKR:,}/month.</p>
+            <p>Zong: {PBX_ZONG_MINUTES:,} outbound airtime minutes are included in each plan total
+            at PKR {PBX_ZONG_RATE_PKR:.2f}/min (PKR {PBX_ZONG_PKR:,} per 30 days). Inbound airtime is free under the operator arrangement.
+            Airtime and AI conversation time are measured separately.</p>
             <p>OpenAI: USD {PBX_OPENAI_RATE_USD:.4f}/min (approx. PKR {PBX_OPENAI_RATE_PKR:.2f}). AI minutes vary by plan.</p>
             <p>Rates may change at short notice due to Zong tariffs, USD/PKR changes and inflation.</p>
         </div>
         <div id="charges">
             <p><strong>One-time implementation and setup:</strong> PKR {PBX_SETUP_PKR:,} per business, payable in advance.
-            Includes initial account setup, basic agent configuration and portal onboarding. Custom integrations,
-            additional numbers and substantial workflow development are quoted separately.</p>
-            <p><strong>Additional inbound AI minutes:</strong> USD {PBX_EXTRA_MINUTE_USD:.2f} per minute, prepaid, subject to availability.
-            <strong>Outbound calls:</strong> billed separately for AI processing plus applicable operator airtime,
-            taxes and destination-based charges, at rates confirmed before activation.</p>
+            Covers account setup, basic agent configuration, portal onboarding and initial setup of the included UAN,
+            three concurrent sessions, IVR, keypad routing and soft extensions. Custom integrations, additional numbers
+            and substantial workflow development are quoted separately.</p>
+            <p><strong>Additional AI minutes:</strong> USD {PBX_EXTRA_MINUTE_USD:.2f} per minute in either direction,
+            prepaid and subject to availability. SRLINES confirms rates for outbound airtime beyond the bundle and
+            any destination-specific charges before activation.</p>
         </div>
     </div></section>'''
     body += '<section class="section tinted pbx-pricing" id="included">'
@@ -238,7 +242,8 @@ def build_pbx_pricing():
     plan_offers = [
         node("Offer", PRICING + "#" + name.lower(), name=name,
              url=DOMAIN + PRICING + "#" + name.lower(),
-             description=f"Includes {minutes:,} inbound AI minutes per prepaid 30-day cycle.",
+             description=(f"Includes {minutes:,} AI minutes shared across inbound and outbound calls per prepaid 30-day cycle, "
+                          "one UAN and three concurrent call sessions."),
              itemOffered=managed_service, offeredBy=ref("/#organization"),
              price=total, priceCurrency="PKR",
              priceSpecification={

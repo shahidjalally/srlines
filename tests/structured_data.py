@@ -31,14 +31,13 @@ def web_url(value):
     return url.scheme == "https" and bool(url.netloc)
 
 
-def iso_date(value):
-    if not isinstance(value, str) or not re.match(r"^\d{4}-\d{2}-\d{2}(?:T|$)", value):
+def timezone_aware_datetime(value):
+    if not isinstance(value, str) or not re.match(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$", value):
         return False
     try:
-        datetime.fromisoformat(value)
+        return datetime.fromisoformat(value).utcoffset() is not None
     except ValueError:
         return False
-    return True
 
 
 def valid_offer_price(offer):
@@ -61,8 +60,8 @@ def schema_issues(graph, page, url):
         kinds = list_of(node.get("@type"))
         label = node.get("@id") or node.get("name") or "/".join(kinds)
         if "VideoObject" in kinds:
-            if not node.get("name") or not iso_date(node.get("uploadDate")):
-                yield f"{label} requires a name and ISO 8601 uploadDate"
+            if not node.get("name") or not timezone_aware_datetime(node.get("uploadDate")):
+                yield f"{label} requires a name and ISO 8601 uploadDate with a timezone"
             images = list_of(node.get("thumbnailUrl"))
             if not images or not all(web_url(image) for image in images):
                 yield f"{label} requires an absolute thumbnail URL"

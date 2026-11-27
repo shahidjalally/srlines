@@ -66,6 +66,7 @@ footer .brand-light img{width:100%;height:auto}
 }
 .pbx-plan-table th, .pbx-plan-table td {padding: .55rem clamp(.6rem, 1.2vw, 1rem); text-align: left; white-space: nowrap}
 .pbx-plan-table thead {background: #193354; color: var(--white)}
+.pbx-plan-table td small {display: block; color: var(--muted)}
 .pbx-plan-table tbody tr {border-bottom: 1px solid var(--line)}
 .pbx-plan-table tbody tr:nth-child(odd) {background: #edf4fa}
 .pbx-rate-notes {margin-top: .35rem; font-size: .9rem}
