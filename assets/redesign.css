@@ -54,27 +54,19 @@ footer .brand-light img{width:100%;height:auto}
 }
 
 /* AI PBX pricing */
-.pbx-price-summary {align-self: center}
-.pbx-price-summary strong {display: block; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1}
-.pbx-price-summary span {display: block; color: var(--muted); margin-bottom: 1rem}
-.pbx-price-summary p + p {margin-top: .5rem}
-.pbx-pricing {scroll-margin-top: 5rem}
-.pbx-pricing > .voice-sections, #pbx-exchange-note {max-width: 58rem; margin-inline: auto}
+.pbx-pricing-hero {grid-template-columns: 1fr; padding-block: clamp(2.5rem, 6vw, 5rem)}
+.pbx-pricing, .pbx-plan-table tr {scroll-margin-top: 5.5rem}
+.pbx-pricing > .voice-sections, .pbx-plan-content {max-width: 66rem; margin-inline: auto}
+.pbx-plan-content h2 {font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: .75rem}
+.pbx-plan-scroll {overflow-x: auto}
 .pbx-plan-table {
   width: 100%;
-  max-width: 58rem;
-  margin-inline: auto;
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 1px solid var(--line);
-  border-radius: 1rem;
-  overflow: hidden;
-  background: var(--white);
+  border-collapse: collapse;
   font-variant-numeric: tabular-nums;
 }
-.pbx-plan-table caption {padding-bottom: .6rem; text-align: left; font-weight: 700}
-.pbx-plan-table th, .pbx-plan-table td {padding: .7rem clamp(.5rem, 2vw, 1.4rem); text-align: left}
-.pbx-plan-table thead {background: var(--navy); color: var(--white)}
-.pbx-plan-table tbody tr + tr > * {border-top: 1px solid var(--line)}
-.pbx-plan-table td {white-space: nowrap}
-.pbx-plan-table tr {scroll-margin-top: 5.5rem}
+.pbx-plan-table th, .pbx-plan-table td {padding: .55rem clamp(.6rem, 1.2vw, 1rem); text-align: left; white-space: nowrap}
+.pbx-plan-table thead {background: #193354; color: var(--white)}
+.pbx-plan-table tbody tr {border-bottom: 1px solid var(--line)}
+.pbx-plan-table tbody tr:nth-child(odd) {background: #edf4fa}
+.pbx-rate-notes {margin-top: .35rem; font-size: .9rem}
+.pbx-rate-notes p {margin: 0}

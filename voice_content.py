@@ -92,17 +92,21 @@ LANDINGS = {
     ),
 }
 
-# Brochure prices in USD per prepaid 30-day cycle and included inbound AI minutes.
+# Plan, inbound AI minutes, OpenAI (PKR), and SRLINES (PKR/min).
 PBX_PLANS = (
-    ("Starter", 10, 200),
-    ("Essential", 20, 400),
-    ("Growth", 37.50, 750),
-    ("Business", 70, 1400),
-    ("Scale", 125, 2500),
+    ("Starter", 200, 860, 6),
+    ("Essential", 400, 1_720, 5),
+    ("Growth", 750, 3_225, 4),
+    ("Business", 1_400, 6_020, 3),
+    ("Scale", 2_500, 10_750, 2),
 )
+PBX_ZONG_MINUTES = 1_100
+PBX_ZONG_RATE_PKR = 3.15
+PBX_ZONG_PKR = 3_465
+PBX_OPENAI_RATE_USD = 0.0154
+PBX_OPENAI_RATE_PKR = 4.30
 PBX_SETUP_PKR = 12_000
 PBX_EXTRA_MINUTE_USD = 0.05
-PBX_EXAMPLE_EXCHANGE_RATE = 300
 
 PBX_PACKAGE_FEATURES = [
     ("AI telephone receptionist", "Answers routine questions, captures enquiries and takes booking, appointment or order requests. Configured rules can route exceptions to your team."),
@@ -112,14 +116,14 @@ PBX_PACKAGE_FEATURES = [
 ]
 
 PBX_PRICING_FAQS = [
-    ("How are inbound AI minutes counted?", "Each connected AI session is rounded up to the next full minute per call. Under the current operator arrangement, incoming telecom airtime is assumed to be free, while AI conversation time uses your plan minutes."),
+    ("How are inbound AI minutes counted?", "Each connected AI session uses the plan’s inbound AI allowance and is rounded up to the next full minute per call."),
     ("Do unused minutes roll over?", "Unused minutes expire at the end of each prepaid 30-day cycle without rollover or refund. Service may pause when the allowance or prepaid credit runs out."),
     ("Are outbound calls included?", "Outbound calls are billed separately unless included by written agreement. Charges cover AI processing, applicable operator airtime, taxes and destination-based charges. SRLINES confirms the rates before activation."),
     ("Can I activate any number or outbound caller ID?", "Activation requires operator approval, customer verification (KYC), a lawful business purpose and availability. Confirm number allocation and outbound caller-ID use before publishing a number."),
 ]
 
 PBX_PACKAGE_TERMS = [
-    ("Billing and renewals", "Pay for each 30-day cycle in advance. Fees are invoiced in USD or the PKR equivalent at the exchange rate shown on the invoice. Applicable taxes and third-party charges are extra. The setup fee is non-refundable once implementation starts. Material changes and custom work require separate written approval."),
+    ("Billing and renewals", "Pay for each 30-day cycle in advance. Package totals are shown in PKR. Applicable taxes and any additional third-party charges are extra. The setup fee is non-refundable once implementation starts. Material changes and custom work require separate written approval."),
     ("Pricing changes", "Prices, included minutes, extra-minute charges and service conditions may change because of exchange rates, inflation, taxes, operator tariffs or AI-provider pricing. SRLINES communicates changes before the next renewal. Existing prepaid periods remain subject to applicable law and agreed terms."),
     ("Consent and acceptable use", "Customers are responsible for lawful calling lists, consent, marketing restrictions, notices and recording permissions. Spoofing, spam, fraud, harassment and unlawful automated dialling are prohibited. SRLINES may suspend misuse or act on regulator or operator instructions."),
     ("AI and data handling", "AI can give inaccurate answers. Review prompts, business information and high-impact workflows. Minimise sensitive personal or medical information and manage authorised portal users. The infrastructure and AI providers needed to deliver the service process data under applicable policies."),
